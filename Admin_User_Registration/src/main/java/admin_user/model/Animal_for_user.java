@@ -27,7 +27,7 @@ public class Animal_for_user {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   
-  private int dni;
+  private Long dni;
   private String raza;
 
   private Long peso;

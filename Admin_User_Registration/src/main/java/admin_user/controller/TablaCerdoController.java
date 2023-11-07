@@ -42,7 +42,8 @@ public TablaCerdoController(CerdoRegistroService cerdoRegistroService){
 
 
 // este metodo tambien sirve para mostrar usando 1
-     @GetMapping("/tabla-cerdo")
+ /*   antiguo metodo para mostrar tabla de cerdo registro
+   @GetMapping("/tabla-cerdo")
     public String mostrarDatos(Model model){
 
         try {
@@ -57,11 +58,11 @@ public TablaCerdoController(CerdoRegistroService cerdoRegistroService){
 
 
     }
-    
+    */
 
 
     //metodo para buscar por id 100% funcional
-    @GetMapping("/buscar-por-id")
+   /*  @GetMapping("/buscar-por-id")
     public String buscarAnimalPorId(@RequestParam(required = false) Long id, Model model) {
         if (id != null) {
             CerdoRegistro animal = cerdoRegistroService.obtenerAnimalPorId(id);
@@ -78,7 +79,7 @@ public TablaCerdoController(CerdoRegistroService cerdoRegistroService){
     }
     
     
-    
+    */
 
 
    

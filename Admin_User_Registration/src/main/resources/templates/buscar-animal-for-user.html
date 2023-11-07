@@ -95,11 +95,14 @@
     </div>
 </form>-->
 <form th:action="@{/buscar}" method="get">
-    <div class="form-group--btn"><!--el name="" es importantisimo ya que conecta con el formulario o input a los atributos en la entidad en este caso tanto id como dni -->
-        <input type="text" id="buscarPor" class="form-control" name="dni" placeholder="Buscar por ID o DNI">
+    <div class="form-group--btn">
+        <input type="text" id="buscarPor" class="form-control" name="id" placeholder="Buscar por ID">
+        <input type="text" id="buscarPor" class="form-control" name="dni" placeholder="Buscar por DNI">
         <button class="btn-1" type="submit">Buscar</button>
     </div>
 </form>
+
+
                 
                 
                 

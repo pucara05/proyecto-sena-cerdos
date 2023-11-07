@@ -62,7 +62,7 @@
     <section class="cont_registro">
         <div class="container">
             <h2>Modificar  Cerdos</h2>
-            <form th:action="@{/cerdo-modificar}" method="post"  th:object="${animal_for_user}">
+            <form th:action="@{/animal_for_user/modificar/{id}(id=${animal.id})}" method="post"  th:object="${animal}">
                 <div class="form-group">
                   <!--  <label for="id cerdo">Id Cerdo</label>
                     <select id="id cerdo" name="numero" required>

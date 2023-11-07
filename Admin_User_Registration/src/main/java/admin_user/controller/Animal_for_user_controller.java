@@ -1,11 +1,15 @@
 package admin_user.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import admin_user.dto.CerdoRegistroDto;
 import admin_user.model.Animal_for_user;
@@ -24,6 +28,7 @@ public class Animal_for_user_controller {
     }
 
     //metodo para mostrar el formulario html vista  siempre es mejor colocar el mismo nombre del html en el get/post o demas para evitar errores 
+    //metodo para la vista cerdo-registro
 @GetMapping("/cerdo-registro")
     public String index(@ModelAttribute("animal_for_user")Animal_for_user animal_for_user){
         try {
@@ -37,13 +42,77 @@ public class Animal_for_user_controller {
         }
 
     }
+//vista tabla cerdo
+//metodo para la tabla-cerdo
+     @GetMapping("/tabla-cerdo")
+    public String mostrarDatos(Model model){
+
+        try {
+            List<Animal_for_user> datos = animal_for_user_service.getAllAnimalForUser();
+            model.addAttribute("datas" ,datos);
+
+            return "tabla-cerdo";
+        }
+        catch(  Exception e) {
+            return " Error al mostrar la lista " + e.getMessage();
+        }
 
 
-//metodo para guardar si sirve para evitar errores se coloca el mismo name que la vista html a menos que redirecione a otra vista como aqui
+    }
+
+
+
+    // ya sirve la vista para buscar y tabla aparte
+    @GetMapping("/buscar-animales")
+    public String mostrarBuscar(@ModelAttribute("animal_for_user")Animal_for_user animal_for_user){
+        try {
+
+            return "buscar-animal-for-user";
+        }
+        catch (Exception e) {
+
+
+            return "Error en cargar la pagina " + e.getMessage();
+        }
+
+    }
+
+//buscar por id
+//metodo para buscar por id 
+         @GetMapping("/buscar-por-id-animal")
+    public String buscarAnimalPorId(@RequestParam(required = false) Long id, Model model) {
+        if (id != null) {
+            Animal_for_user animal = animal_for_user_service.obtenerAnimalPorId(id);
+        
+            if (animal != null) {
+                model.addAttribute("animal", animal);
+                return "tabla-cerdo";
+            } else {    
+                return "animal_no_encontrado";
+            }
+        } else {
+            return "animal_no_encontrado"; // Tratar el caso en el que id sea nulo
+        }
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+//metodo para guardar si sirve para evitar errores se coloca el mismo name que la vista 
+// a menos que redirecione a otra vista como aqui
+//metodo para la  crear registro y redireciona a la tabla-animal-for-user
       @PostMapping("/cerdo-registro")
     public String  guardarDato(@ModelAttribute ("animal_for_user") Animal_for_user animal_for_user){
         try {
-        animal_for_user_service.saveAnimal(animal_for_user);;
+        animal_for_user_service.saveAnimal(animal_for_user);
 
             return "redirect:/tabla-animal-for-user";
         }catch (Exception e){
@@ -52,26 +121,76 @@ public class Animal_for_user_controller {
         }
     }
   
+ 
 
-@PostMapping("/animal_for_user/modificar/{id}")
-public String modificarAnimal(@PathVariable Long id, @ModelAttribute Animal_for_user animal) {
-    Animal_for_user animalExistente = animal_for_user_service.obtenerAnimalPorId(id);
+
+//metodo para la vista  modificar cerdo
+//agarra el modelo y carga los datos al registro con el id para modificarlos cuando se le de al boton
+     @GetMapping("/animal_for_user/editar/{id}")
+    public String mostrarFormularioEditar(@PathVariable Long id, Model model) {
+        Animal_for_user animal = animal_for_user_service.obtenerAnimalPorId(id);
+
+        if (animal != null) {
+            model.addAttribute("animal", animal);
+            return "modificar-cerdo";
+        } else {
+            return "animal_no_encontrado";
+        }
+    }
+
+/*  //metodo para modificar sirve pero modifica dnis iguales falta arreglar
+    @PostMapping("/animal_for_user/modificar/{id}")
+    public String modificarAnimal(@PathVariable Long id, @ModelAttribute Animal_for_user animal_for_user) {
+        Animal_for_user animalExistente = animal_for_user_service.obtenerAnimalPorId(id);
+        
+        if (animalExistente != null) {
+            // El animal existe, podemos proceder con la modificación
+            animalExistente.setDni(animal_for_user.getDni());
+            animalExistente.setRaza(animal_for_user.getRaza());
+            animalExistente.setPeso(animal_for_user.getPeso());
+            animalExistente.setFechaNacimientoCerdo(animal_for_user.getFechaNacimientoCerdo());
+            // Actualiza cualquier otro atributo según sea necesario
     
-    if (animalExistente != null) {
-        // El animal existe, podemos proceder con la modificación
-        animalExistente.setDni(animal.getDni());
-        animalExistente.setRaza(animal.getRaza());
-        animalExistente.setPeso(animal.getPeso());
-        animalExistente.setFechaNacimientoCerdo(animal.getFechaNacimientoCerdo());
-        // Actualiza cualquier otro atributo según sea necesario
+            animal_for_user_service.saveAnimal(animalExistente);
+            return "redirect:/tabla-cerdo"; // Redireccionar a la tabla
+        } else {
+            // El animal no existe, mostrar un mensaje de error o redireccionar a una página de error
+            return "animal_no_encontrado";
+        }
+    }
+    
 
-        animal_for_user_service.saveAnimal(animalExistente);
-        return "redirect:/animal_for_user/tabla"; // Redireccionar a la tabla
+   */
+
+
+   @PostMapping("/animal_for_user/modificar/{id}")
+public String modificarAnimal(@PathVariable Long id, @ModelAttribute Animal_for_user animal_for_user) {
+    Animal_for_user animalExistente = animal_for_user_service.obtenerAnimalPorId(id);
+
+    if (animalExistente != null) {
+        // Verifica si hay otro animal con el mismo DNI
+        Animal_for_user otroAnimalConMismoDni = animal_for_user_service.obtenerAnimalPorDni(animal_for_user.getDni());
+
+        if (otroAnimalConMismoDni == null || otroAnimalConMismoDni.getId() == id) {
+            // No hay otro animal con el mismo DNI o es el mismo animal que estamos editando
+            animalExistente.setDni(animal_for_user.getDni());
+            animalExistente.setRaza(animal_for_user.getRaza());
+            animalExistente.setPeso(animal_for_user.getPeso());
+            animalExistente.setFechaNacimientoCerdo(animal_for_user.getFechaNacimientoCerdo());
+
+            animal_for_user_service.saveAnimal(animalExistente);
+            return "redirect:/tabla-cerdo"; // Redireccionar a la tabla
+        } else {
+            // Ya hay otro animal con el mismo DNI, manejar el error
+            return "animal_no_encontrado";
+        }
     } else {
         // El animal no existe, mostrar un mensaje de error o redireccionar a una página de error
         return "animal_no_encontrado";
     }
 }
+
+
 
   
 

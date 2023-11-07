@@ -51,8 +51,8 @@ public class AnimalBusquedaPorIdController {
 
     }
     
-//metodo para buscar tanto por dni como por id 
-@GetMapping("/buscar")
+//metodo para buscar tanto por dni como por id  por arreglar actualmente solo buscar por 1 cosa o id o dni
+/*@GetMapping("/buscar")
 public String buscarAnimal(@RequestParam(required = false) Long id, @RequestParam(required = false) Long dni, Model model) {
     if (id != null) {
         Animal_for_user animal = animal_for_user_service.obtenerAnimalPorId(id);
@@ -70,6 +70,37 @@ public String buscarAnimal(@RequestParam(required = false) Long id, @RequestPara
 
     return "animal_no_encontrado";
 }
+
+
+*/
+//metodo para buscar por id o dni
+@GetMapping("/buscar")
+public String buscarAnimal(@RequestParam(required = false) Long id, 
+                           @RequestParam(required = false) Long dni, 
+                           Model model) {
+    if (id != null) {
+        Animal_for_user animal = animal_for_user_service.obtenerAnimalPorId(id);
+        if (animal != null) {
+            model.addAttribute("animal", animal);
+            return "buscar-animal-for-user";
+        }
+    } else if (dni != null) {
+        Animal_for_user animal = animal_for_user_service.obtenerAnimalPorDni(dni);
+        if (animal != null) {
+            model.addAttribute("animal", animal);
+            return "buscar-animal-for-user";
+        }
+    }
+
+    return "animal_no_encontrado";
+}
+
+
+       
+       
+
+
+
 
 
 
