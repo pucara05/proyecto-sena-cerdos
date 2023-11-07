@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Animal</title>
+    <link rel="stylesheet" th:href="@{/css/cerdo-tabla.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="header__contenedor">
+            <h1>Cerdos Pink</h1>
+        </div>
+        <div class="header__contenedor--items">
+            <div class="header__contenedor--ayuda">
+                <a href="">Ayuda</a>
+            </div>
+            <span>|</span>
+            <div class="header__contenedor--Contactos">
+                <a href="">Usuario</a>
+            </div>
+            <span>|</span>
+            <div class="header__contenedor--Cerrar">
+                <a th:href="@{logout}">Cerrar Sesion</a>
+            </div>
+        </div>
+        <div class="nav__bars">
+            <div class="nav__toggle" id="bars">
+                <i class="fa-solid fa-bars"onclick="toggleMenu()"></i>
+            </div>
+            
+        </div>
+    </header>
+
+    <nav>
+        <ul class="ul__menu">
+            <div class="nav__menu--item">
+                <li><i class="fa-sharp fa-solid fa-house"></i><a th:href="@{/}">Inicio</a></li>
+            </div>
+            <div class="nav__menu--item">
+                <li><i class="fa-solid fa-registered menu"></i><a th:href="@{/menu}">Registros Menu</a></li>
+            </div>
+            <div class="nav__menu--item">
+                <li><i class="fa-solid fa-database"></i><a th:href="@{/menu-tablas}">Tablas</a></li>
+            </div>
+        </ul>
+</nav>
+<div class="contenedor__flotante" id="menu">
+    <ul class="Contenedor__ul">
+        <div class="contenedor__salir">
+            <i id="salir"class="fa-solid fa-xmark"onclick="toggleMenu()"></i>
+        </div>
+        <li class="menu-item"><a class="a-m" th:href="@{/}">Inicio</a></li>
+        <li class="menu-item"><a class="a-m" th:href="@{/menu}">Menu</a></li>
+        <li class="menu-item"><a class="a-m" th:href="@{/menu-tablas}">Tablas</a></li>
+    </ul>
+</div>
+<section class="contenido">
+    <h2>Bienvenido al mejor software para la gestión de cerdos</h2>
+    <p>Descripción breve del software y sus beneficios.</p>
+</section>
+
+
+<h2>Animal no encontrado</h2>
+<p>Lo sentimos, el animal que buscas no se ha encontrado.</p>
+
+<button class="bot"><b><a class="col" href="/buscar-animal">para regresar a la pagina anterior</a></b></button>
+
+
+    
+</body>
+</html>

@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    width: 50%;
+    height: 50%;
+    border: 1px solid #007bff;
+}
+
+.form-container,
+.image-container {
+    flex: 1;
+}
+
+.form-container {
+    padding: 20px;
+}
+
+.form-container h2 {
+    text-align: center;
+}
+
+.form-container form {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.form-container label,
+.form-container input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-container input[type="email"],
+.form-container input[type="text"],
+.form-container input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-container input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 108%;
+    height: 40px;
+    margin: auto;
+    margin-top: 20px;
+}
+.form-a > a{
+    color: #007bff;
+    text-decoration: none;
+}
+.form-a{
+    margin-top: 8px;
+}
+
+.image-container {
+    background-image: url('/img/pexels-hayana-fernanda-14534682.jpg'); /* Reemplaza 'tu-imagen.jpg' con la URL de tu imagen */
+    background-size: cover;
+    background-position: center;
+}
