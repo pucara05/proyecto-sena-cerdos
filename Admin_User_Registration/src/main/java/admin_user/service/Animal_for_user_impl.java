@@ -1,7 +1,7 @@
 package admin_user.service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class Animal_for_user_impl implements Animal_for_user_service {
 }
 */
 
-//metodo para buscar todos los animales
+//metodo para buscar todos los animales para mostraslos en la tabla 
 @Override
 public List<Animal_for_user>getAllAnimalForUser(){
     return animal_for_user_repository.findAll();
@@ -42,19 +42,8 @@ public void saveAnimal(Animal_for_user animal_for_user){
 public void deleteAnimalForUser(Long id) {
     animal_for_user_repository.deleteById(id);
 }
-    /*  no se puede tener 2 metodos de jpa en el mismo servicio
-@Override
-public void actualizarAnimalForUser(Animal_for_user animal_for_user) {
-    animal_for_user.save(animal_for_user);
-}
+  
 
-*/
-
-/*@Override
-public Optional<Animal_for_user> buscarPorId(Long id) {
-    return animal_for_user_repository.findById(id);
-}
-*/
 
 //sirve metodo para buscar por id 
 @Override

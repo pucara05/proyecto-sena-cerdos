@@ -91,6 +91,7 @@
                 <th>Raza</th>
                 <th>Peso</th>
                 <th>Fecha</th>
+                <th>Sexo</th>
                 <th>Acciones</th> <!-- Añadimos una columna para las acciones -->
             </tr>
             </thead>
@@ -101,12 +102,13 @@
                 <td th:text="${data.raza}"> </td>
                 <td th:text="${data.peso}"> </td>
                 <td th:text="${data.fechaNacimientoCerdo}"> </td>
+                <td th:text="${data.sexo}"> </td>
                 <td>
                     <div class="form-group--btn">
                         <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${data.id}}">Editar</a>
                     </div>
                     <div class="form-group--btn">
-                        <a class="btn-1" th:href="@{'/eliminar/' + ${data.id}}">Eliminar</a>
+                        <a class="btn-1" th:href="@{'/animal_for_user/eliminar/' + ${data.id}}">Eliminar</a>
                     </div>
                 </td>
 
@@ -122,17 +124,14 @@
             <td th:if="${animal != null}"   th:text="${animal.raza}"> </td>
             <td th:if="${animal != null}"   th:text="${animal.peso}"> </td>
             <td th:if="${animal != null}"  th:text="${animal.fechaNacimientoCerdo}"> </td>
+            <td th:if="${animal != null}"   th:text="${animal.sexo}"> </td>
             <td>
-
-                <div class="form-group--btn">
-                    <button class="btn-1" type="submit"  <a th:href="@{'/editar/' + ${animal.id}}">Editar</a>></button>
-                </div>
-               
-                <div class="form-group--btn">
-                    <button class="btn-1" type="submit"  <a th:href="@{'/animal_for_user/eliminar/'+ ${animal.id}}">Eliminar</a>></button>
-
-                </div>
-                
+                    <div class="form-group--btn">
+                        <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${animal.id}}">Editar</a>
+                    </div>
+                    <div class="form-group--btn">
+                        <a class="btn-1" th:href="@{'/animal_for_user/eliminar/' + ${animal.id}}">Eliminar</a>
+                    </div>
             </td>
         </tr>
     </tbody>

@@ -52,7 +52,7 @@
             </div>
             <li class="menu-item"><a class="a-m" th:href="@{/}">Inicio</a></li>
             <li class="menu-item"><a class="a-m" th:href="@{/menu}">Menu</a></li>
-            <li class="menu-item"><a class="a-m" href="/menu.tablas">Tablas</a></li>
+            <li class="menu-item"><a class="a-m" href="/menu-tablas">Tablas</a></li>
         </ul>
     </div>
     <section class="contenido">
@@ -108,6 +108,19 @@
                     <label for="fechadenacimiento">Fecha de Nacimiento</label>
                     <input type="date" id="fechadenacimiento" name="fechaNacimientoCerdo"  th:field="*{fechaNacimientoCerdo}"  placeholder="YYYY-MM-DD"  required>
                 </div>
+                <div class="check">
+                    <fieldset>
+                    <legend>Selecione Sexo del Animal</legend>
+                    <label >
+                    <input type="checkbox" id="hembra" name="sexo" value="hembra"   th:field="*{sexo}" checked>
+                    Hembra</label>
+                
+                    <label >
+                    <input type="checkbox" id="macho" name="sexo" value="macho"   th:field="*{sexo}" checked>
+                    Macho</label>
+                </fieldset>
+                </div>
+            
                 <div class="form-group-1">
             <button class="btn" type="submit">Registrar</button>
             <button class="btn"  type="submit"  >Listas</button>

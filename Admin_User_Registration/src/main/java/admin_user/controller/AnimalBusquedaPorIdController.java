@@ -1,13 +1,12 @@
 package admin_user.controller;
 
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import admin_user.model.Animal_for_user;
@@ -36,7 +35,7 @@ public class AnimalBusquedaPorIdController {
 
 
      
-   // ya sirve la vista
+   // metodo para mostrar la vista 
      @GetMapping("/buscar-animal")
     public String index(@ModelAttribute("animal_for_user")Animal_for_user animal_for_user){
         try {
@@ -50,29 +49,10 @@ public class AnimalBusquedaPorIdController {
         }
 
     }
-    
-//metodo para buscar tanto por dni como por id  por arreglar actualmente solo buscar por 1 cosa o id o dni
-/*@GetMapping("/buscar")
-public String buscarAnimal(@RequestParam(required = false) Long id, @RequestParam(required = false) Long dni, Model model) {
-    if (id != null) {
-        Animal_for_user animal = animal_for_user_service.obtenerAnimalPorId(id);
-        if (animal != null) {
-            model.addAttribute("animal", animal);
-            return "buscar-animal-for-user";
-        }
-    } else if (dni != null) {
-        Animal_for_user animal = animal_for_user_service.obtenerAnimalPorDni(dni);
-        if (animal != null) {
-            model.addAttribute("animal", animal);
-            return "buscar-animal-for-user";
-        }
-    }
-
-    return "animal_no_encontrado";
-}
+ 
 
 
-*/
+
 //metodo para buscar por id o dni
 @GetMapping("/buscar")
 public String buscarAnimal(@RequestParam(required = false) Long id, 
@@ -126,20 +106,6 @@ public String buscarAnimal(@RequestParam(required = false) Long id,
 */
 
 
-  /*   @GetMapping("/buscar")
-public String buscarAnimal(@RequestParam(required = false) Long id, @RequestParam(required = false) Long dni, Model model) {
-    if (id != null) {
-        Animal_for_user animal = animal_for_user_service.obtenerAnimalPorId(id);
-        // ...
-    } else if (dni != null) {
-        Animal_for_user animal = animal_for_user_service.obtenerAnimalPorDni(dni);
-        // ...
-    } else {
-        // Manejar caso donde no se proporciona ni ID ni DNI
-    }
-}
-
-*/
 
 
 
@@ -147,21 +113,7 @@ public String buscarAnimal(@RequestParam(required = false) Long id, @RequestPara
 
     
 
-//metodo para buscar animal por dni  los 2 metodos de buscar no pueden estar en un mismo formulario deben estar a parte 
-// a menos que toda la logica este dentro de 1 solo metodo sirve completamente
-   /*    @GetMapping("/buscarPorDni") 
-public String buscarAnimalPorDni(@RequestParam Long dni, Model model) {
-    Animal_for_user animal = animal_for_user_service.obtenerAnimalPorDni(dni);
 
-    if (animal != null) {
-        model.addAttribute("animal", animal);
-        return "buscar-animal-for-user";
-    } else {
-        return "animal_no_encontrado";
-    }
-}
-
-*/
 
 
 
@@ -169,20 +121,5 @@ public String buscarAnimalPorDni(@RequestParam Long dni, Model model) {
     
 
 
-     /*  metodo comentado probando uno de jpa nativo
-     @GetMapping("/resultados")
-    public String buscarPorId(@RequestParam Long id, Model model) {
-        Optional<Animal_for_user> productoOptional = animal_for_user_service.buscarPorId(id);
-
-        if (productoOptional.isPresent()) {
-            model.addAttribute("productoEncontrado", productoOptional.get());
-        } else {
-            model.addAttribute("mensaje", "No se encontró ningún producto con el ID proporcionado.");
-        }
-
-        return "buscar-animal-for-user"; // Debes crear una vista llamada "resultados.html"
-    }
-
-*/
 
 }

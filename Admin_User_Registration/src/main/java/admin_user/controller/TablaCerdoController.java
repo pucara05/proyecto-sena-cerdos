@@ -1,18 +1,19 @@
 package admin_user.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import admin_user.model.CerdoRegistro;
-import admin_user.service.CerdoRegistroService;
-import java.util.List;
+import org.springframework.stereotype.Controller;
+
+
+
+
+
 
 @Controller
 public class TablaCerdoController {
 
+
+/*  
+aqui eh hecho lo mismo que en cerdos registro comente toda la logica y borre los imports 
 
 private final CerdoRegistroService cerdoRegistroService;
 
@@ -20,6 +21,7 @@ private final CerdoRegistroService cerdoRegistroService;
 public TablaCerdoController(CerdoRegistroService cerdoRegistroService){
     this.cerdoRegistroService = cerdoRegistroService;
 }
+*/
 
 
      /*  este metodo sirve para mostrar la tabla 2

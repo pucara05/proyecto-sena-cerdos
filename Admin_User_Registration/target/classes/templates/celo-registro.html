@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-    <link rel="stylesheet" th:href="@{/css/menu.css}">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/celo-registro.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
     <header>
@@ -40,10 +38,10 @@
                     <li><i class="fa-sharp fa-solid fa-house"></i><a th:href="@{/}">Inicio</a></li>
                 </div>
                 <div class="nav__menu--item">
-                    <li><i class="fa-solid fa-registered menu"></i><a th:href="@{/menu}"> Registros Menu</a></li>
+                    <li><i class="fa-solid fa-registered menu"></i><a th:href="@{/menu}">Registros Menu</a></li>
                 </div>
                 <div class="nav__menu--item">
-                    <li><i class="fa-solid fa-database"></i><a href="/menu-tablas">Tablas</a></li>
+                    <li><i class="fa-solid fa-database"></i><a th:href="@{menu-tablas}">Tablas</a></li>
                 </div>
             </ul>
     </nav>
@@ -61,21 +59,31 @@
         <h2>Bienvenido al mejor software para la gestión de cerdos</h2>
         <p>Descripción breve del software y sus beneficios.</p>
     </section>
-    <section class="registro">
-        <h1>Registros</h1>
-    </section>
-    <section class="cont__registro">
+    <section class="cont_registro">
         <div class="container">
-            <button class="bot"><b><a class="col" th:href="@{/cerdo-registro}">Registar Cerdos</a></b></button>
-            <button class="bot"><b><a class="col" th:href="@{/celo-registro}">Registrar Celo</a></b></button>
-            <button class="bot"><b><a class="col" href="/monta-registro.html">Registrar Monta</a></b></button>
-            <button class="bot"><b><a class="col" href="/gestacion-registro.html">Registrar Gestacion</a></b></button>
-            <button class="bot"><b><a class="col" href="/preparto-registro.html">Registrar Preparto</a></b></button>
-            <button class="bot"><b><a class="col" href="/parto-registro.html">Registrar Parto</a></b></button>
-            <button class="bot"><b><a class="col" href="/manejo-registro.html">Registra manejo</a></b></button>
-            <button class="bot"><b><a class="col" href="/peso-registro.html">Registrar Peso</a></b></button>
-            <button class="bot"><b><a class="col" href="/deseste-registro.html">Registrar deseste</a> </b></button>
-                    </div>
+            <h2>Registro de Cerdos</h2>
+            <form th:action="@{/celo-registro}" method="post"  th:object="${animal_celo}">
+                <div class="form-group">
+                    <label for="dnicelo">Dni de Celo</label>
+                    <input type="text" id="dnicelo" name="dnicelo" th:field="*{dniCelo}" required>
+                </div>
+                <div class="form-group">
+                    <label for="dniCerdoHembra">DNI del Cerdo Hembra</label>
+                    <!-- Aquí puedes agregar lógica para cargar dinámicamente los cerdos hembra disponibles -->
+                    <select id="dniCerdoHembra" name="dniCerdoHembra" required>
+                        <option value="">Seleccione un DNI de Cerdo Hembra</option>
+                        <!-- Puedes agregar opciones dinámicamente según los cerdos disponibles -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fechaCelo">Fecha de Nacimiento</label>
+                    <input type="date" id="fechaCelo" name="fechaCelo" th:field="*{fechaCelo}" required>
+                </div>
+                <div class="form-group-1">
+            <button class="btn" type="submit">Registrar</button>
+                </div>
+            </form>
+        </div>
     </section>
     <footer>
         <p>Derechos de autor © 2023 Software para Cerdos</p>
@@ -84,3 +92,14 @@
         
     </script>
 </body>
+</html>
+
+
+
+
+
+
+
+
+
+

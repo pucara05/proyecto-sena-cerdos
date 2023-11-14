@@ -18,6 +18,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+//Entida Animal for user se esta usando por cerdoRegistro codigo de cerdoRegistro comentado 
 @Entity
 @Data
 @NoArgsConstructor
@@ -37,11 +38,13 @@ public class Animal_for_user {
   @NonNull
   private Date fechaNacimientoCerdo;
 
+  private String sexo;
+
  
 
   @ManyToOne
   @JoinColumn(name = "user_id")
-  private User user;
+  private User user;  
 
   @ManyToOne
   @JoinColumn(name = "animal_id")

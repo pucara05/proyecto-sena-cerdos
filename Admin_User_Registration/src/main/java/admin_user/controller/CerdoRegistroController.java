@@ -1,21 +1,20 @@
 package admin_user.controller;
 
-import admin_user.dto.CerdoRegistroDto;
-import admin_user.model.CerdoRegistro;
-import admin_user.service.CerdoRegistroService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Arrays;
-import java.util.List;
+import org.springframework.stereotype.Controller;
+
 
 
 @Controller
 public class CerdoRegistroController {
+
+
+    /*
+     * borre todos los imports ya que al estar toda la logica comentada
+     * me daban advertencias ya que no estaban en uso para mantener mi codigo mas limpio
+     * los eh borrado todo solo dejo el codigo comentado para luego hacer pruebas
+     */
+
 
    // private final CerdoRegistroService cerdoRegistroService;
 /* 

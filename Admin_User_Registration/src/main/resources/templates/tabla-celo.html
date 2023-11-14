@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,7 +62,7 @@
     <section class="cont__tabla">
         <h3>Tabla De Cerdo</h3>
         <div class="contenedor__btn">
-            <form th:action="@{/buscar-por-id-animal}" method="get">
+            <form th:action="@{/tabla-celo}" method="get">
                 <input class="bus" type="text" id="searchInput" name="id" placeholder="Buscar por ID">
                 <button class="btn" type="submit">Buscar</button>
             </form>
@@ -95,7 +95,7 @@
                 <th>Acciones</th> <!-- Añadimos una columna para las acciones -->
             </tr>
             </thead>
-            <tbody>
+         <!--  <tbody>
             <tr th:each="data: ${datas}">
                 <td th:text="${data.id}"> </td>
                 <td th:text="${data.dni}"> </td>
@@ -113,10 +113,10 @@
                 </td>
 
             </tr>
-            
+            --> 
 
                <!-- animal-encontrado-por-id.html -->
-
+<!--
     <tbody>
         <tr th:if="${animal != null}">
             <td th:if="${animal != null}"   th:text="${animal.id}"> </td>
@@ -136,6 +136,7 @@
         </tr>
     </tbody>
             </tbody>
+            -->
         </table>
 
 
