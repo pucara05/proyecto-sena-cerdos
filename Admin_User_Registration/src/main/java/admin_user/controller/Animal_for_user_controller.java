@@ -32,6 +32,7 @@ public class Animal_for_user_controller {
 
     @Autowired
     private UserService  userService;
+    
     //metodo para mostrar el formulario html vista  siempre es mejor colocar el mismo nombre del html en el get/post o demas para evitar errores 
     //metodo para la vista cerdo-registro
 @GetMapping("/cerdo-registro")

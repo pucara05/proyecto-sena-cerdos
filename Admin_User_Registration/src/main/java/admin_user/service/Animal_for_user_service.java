@@ -37,4 +37,8 @@ public interface Animal_for_user_service {
 //metodo para buscar animal por dni sirve 
  public Animal_for_user obtenerAnimalPorDni(Long dni);
 
+
+
+ 
+
 }

@@ -2,8 +2,11 @@ package admin_user.repositories;
 
 
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import admin_user.model.Animal_for_user;
@@ -16,4 +19,6 @@ public interface Animal_for_user_repository  extends JpaRepository <Animal_for_u
      @Query("SELECT a FROM Animal_for_user a WHERE a.dni = :dni")
     public Animal_for_user findByDni(Long dni);
     
+  
+
 }

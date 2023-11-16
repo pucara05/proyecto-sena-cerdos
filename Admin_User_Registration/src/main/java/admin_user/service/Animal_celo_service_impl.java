@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import admin_user.model.Animal_celo;
+import admin_user.model.Animal_for_user;
 import admin_user.repositories.Animal_celo_repository;
 
 @Service
@@ -45,4 +46,18 @@ public class Animal_celo_service_impl implements Animal_celo_service {
         // Por ejemplo: return animal_celo_repository.findByDni(dni);
         return null;
     }
+
+
+    /*@Override
+    public List<Long> obtenerDnisCerdosHembraPorAnimalForUser(Animal_for_user animalForUser) {
+        List<Long> dnisCerdosHembra = animal_celo_repository.obtenerDnisCerdosHembraPorAnimalForUserAndSexo(animalForUser, "hembra");
+        return dnisCerdosHembra;
+    }*/
+
+   /*  @Override
+    public List<Long> obtenerDnisCerdosHembraPorAnimalForUserAndSexo(Animal_for_user animalForUser, String sexo) {
+        return animal_celo_repository.obtenerDnisCerdosHembraPorAnimalForUserAndSexo(animalForUser, sexo);
+    }
+    
+*/
 }

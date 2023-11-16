@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import admin_user.model.Animal_celo;
+import admin_user.model.Animal_for_user;
 
 
 @Service
@@ -33,6 +34,13 @@ public interface Animal_celo_service {
 
 //metodo para buscar animal por dni sirve 
  public Animal_celo obtenerAnimalCeloPorDni(Long dni);
+
+
+  // Método para obtener los DNIs de cerdos hembra asociados con un Animal_for_user específico
+ // public List<Long> obtenerDnisCerdosHembraPorAnimalForUser(Animal_for_user animalForUser) ;
+
+
+ //public List<Long> obtenerDnisCerdosHembraPorAnimalForUserAndSexo(Animal_for_user animalForUser, String sexo);
 
    
     

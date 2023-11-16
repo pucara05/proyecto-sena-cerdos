@@ -29,8 +29,8 @@ public class Animal_celo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String dniCelo;
-    private String dniCerdoHembra;
+    private Long dniCelo;
+   // private Long dniCerdoHembra;
 
     
 
@@ -41,9 +41,8 @@ public class Animal_celo {
 
     
   
-      @ManyToOne
-    @JoinColumn(name = "id_animal_for_user")
-    private Animal_for_user animal_for_user;
+    @ManyToOne(targetEntity = Animal_for_user.class)
+    private Animal_for_user animalForUser;
    
     
 }

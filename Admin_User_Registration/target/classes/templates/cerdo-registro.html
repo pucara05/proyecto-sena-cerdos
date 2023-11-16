@@ -110,15 +110,17 @@
                 </div>
                 <div class="check">
                     <fieldset>
-                    <legend>Selecione Sexo del Animal</legend>
-                    <label >
-                    <input type="checkbox" id="hembra" name="sexo" value="hembra"   th:field="*{sexo}" checked>
-                    Hembra</label>
-                
-                    <label >
-                    <input type="checkbox" id="macho" name="sexo" value="macho"   th:field="*{sexo}" checked>
-                    Macho</label>
-                </fieldset>
+                        <legend>Seleccione Sexo del Animal</legend>
+                        <label>
+                            <input type="radio" id="hembra" name="sexo" value="hembra" th:field="*{sexo}">
+                            Hembra
+                        </label>
+                                
+                        <label>
+                            <input type="radio" id="macho" name="sexo" value="macho" th:field="*{sexo}">
+                            Macho
+                        </label>
+                    </fieldset>
                 </div>
             
                 <div class="form-group-1">
