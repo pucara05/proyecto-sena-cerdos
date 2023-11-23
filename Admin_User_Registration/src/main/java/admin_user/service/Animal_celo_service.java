@@ -43,5 +43,7 @@ public interface Animal_celo_service {
  //public List<Long> obtenerDnisCerdosHembraPorAnimalForUserAndSexo(Animal_for_user animalForUser, String sexo);
 
    
+
+  
     
 }

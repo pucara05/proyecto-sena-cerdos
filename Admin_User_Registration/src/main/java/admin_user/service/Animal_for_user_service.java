@@ -38,7 +38,19 @@ public interface Animal_for_user_service {
  public Animal_for_user obtenerAnimalPorDni(Long dni);
 
 
+ //public List<Long> obtenerDnisCerdosHembraPorAnimalForUser(Animal_for_user animalForUser) ;
 
- 
+ //public List<Long> obtenerDnisCerdosHembra();
+
+
+  // Método en el servicio para obtener los cerdos de sexo hembra
+  public List<Animal_for_user> obtenerCerdosHembra() ;
+    
+
+
+
+  
+
+
 
 }

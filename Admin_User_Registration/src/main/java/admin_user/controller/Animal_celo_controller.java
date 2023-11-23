@@ -1,12 +1,14 @@
 package admin_user.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import admin_user.model.Animal_celo;
@@ -30,15 +32,21 @@ Animal_for_user_service animal_for_user_service;
 */
 
 
-private final Animal_celo_service animal_celo_service;
-    private final Animal_for_user_service animal_for_user_service;
+@Autowired
+private Animal_celo_service animal_celo_service;
+
+@Autowired
+private Animal_for_user_service animal_for_user_service;
+
+/*private final Animal_celo_service animal_celo_service;
+ private final Animal_for_user_service animal_for_user_service;
 
     @Autowired
     public Animal_celo_controller(Animal_celo_service animal_celo_service, Animal_for_user_service animal_for_user_service) {
         this.animal_celo_service = animal_celo_service;
         this.animal_for_user_service = animal_for_user_service;
     }
-
+*/
 
 @GetMapping("/form-celo")
     public String viewCelo(@ModelAttribute("animal_celo")Animal_celo animal_celo){
@@ -54,6 +62,7 @@ private final Animal_celo_service animal_celo_service;
 
     }
 
+    //Mostrar tabla celos
        @GetMapping("/tabla-celo")
     public String mostrarDatos(Model model){
 
@@ -70,24 +79,36 @@ private final Animal_celo_service animal_celo_service;
 
     }
 
-  /*   @GetMapping("/mostrar-dnis-cerdos-hembra")
-    public String mostrarDNIsCerdosHembra(Model model, @RequestParam("animal_for_user_id") Long animalForUserId) {
-        Animal_for_user animalForUser = animal_for_user_service.obtenerAnimalPorId(animalForUserId);
 
-        if (animalForUser != null) {
-            List<Long> dnisCerdosHembra = animal_celo_service.obtenerDnisCerdosHembraPorAnimalForUserAndSexo(animalForUser, "hembra");
-            
-            model.addAttribute("dnisCerdosHembra", dnisCerdosHembra);
-            model.addAttribute("animalForUser", animalForUser);
-            
-            return "tu-vista-de-thymeleaf";
-        } else {
-            // Manejo si el Animal_for_user no se encontró
-            return "error";
-        }
-    }
+
+
+
+
+    @GetMapping("/create")
+    public String mostrarSelect(Model model) {
+        Animal_for_user animalForUser = new Animal_for_user();
+        List<Animal_celo> listaCelo = animal_celo_service.getAllAnimalCelo();
     
-    */
+        model.addAttribute("titulo", "Formulario: Nuevo Celo");
+        model.addAttribute("animalForUser", animalForUser); // Usando "animalForUser" en lugar de "animalCelo"
+        model.addAttribute("listaAnimalCelo", listaCelo); // Usando "listaAnimalCelo" en lugar de "animalForUser"
+    
+        return "celo-registro";
+    }
+   
+   
+
+  /*  //metodo para listar en la tabla 
+@GetMapping("/")
+public String listarCerdosCelos(Model model){
+List<Animal_celo> listadoAnimalCelo = animal_celo_service.getAllAnimalCelo();
+
+model.addAttribute("titulo", "Lista de AnimalCelo");
+model.addAttribute("datas", listadoAnimalCelo);
+
+return"tabla-celo";
+}
+*/
 
 
 

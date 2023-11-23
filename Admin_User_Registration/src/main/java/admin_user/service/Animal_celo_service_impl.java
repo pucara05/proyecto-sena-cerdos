@@ -48,6 +48,16 @@ public class Animal_celo_service_impl implements Animal_celo_service {
     }
 
 
+
+    // Implementación del método para obtener los DNIs de cerdos de sexo hembra
+   // @Override
+  //  public List<Long> obtenerDnisCerdosHembraDeSexoHembra() {
+        // Lógica para obtener los DNIs de cerdos de sexo hembra desde el repositorio
+   //     return animal_celo_repository.obtenerDnisCerdosHembraDeSexoHembra();
+   // }
+
+
+
     /*@Override
     public List<Long> obtenerDnisCerdosHembraPorAnimalForUser(Animal_for_user animalForUser) {
         List<Long> dnisCerdosHembra = animal_celo_repository.obtenerDnisCerdosHembraPorAnimalForUserAndSexo(animalForUser, "hembra");

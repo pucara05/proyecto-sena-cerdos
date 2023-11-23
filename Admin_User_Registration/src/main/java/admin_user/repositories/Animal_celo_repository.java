@@ -22,6 +22,11 @@ public interface Animal_celo_repository  extends JpaRepository<Animal_celo,Long>
      // @Query("SELECT ac.dniCerdoHembra FROM Animal_celo ac WHERE ac.animal_for_user.sexo = :sexo AND ac.animal_for_user = :animalForUser")
      // List<Long> obtenerDnisCerdosHembraPorAnimalForUserAndSexo(@Param("animalForUser") Animal_for_user animalForUser, @Param("sexo") String sexo);
       
+    
+
+      // Método para obtener los DNIs de cerdos de sexo hembra desde la base de datos
+   // @Query("SELECT ac.dniCerdoHembra FROM Animal_celo ac WHERE ac.sexo = 'hembra'")
+    //List<Long> obtenerDnisCerdosHembraDeSexoHembra();
 
     
 }

@@ -15,11 +15,14 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -30,7 +33,7 @@ public class Animal_celo {
     private Long id;
 
     private Long dniCelo;
-   // private Long dniCerdoHembra;
+    private Long dniCerdoHembra;
 
     
 
@@ -40,9 +43,14 @@ public class Animal_celo {
     private Date fechaCelo;
 
     
-  
-    @ManyToOne(targetEntity = Animal_for_user.class)
+
+    @ManyToOne
+    @JoinColumn(name = "animal_for_user_id") // Nombre de la columna en la tabla que contiene la relación
     private Animal_for_user animalForUser;
+
+  
+   // @ManyToOne(targetEntity = Animal_for_user.class)
+    //private Animal_for_user animalForUser;
    
     
 }

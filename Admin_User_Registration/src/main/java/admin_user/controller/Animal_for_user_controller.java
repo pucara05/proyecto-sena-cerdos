@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import admin_user.model.Animal_for_user;
 import admin_user.model.User;
+import admin_user.service.Animal_celo_service;
 import admin_user.service.Animal_for_user_service;
 import admin_user.service.UserService;
 
@@ -32,6 +33,9 @@ public class Animal_for_user_controller {
 
     @Autowired
     private UserService  userService;
+
+    @Autowired
+    private Animal_celo_service animal_celo_service;
     
     //metodo para mostrar el formulario html vista  siempre es mejor colocar el mismo nombre del html en el get/post o demas para evitar errores 
     //metodo para la vista cerdo-registro
@@ -139,7 +143,7 @@ public class Animal_for_user_controller {
 
                 // Establece la relación entre Animal_for_user y User
                 animal_for_user.setUser(user);
-
+                
                 // Guarda el Animal_for_user en la base de datos
                 animal_for_user_service.saveAnimal(animal_for_user);
 

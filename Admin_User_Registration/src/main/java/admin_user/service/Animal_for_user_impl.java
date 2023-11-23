@@ -64,4 +64,30 @@ public Animal_for_user obtenerAnimalPorDni(Long dni) {
 
 
 
+
+
+/*public List<Long> obtenerDnisCerdosHembra() {
+    return animal_for_user_repository.obtenerDnisCerdosHembra(); // Método que se conecta con el repositorio
+}
+*/
+
+
+
+
+
+
+/*public List<Long> obtenerDnisCerdosHembraPorAnimalForUser(Animal_for_user animalForUser) {
+    return animal_for_user_repository.obtenerDnisCerdosHembraPorAnimalForUser(animalForUser);
+}
+*/
+
+
+
+@Override
+  // Método en el servicio para obtener los cerdos de sexo hembra
+  public List<Animal_for_user> obtenerCerdosHembra() {
+    return animal_for_user_repository.findBySexo("hembra");
+}
+
+
 }
