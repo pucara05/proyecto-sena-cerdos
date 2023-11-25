@@ -12,6 +12,12 @@ import admin_user.model.Animal_for_user;
 @Service
 public interface Animal_for_user_service {
 
+  public List<Animal_for_user> getHembraAnimals();
+
+
+
+
+ 
 
 //metodo para buscar todos los animales    
  //public Animal_for_user buscarPorId(Long id);
@@ -43,10 +49,10 @@ public interface Animal_for_user_service {
  //public List<Long> obtenerDnisCerdosHembra();
 
 
-  // Método en el servicio para obtener los cerdos de sexo hembra
-  public List<Animal_for_user> obtenerCerdosHembra() ;
-    
 
+
+ public List<Animal_for_user> obtenerTodosLosAnimales();
+  
 
 
   

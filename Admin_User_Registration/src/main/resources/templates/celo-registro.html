@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+     <!-- Incluir jQuery con Thymeleaf -->
+     <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
 </head>
 
 <body>
@@ -71,49 +74,22 @@
   <section class="cont_registro">
     <div class="container">
       <h2>Registro de Cerdos</h2>
-      <form th:action="@{/celo}" method="post" th:object="${animalForUser}">
+      <form th:action="@{/registrar-celo}" method="post"  >
+
         <div class="form-group">
-          <label for="dnicelo">Dni de Celo</label>
-          <input type="number" id="dnicelo" name="dnicelo" th:field="*{dniCelo}" required />
+          <label for="dniCelo">Dni de Celo</label>
+          <input type="number" id="dniCelo" name="dniCelo"  placeholder="Ingrese dni "  required />
         </div>
 
-        
-        <div class="form-group">
-          <label for="animalCelo">Selecciona un Animal Celo</label>
-          <select id="animalCelo" name="animalCelo">
-              <option value="">Selecciona un Animal Celo</option>
-              <!-- Iterar sobre la lista de Animal_celo -->
-              <option th:each="animalCelo : ${listaAnimalCelo}" th:value="${animalCelo.id}" th:text="${animalCelo.nombre}"></option>
-          </select>
-      </div>
+        <select id="selectHembra" title="Lista">
+          <option value="">Seleccionar cerdo hembra</option>
+      </select>
   
-      
-      
-
-       
-       
-
-      <!-- <div class="form-group">
-            <label for="dniCerdoHembra">DNI del Cerdo Hembra</label>
-            <select id="dniCerdoHembra" name="dniCerdoHembra">
-                <option value="">Seleccione un DNI de cerdo hembra</option>
-                <option th:each="celo : ${celos}" th:value="${celo.id}" th:text="${celo.id}"></option>
-            </select>
-        </div>
---> 
-      <!-- <div class="form-group">
-          <label>DNI del Cerdo Hembra</label>
-          <select th:field="*{celos}" required>
-            <th:block th:each="cerdoHembra" :${dnisCerdosHembra}>
-              <option th:text="${cerdoHembra.sexo}" th:value="${cerdoHembra.id}"></option>
-            </th:block>
-          </select>
-        </div>
-      -->
+     
 
         <div class="form-group">
           <label for="fechaCelo">Fecha de Nacimiento</label>
-          <input type="date" id="fechaCelo" name="fechaCelo" th:field="*{fechaCelo}" required />
+          <input type="date" id="fechaCelo" name="fechaCelo"  required />
         </div>
         <div class="form-group-1">
           <button class="btn" type="submit">Registrar</button>
@@ -125,6 +101,9 @@
     <p>Derechos de autor © 2023 Software para Cerdos</p>
   </footer>
   <script th:src="@{/js/responsivo.js}"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script th:src="@{/js/cargarAnimalesHembra.js}"></script>
+  
 </body>
 
 </html>

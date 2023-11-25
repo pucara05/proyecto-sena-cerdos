@@ -19,10 +19,14 @@ public interface Animal_for_user_repository  extends JpaRepository <Animal_for_u
      @Query("SELECT a FROM Animal_for_user a WHERE a.dni = :dni")
     public Animal_for_user findByDni(Long dni);
     
-    List<Animal_for_user> findBySexo(String sexo);
+ 
+    @Query("SELECT a FROM Animal_for_user a WHERE a.sexo = 'hembra'")
+    List<Animal_for_user> findHembraAnimals();
 
-    
+
+   
   
+    
 
   
 }

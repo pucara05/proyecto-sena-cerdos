@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import admin_user.model.Animal_celo;
 import admin_user.model.Animal_for_user;
+import admin_user.repositories.Animal_for_user_repository;
 import admin_user.service.Animal_celo_service;
 import admin_user.service.Animal_for_user_service;
 
@@ -36,6 +38,9 @@ Animal_for_user_service animal_for_user_service;
 private Animal_celo_service animal_celo_service;
 
 @Autowired
+private Animal_for_user_repository animal_for_user_repository;
+
+@Autowired
 private Animal_for_user_service animal_for_user_service;
 
 /*private final Animal_celo_service animal_celo_service;
@@ -47,20 +52,44 @@ private Animal_for_user_service animal_for_user_service;
         this.animal_for_user_service = animal_for_user_service;
     }
 */
+/* 
+@GetMapping("/mostrar-select")
+public String mostrarSelectCerdosHembra(Model model) {
+    List<Animal_for_user> cerdosHembra = animal_for_user_repository.findByIdAndSexo(1L, "Hembra");
+    model.addAttribute("cerdosHembra", cerdosHembra);
+    return "vista_select_cerdos_hembra";
+}
+*/
 
-@GetMapping("/form-celo")
-    public String viewCelo(@ModelAttribute("animal_celo")Animal_celo animal_celo){
-        try {
-
-            return "celo-registro";
-        }
-        catch (Exception e) {
 
 
-            return "Error en cargar la pagina " + e.getMessage();
-        }
 
+
+
+
+
+   /*  @GetMapping("/registrar-celo")
+    public String mostrarSelect(Model model) {
+        // Obtener cerdos hembra
+        List<Animal_for_user> cerdosHembra = animal_for_user_service.getCerdosHembra();
+        model.addAttribute("cerdosHembra", cerdosHembra);
+        return "celo-registro";
     }
+    */
+
+//Mostrar formulario de celo-registro sin modelo 
+    @GetMapping("/mostrar-formulario")
+    public String mostrarFormulario() {
+        return "celo-registro"; // Retorna el nombre de la vista que quieres mostrar
+    }
+
+    @GetMapping("/api/animals/hembra")
+    @ResponseBody
+    public List<Animal_for_user> getHembraAnimals() {
+        return animal_for_user_service.getHembraAnimals();
+    }
+
+
 
     //Mostrar tabla celos
        @GetMapping("/tabla-celo")
@@ -84,7 +113,7 @@ private Animal_for_user_service animal_for_user_service;
 
 
 
-    @GetMapping("/create")
+  /*  @GetMapping("/create")
     public String mostrarSelect(Model model) {
         Animal_for_user animalForUser = new Animal_for_user();
         List<Animal_celo> listaCelo = animal_celo_service.getAllAnimalCelo();
@@ -95,7 +124,7 @@ private Animal_for_user_service animal_for_user_service;
     
         return "celo-registro";
     }
-   
+   */
    
 
   /*  //metodo para listar en la tabla 

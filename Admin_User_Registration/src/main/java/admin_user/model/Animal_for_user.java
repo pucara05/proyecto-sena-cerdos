@@ -51,10 +51,14 @@ public class Animal_for_user {
 
  
 
-  // Relación One-to-Many con Animal_celo
-    @OneToMany(targetEntity = Animal_celo.class,fetch = FetchType.LAZY,mappedBy ="animalForUser" )
-    private List<Animal_celo> celos;
-      
+
+
+  /*// Relación One-to-Many con Animal_celo
+  @OneToMany(mappedBy = "animalForUser", cascade = CascadeType.ALL)
+  private List<Animal_celo> celos;
+*/
+
+  
     
 
   @ManyToOne
@@ -65,4 +69,9 @@ public class Animal_for_user {
   @JoinColumn(name = "animal_id")
   private Animal animal;
 
+
+  // Relación One-to-Many con Animal_celo
+  /*   @OneToMany(targetEntity = Animal_celo.class,fetch = FetchType.LAZY,mappedBy ="animalForUser" )
+    private List<Animal_celo> celos;
+      */
 }

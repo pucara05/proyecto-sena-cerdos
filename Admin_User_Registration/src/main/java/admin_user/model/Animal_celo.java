@@ -33,8 +33,7 @@ public class Animal_celo {
     private Long id;
 
     private Long dniCelo;
-    private Long dniCerdoHembra;
-
+   
     
 
     @Temporal(TemporalType.DATE)
@@ -42,12 +41,25 @@ public class Animal_celo {
     @NonNull
     private Date fechaCelo;
 
+
+   // Relación ManyToOne con Animal_for_user
+   @ManyToOne
+   @JoinColumn(name = "dniCerdoHembra") // Nombre de la columna que referencia al cerdo hembra
+   private Animal_for_user cerdoHembra; // Referencia al cerdo hembra
+
     
 
-    @ManyToOne
+
+      // Relación con Animal_for_user de sexo hembra
+     /*  @ManyToOne
+      @JoinColumn(name = "dniCerdoHembra", referencedColumnName = "dni")
+      private Animal_for_user animalHembra;
+*/
+
+   /* @ManyToOne
     @JoinColumn(name = "animal_for_user_id") // Nombre de la columna en la tabla que contiene la relación
     private Animal_for_user animalForUser;
-
+*/
   
    // @ManyToOne(targetEntity = Animal_for_user.class)
     //private Animal_for_user animalForUser;

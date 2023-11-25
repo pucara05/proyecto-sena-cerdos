@@ -11,6 +11,9 @@ import admin_user.model.Animal_for_user;
 @Service
 public interface Animal_celo_service {
 
+
+
+
 //metodo para buscar todos los animales    
  //public Animal_for_user buscarPorId(Long id);
 

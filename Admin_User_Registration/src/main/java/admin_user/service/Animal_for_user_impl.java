@@ -16,6 +16,17 @@ public class Animal_for_user_impl implements Animal_for_user_service {
     Animal_for_user_repository animal_for_user_repository;
 
 
+   
+
+  @Override
+  public List<Animal_for_user> getHembraAnimals() {
+    return animal_for_user_repository.findHembraAnimals();
+}
+
+  
+
+
+
     //metodo para buscar por id
    /*  @Override
     public Animal_for_user buscarPorId(Long id) {
@@ -81,13 +92,11 @@ public Animal_for_user obtenerAnimalPorDni(Long dni) {
 }
 */
 
-
-
 @Override
-  // Método en el servicio para obtener los cerdos de sexo hembra
-  public List<Animal_for_user> obtenerCerdosHembra() {
-    return animal_for_user_repository.findBySexo("hembra");
+public List<Animal_for_user> obtenerTodosLosAnimales() {
+    return animal_for_user_repository.findAll();
 }
+
 
 
 }

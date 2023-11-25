@@ -37,6 +37,28 @@ public class Animal_for_user_controller {
     @Autowired
     private Animal_celo_service animal_celo_service;
     
+
+
+
+
+   
+
+
+  /*   @GetMapping("/listar-hembras")
+    public String listarAnimalesHembraPorId(Long id, Model model) {
+        List<Animal_for_user> cerdosHembra = animal_for_user_service.obtenerCerdosHembraPorId(id);
+        model.addAttribute("cerdosHembra", cerdosHembra);
+        return "vista_cerdos_hembra";
+    }
+*/
+
+
+
+
+
+
+
+
     //metodo para mostrar el formulario html vista  siempre es mejor colocar el mismo nombre del html en el get/post o demas para evitar errores 
     //metodo para la vista cerdo-registro
 @GetMapping("/cerdo-registro")

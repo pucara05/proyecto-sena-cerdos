@@ -8,18 +8,30 @@ import org.springframework.stereotype.Service;
 import admin_user.model.Animal_celo;
 import admin_user.model.Animal_for_user;
 import admin_user.repositories.Animal_celo_repository;
+import admin_user.repositories.Animal_for_user_repository;
 
 @Service
 public class Animal_celo_service_impl implements Animal_celo_service {
 
     private final Animal_celo_repository animal_celo_repository;
+   private final Animal_for_user_repository animal_for_user_repository;
 
 
      @Autowired
-    public Animal_celo_service_impl(Animal_celo_repository animal_celo_repository) {
+    public Animal_celo_service_impl(Animal_celo_repository animal_celo_repository, Animal_for_user_repository animal_for_user_repository) {
         this.animal_celo_repository = animal_celo_repository;
+        this.animal_for_user_repository = animal_for_user_repository;
     }
     
+
+    
+
+   
+
+    
+
+
+
     @Override
     public List<Animal_celo> getAllAnimalCelo() {
         return animal_celo_repository.findAll();
