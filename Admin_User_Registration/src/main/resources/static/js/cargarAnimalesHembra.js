@@ -1,23 +1,37 @@
 $(document).ready(function() {
     var select = $('#selectHembra');
-
-    // URL del endpoint que devuelve los cerdos hembra
     var url = '/api/animals/hembra';
 
-    // Realizar petición GET al backend para obtener los datos de cerdos hembra
+    // Llenar el select con datos obtenidos mediante AJAX
     $.ajax({
         url: url,
         type: 'GET',
         dataType: 'json',
         success: function(data) {
             data.forEach(function(animal) {
-                var optionText = 'DNI: ' + animal.dni + ', Sexo: ' + animal.sexo; // Texto personalizado para mostrar en el select
-                var option = '<option value="' + animal.id + '">' + optionText + '</option>';
+                var optionText = 'DNI: ' + animal.dni + ', Sexo: ' + animal.sexo;
+                var option = '<option value="' + animal.id + '" data-sexo="' + animal.sexo + '">' + optionText + '</option>';
                 select.append(option);
             });
         },
         error: function() {
             console.log('Error al obtener los datos de cerdos hembras');
+        }
+    });
+
+    // Manejar el evento de cambio en el select
+    select.change(function() {
+        var selectedOption = $(this).find('option:selected');
+        var selectedSexo = selectedOption.data('sexo');
+        $('#sexoSeleccionado').val(selectedSexo);
+    });
+
+    // Validación antes de enviar el formulario
+    $('#myForm').submit(function(event) {
+        var selectedOption = select.val();
+        if (selectedOption === "") {
+            event.preventDefault();
+            alert("Por favor, seleccione un cerdo hembra válido.");
         }
     });
 });

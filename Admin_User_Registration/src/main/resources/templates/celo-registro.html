@@ -15,6 +15,11 @@
 </head>
 
 <body>
+
+  <div th:if="${mensaje}" class="mensaje-confirmacion">
+    <p th:text="${mensaje}"></p>
+</div>
+
   <header>
     <div class="header__contenedor">
       <h1>Cerdos Pink</h1>
@@ -74,26 +79,32 @@
   <section class="cont_registro">
     <div class="container">
       <h2>Registro de Cerdos</h2>
-      <form th:action="@{/registrar-celo}" method="post"  >
+      <form  id="myForm" th:action="@{/registrar-celo}" method="post"  th:object="${animalCelo}">
 
         <div class="form-group">
           <label for="dniCelo">Dni de Celo</label>
-          <input type="number" id="dniCelo" name="dniCelo"  placeholder="Ingrese dni "  required />
-        </div>
+          <input type="number" id="dniCelo" name="dniCelo"  th:field="*{dniCelo}"  placeholder="Ingrese dni "  required />
 
-        <select id="selectHembra" title="Lista">
-          <option value="">Seleccionar cerdo hembra</option>
-      </select>
+
+          <div class="form-group">
+            <label for="selectHembra">Seleccionar cerdo hembra:</label>
+            <select id="selectHembra" name="cerdoHembra" th:field="*{cerdoHembra}" title="Lista">
+                <option value="">Seleccionar cerdo hembra</option>
+                <!-- Aquí puedes agregar opciones si se obtienen del backend -->
+            </select>
+        </div>
   
      
 
         <div class="form-group">
           <label for="fechaCelo">Fecha de Nacimiento</label>
-          <input type="date" id="fechaCelo" name="fechaCelo"  required />
-        </div>
+          <input type="date" id="fechaCelo" name="fechaCelo" th:field="*{fechaCelo}" required />
+      </div>
         <div class="form-group-1">
           <button class="btn" type="submit">Registrar</button>
         </div>
+
+       
       </form>
     </div>
   </section>

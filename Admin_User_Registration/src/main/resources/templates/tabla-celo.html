@@ -60,9 +60,9 @@
         <p>Descripción breve del software y sus beneficios.</p>
     </section>
     <section class="cont__tabla">
-        <h3>Tabla De Cerdo</h3>
+        <h3>Tabla De Celo</h3>
         <div class="contenedor__btn">
-            <form th:action="@{/tabla-celo}" method="get">
+            <form th:action="@{/buscar-por-id-celo}" method="get">
                 <input class="bus" type="text" id="searchInput" name="id" placeholder="Buscar por ID">
                 <button class="btn" type="submit">Buscar</button>
             </form>
@@ -88,32 +88,52 @@
             <tr>
                 <th>Id </th>
                 <th>Dni </th>
-                <th>Raza</th>
-                <th>Peso</th>
-                <th>Fecha</th>
-                <th>Sexo</th>
+                <th>ID del Cerdo Hembra</th>
+                <th>Sexo del Cerdo Hembra</th>
+                <th>Fecha Celo</th>
                 <th>Acciones</th> <!-- Añadimos una columna para las acciones -->
             </tr>
             </thead>
-         <!--  <tbody>
-            <tr th:each="data: ${datas}">
-                <td th:text="${data.id}"> </td>
-                <td th:text="${data.dni}"> </td>
-                <td th:text="${data.raza}"> </td>
-                <td th:text="${data.peso}"> </td>
-                <td th:text="${data.fechaNacimientoCerdo}"> </td>
-                <td th:text="${data.sexo}"> </td>
-                <td>
-                    <div class="form-group--btn">
-                        <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${data.id}}">Editar</a>
-                    </div>
-                    <div class="form-group--btn">
-                        <a class="btn-1" th:href="@{'/animal_for_user/eliminar/' + ${data.id}}">Eliminar</a>
-                    </div>
-                </td>
+            <tbody>
+                <tr th:each="registro : ${datosRegistrados}">
+                    <td th:text="${registro.id}"></td>
+                    <td th:text="${registro.dniCelo}"></td>
+                    <td th:text="${registro.cerdoHembraId}"></td>
+                    <td th:text="${registro.sexoHembra}"></td>
+                    <td th:text="${#dates.format(registro.fechaCelo, 'dd-MM-yyyy')}"></td>
+                    <!-- Otros campos del DTO que necesites mostrar -->
+                    <td> <div class="form-group--btn">
+                   <!--   <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${data.id}}">Editar</a>-->  
+                    </div></td>
+                    <td>   <div class="form-group--btn">
+                   <!--   <a class="btn-1" th:href="@{'/animal_for_user/eliminar/' + ${data.id}}">Eliminar</a>-->  
+                    </div></td>
+                </tr>
 
-            </tr>
-            --> 
+
+                <tbody>
+                    <tr th:if="${animal != null}">
+                        <td th:if="${animal != null}"   th:text="${registro.id}"></td>
+                        <td th:if="${animal != null}"   th:text="${registro.dniCelo}"></td>
+                        <td th:if="${animal != null}"   th:text="${registro.cerdoHembraId}"></td>
+                        <td th:if="${animal != null}"   th:text="${registro.sexoHembra}"></td>
+                        <td th:if="${animal != null}"   th:text="${registro.fechaCelo}"></td>
+                        <tr>
+            </tbody>
+
+
+
+
+         
+                 
+              
+          
+       
+                   
+                 
+         
+
+          
 
                <!-- animal-encontrado-por-id.html -->
 <!--

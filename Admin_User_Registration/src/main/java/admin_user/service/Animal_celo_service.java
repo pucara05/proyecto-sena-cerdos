@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import admin_user.dto.AnimalCeloDTO;
 import admin_user.model.Animal_celo;
 import admin_user.model.Animal_for_user;
 
@@ -12,6 +13,8 @@ import admin_user.model.Animal_for_user;
 public interface Animal_celo_service {
 
 
+    //metodo dto
+    List<AnimalCeloDTO> getAllAnimalCeloDTO();
 
 
 //metodo para buscar todos los animales    
@@ -21,7 +24,7 @@ public interface Animal_celo_service {
  public List<Animal_celo>getAllAnimalCelo();
   
  //metodo para guardar animales
- public void saveAnimalCelo(Animal_celo animal);
+ Animal_celo saveAnimalCelo(Animal_celo animal);
 
 //metodo para borrar animales
  public void deleteAnimalCelo(Long id) ;
@@ -39,11 +42,9 @@ public interface Animal_celo_service {
  public Animal_celo obtenerAnimalCeloPorDni(Long dni);
 
 
-  // Método para obtener los DNIs de cerdos hembra asociados con un Animal_for_user específico
- // public List<Long> obtenerDnisCerdosHembraPorAnimalForUser(Animal_for_user animalForUser) ;
-
-
- //public List<Long> obtenerDnisCerdosHembraPorAnimalForUserAndSexo(Animal_for_user animalForUser, String sexo);
+ //public Optional<Animal_for_user> buscarPorId(Long id) ; sirve
+//metodo buscar por id si sirve 
+public Animal_celo obtenerAnimalPorId(Long id) ;
 
    
 

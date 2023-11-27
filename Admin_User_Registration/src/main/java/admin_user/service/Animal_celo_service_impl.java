@@ -1,10 +1,14 @@
 package admin_user.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import admin_user.dto.AnimalCeloDTO;
 import admin_user.model.Animal_celo;
 import admin_user.model.Animal_for_user;
 import admin_user.repositories.Animal_celo_repository;
@@ -16,6 +20,9 @@ public class Animal_celo_service_impl implements Animal_celo_service {
     private final Animal_celo_repository animal_celo_repository;
    private final Animal_for_user_repository animal_for_user_repository;
 
+   @Autowired
+   private ModelMapper modelMapper;
+
 
      @Autowired
     public Animal_celo_service_impl(Animal_celo_repository animal_celo_repository, Animal_for_user_repository animal_for_user_repository) {
@@ -24,7 +31,14 @@ public class Animal_celo_service_impl implements Animal_celo_service {
     }
     
 
-    
+     @Override
+    public List<AnimalCeloDTO> getAllAnimalCeloDTO() {
+        List<Animal_celo> animalCeloList = animal_celo_repository.findAll();
+        return animalCeloList.stream()
+                .map(animalCelo -> modelMapper.map(animalCelo, AnimalCeloDTO.class))
+                .collect(Collectors.toList());
+    }
+
 
    
 
@@ -38,10 +52,9 @@ public class Animal_celo_service_impl implements Animal_celo_service {
     }
 
     @Override
-    public void saveAnimalCelo(Animal_celo animal) {
-        animal_celo_repository.save(animal);
+    public Animal_celo saveAnimalCelo(Animal_celo animal) {
+        return animal_celo_repository.save(animal);
     }
-
     @Override
     public void deleteAnimalCelo(Long id) {
         animal_celo_repository.deleteById(id);
@@ -60,26 +73,11 @@ public class Animal_celo_service_impl implements Animal_celo_service {
     }
 
 
-
-    // Implementación del método para obtener los DNIs de cerdos de sexo hembra
-   // @Override
-  //  public List<Long> obtenerDnisCerdosHembraDeSexoHembra() {
-        // Lógica para obtener los DNIs de cerdos de sexo hembra desde el repositorio
-   //     return animal_celo_repository.obtenerDnisCerdosHembraDeSexoHembra();
-   // }
+//sirve metodo para buscar por id 
+@Override
+public Animal_celo obtenerAnimalPorId(Long id) {
+    return animal_celo_repository.findById(id).orElse(null);
+}
 
 
-
-    /*@Override
-    public List<Long> obtenerDnisCerdosHembraPorAnimalForUser(Animal_for_user animalForUser) {
-        List<Long> dnisCerdosHembra = animal_celo_repository.obtenerDnisCerdosHembraPorAnimalForUserAndSexo(animalForUser, "hembra");
-        return dnisCerdosHembra;
-    }*/
-
-   /*  @Override
-    public List<Long> obtenerDnisCerdosHembraPorAnimalForUserAndSexo(Animal_for_user animalForUser, String sexo) {
-        return animal_celo_repository.obtenerDnisCerdosHembraPorAnimalForUserAndSexo(animalForUser, sexo);
-    }
-    
-*/
 }
