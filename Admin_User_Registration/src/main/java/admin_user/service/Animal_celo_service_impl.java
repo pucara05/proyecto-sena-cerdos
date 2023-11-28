@@ -2,9 +2,11 @@ package admin_user.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.internal.bytebuddy.asm.Advice.Return;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,19 +67,70 @@ public class Animal_celo_service_impl implements Animal_celo_service {
         return animal_celo_repository.findById(id).orElse(null);
     }
 
+
+    //metodo para buscar por id
     @Override
+    public AnimalCeloDTO obtenerAnimalId(Long id) {
+        Animal_celo animalCelo = animal_celo_repository.findById(id).orElse(null);
+        if (animalCelo != null) {
+            return modelMapper.map(animalCelo, AnimalCeloDTO.class);
+        }
+        return null; // O puedes lanzar una excepción o devolver un DTO vacío según tu lógica
+    }
+    
+
+
+   
+
+
+
+
+
+
+
+
+
+/*    @Override
     public Animal_celo obtenerAnimalCeloPorDni(Long dni) {
         // Implementa la lógica para buscar por DNI
         // Por ejemplo: return animal_celo_repository.findByDni(dni);
         return null;
     }
 
-
+*/
 //sirve metodo para buscar por id 
-@Override
+/*@Override
 public Animal_celo obtenerAnimalPorId(Long id) {
     return animal_celo_repository.findById(id).orElse(null);
 }
+*/
+//metodo personalizado para buscar por id 
+
+
+/* 
+@Override
+    public Animal_celo updateAnimalCeloFromDTO(AnimalCeloDTO animalDTO) {
+        if (animalDTO != null && animalDTO.getId() != null) {
+            Animal_celo animal = animal_celo_repository.findById(animalDTO.getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Animal no encontrado"));
+
+            modelMapper.map(animalDTO, animal);
+
+            // Suponiendo que tienes una relación con el cerdo hembra en el DTO
+            if (animalDTO.getCerdoHembraId() != null) {
+                Animal_for_user cerdoHembra = new Animal_for_user();
+                cerdoHembra.setId(animalDTO.getCerdoHembraId());
+                // Puedes mapear más propiedades si es necesario para el cerdo hembra
+
+                animal.setCerdoHembra(cerdoHembra);
+            }
+
+            return animal_celo_repository.save(animal);
+        } else {
+            throw new IllegalArgumentException("El ID del animal no puede ser nulo para actualizar.");
+        }
+    }
+*/
 
 
 }

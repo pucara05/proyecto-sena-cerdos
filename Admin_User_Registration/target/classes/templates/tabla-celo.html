@@ -62,111 +62,63 @@
     <section class="cont__tabla">
         <h3>Tabla De Celo</h3>
         <div class="contenedor__btn">
-            <form th:action="@{/buscar-por-id-celo}" method="get">
-                <input class="bus" type="text" id="searchInput" name="id" placeholder="Buscar por ID">
-                <button class="btn" type="submit">Buscar</button>
-            </form>
-            
-
-
-         
-            
-            <div class="form-group">
-                <div class="form-group--btn">
-                    
-                </div>
-                <div class="form-group--btn">
-                    <button class="btn-1" type="submit">Editar</button>
-                </div>
-                <div class="form-group--btn">
-                    <button class="btn-1" type="submit">Eliminar</button>
-                </div>
-                </div>
+        <!-- Formulario para buscar por ID -->
+        <form th:action="@{/buscar-por-id-animal-celo}" method="get">
+            <input class="bus" type="text" id="searchInput" name="id" placeholder="Buscar por ID"  pattern="[0-9]+" title="Ingrese solo números">
+            <button class="btn" type="submit">Buscar</button>
+        </form>
         </div>
-        <table>
-            <thead>
+    
+    
+    <table>
+        <thead>
             <tr>
-                <th>Id </th>
-                <th>Dni </th>
+                <th>Id</th>
+                <th>Dni</th>
                 <th>ID del Cerdo Hembra</th>
                 <th>Sexo del Cerdo Hembra</th>
                 <th>Fecha Celo</th>
                 <th>Acciones</th> <!-- Añadimos una columna para las acciones -->
             </tr>
-            </thead>
-            <tbody>
-                <tr th:each="registro : ${datosRegistrados}">
-                    <td th:text="${registro.id}"></td>
-                    <td th:text="${registro.dniCelo}"></td>
-                    <td th:text="${registro.cerdoHembraId}"></td>
-                    <td th:text="${registro.sexoHembra}"></td>
-                    <td th:text="${#dates.format(registro.fechaCelo, 'dd-MM-yyyy')}"></td>
-                    <!-- Otros campos del DTO que necesites mostrar -->
-                    <td> <div class="form-group--btn">
-                   <!--   <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${data.id}}">Editar</a>-->  
-                    </div></td>
-                    <td>   <div class="form-group--btn">
-                   <!--   <a class="btn-1" th:href="@{'/animal_for_user/eliminar/' + ${data.id}}">Eliminar</a>-->  
-                    </div></td>
-                </tr>
-
-
-                <tbody>
-                    <tr th:if="${animal != null}">
-                        <td th:if="${animal != null}"   th:text="${registro.id}"></td>
-                        <td th:if="${animal != null}"   th:text="${registro.dniCelo}"></td>
-                        <td th:if="${animal != null}"   th:text="${registro.cerdoHembraId}"></td>
-                        <td th:if="${animal != null}"   th:text="${registro.sexoHembra}"></td>
-                        <td th:if="${animal != null}"   th:text="${registro.fechaCelo}"></td>
-                        <tr>
-            </tbody>
-
-
-
-
-         
-                 
-              
-          
-       
-                   
-                 
-         
-
-          
-
-               <!-- animal-encontrado-por-id.html -->
-<!--
-    <tbody>
-        <tr th:if="${animal != null}">
-            <td th:if="${animal != null}"   th:text="${animal.id}"> </td>
-            <td th:if="${animal != null}"   th:text="${animal.dni}"> </td>
-            <td th:if="${animal != null}"   th:text="${animal.raza}"> </td>
-            <td th:if="${animal != null}"   th:text="${animal.peso}"> </td>
-            <td th:if="${animal != null}"  th:text="${animal.fechaNacimientoCerdo}"> </td>
-            <td th:if="${animal != null}"   th:text="${animal.sexo}"> </td>
-            <td>
+        </thead>
+        <tbody>
+            <tr th:each="registro : ${datosRegistrados}">
+                <td th:text="${registro.id}"></td>
+                <td th:text="${registro.dniCelo}"></td>
+                <td th:text="${registro.cerdoHembraId}"></td>
+                <td th:text="${registro.sexoHembra}"></td>
+                <td th:text="${#dates.format(registro.fechaCelo, 'dd-MM-yyyy')}"></td>
+                <td>
                     <div class="form-group--btn">
-                        <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${animal.id}}">Editar</a>
+                        <!-- Botón Editar -->
+                        <a class="btn-1" th:href="@{'/animal_celo/editar/' + ${registro.id}}">Editar</a>
                     </div>
+                </td>
+                <td>
                     <div class="form-group--btn">
-                        <a class="btn-1" th:href="@{'/animal_for_user/eliminar/' + ${animal.id}}">Eliminar</a>
+                        <!-- Botón Eliminar -->
+                        <!-- <a class="btn-1" th:href="@{'/animal_for_user/eliminar/' + ${data.id}}">Eliminar</a> -->
                     </div>
+                </td>
+            </tr>
+            <tr th:if="${animal != null}">
+                <td th:if="${animal != null}"    th:text="${animal.id}"></td>
+                <td  th:if="${animal != null}"   th:text="${animal.dniCelo}"></td>
+                  <!-- Aquí se coloca la columna para el ID del Cerdo Hembra si corresponde -->
+            <!-- Asumiendo que el ID del Cerdo Hembra se encuentra en la entidad Animal_for_user -->
+            <td  th:if="${animal != null}"    th:text="${animal.cerdoHembraId}"></td>
+                <td  th:if="${animal != null}"    th:text="${animal.sexoHembra}"></td>
+                <td  th:if="${animal != null}"    th:text="${animal.fechaCelo}"></td>
+
+                <td> 
+                    <div class="form-group--btn">
+                  <!-- <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${animal.id}}">Editar</a>-->
+                </div>
             </td>
-        </tr>
-    </tbody>
-            </tbody>
-            -->
-        </table>
-
-
-     
-
-
-     
-
-
-
+            </tr>
+        </tbody>    
+    </table>
+    
     </section>
     <script th:src="@{/js/responsivo.js}"></script>
 </body>

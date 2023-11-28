@@ -15,6 +15,9 @@ import admin_user.model.Animal_for_user;
 @Repository
 public interface Animal_celo_repository  extends JpaRepository<Animal_celo,Long> {
 
+
+  // @Query("SELECT a FROM Animal_celo a WHERE a.id = :id")
+  // Animal_celo findByIdCustomQuery(@Param("id") long id);
    /*   @Query("SELECT a FROM Animal_celo a WHERE a.dni = :dniCerdoHembra")
     public Animal_celo findByDni(Long dni); */
 

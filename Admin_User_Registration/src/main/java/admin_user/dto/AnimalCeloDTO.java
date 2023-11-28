@@ -17,7 +17,7 @@ public class AnimalCeloDTO {
     private Date fechaCelo;
 
 
-    // Agregar campos de Animal_for_user que deseas incluir en el DTO
+    // Agregar campos de Animal_for_user que deseas incluir en el DTO   
     private Long animalForUserId; // Id de Animal_for_user
     private String sexoAnimalForUser; // Sexo de Animal_for_user
 

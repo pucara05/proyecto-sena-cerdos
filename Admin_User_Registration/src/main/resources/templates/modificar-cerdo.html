@@ -64,13 +64,7 @@
             <h2>Modificar  Cerdos</h2>
             <form th:action="@{/animal_for_user/modificar/{id}(id=${animal.id})}" method="post"  th:object="${animal}">
                 <div class="form-group">
-                  <!--  <label for="id cerdo">Id Cerdo</label>
-                    <select id="id cerdo" name="numero" required>
-                        <option value="">Seleccione un Id</option>
-                        <option value="1">1</option>
-
-                    </select>
-                    -->
+    
                     <div class="form-group">
                         <label for="dni">Dni:</label>
                         <input type="number" id="dni" name="dni"  placeholder="dni"  th:field="*{dni}"  required>

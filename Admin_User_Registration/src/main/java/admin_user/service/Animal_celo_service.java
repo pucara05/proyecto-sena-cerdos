@@ -14,7 +14,7 @@ public interface Animal_celo_service {
 
 
     //metodo dto
-    List<AnimalCeloDTO> getAllAnimalCeloDTO();
+    public List<AnimalCeloDTO> getAllAnimalCeloDTO();
 
 
 //metodo para buscar todos los animales    
@@ -39,14 +39,17 @@ public interface Animal_celo_service {
 
 
 //metodo para buscar animal por dni sirve 
- public Animal_celo obtenerAnimalCeloPorDni(Long dni);
+ //public Animal_celo obtenerAnimalCeloPorDni(Long dni);
 
 
  //public Optional<Animal_for_user> buscarPorId(Long id) ; sirve
 //metodo buscar por id si sirve 
-public Animal_celo obtenerAnimalPorId(Long id) ;
+public AnimalCeloDTO obtenerAnimalId(Long id) ;
 
-   
+
+
+
+//public Animal_celo updateAnimalCeloFromDTO(AnimalCeloDTO animalDTO);
 
   
     
