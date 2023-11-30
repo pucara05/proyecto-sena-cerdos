@@ -13,7 +13,7 @@
 <body>
     <header>
         <div class="header__contenedor">
-            <h1>Cerdos Pink</h1>
+            <img src="/img/logo-2.png" alt=>
         </div>
         <div class="header__contenedor--items">
             <div class="header__contenedor--ayuda">
@@ -58,49 +58,65 @@
             <li class="menu-item"><a class="a-m" href="/menu.tablas">Tablas</a></li>
         </ul>
     </div>
-    <section class="contenido">
-        <h2>Bienvenido al mejor software para la gestión de cerdos</h2>
-        <p>Descripción breve del software y sus beneficios.</p>
-    </section>
     <div>
-        <section>
+        <section class="mg-con">
             <img class="jhon" th:src="@{../img/veterinario-profesional-bata-blanca-mascara-jeringa-medicina-preparandose-vacunacion-cerdos-prevenir-enfermedades (1).jpg}" alt="" >
+            <div class="text-overlay">
+                <h1>Cerdos Pink Te Da la Bienvenida</h1>
+                <p>Hacer negocios de la manera correcta</p>
+            </div>
         </section>
         
     </div>
     <section class="caracteristicas">
         <h2>Características Principales</h2>
-        <p></p>
         <div class="section__contenedor">
             <div class="card shadow">
                 <div class="card__img">
-                <img src="" alt="">
+                    <img src="/img/crecimiento.jpg" alt="Cerdo 2">
                 </div>
                 <div class="card__texto">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi voluptates exercitationem alias quasi eos harum temporibus! Error doloremque quia explicabo id! Fugiat sapiente, consequatur accusamus tenetur ducimus laboriosam animi facere.</p>
+                    <h3>Crecimiento rápido</h3>
+                    <p>Los cerdos son conocidos por su rápido crecimiento y eficiencia en la conversión de alimentos.</p>
                 </div>
-                
             </div>
-            <div class="card shadow"></div>
-            <div class="card shadow"></div>
-            <div class="card shadow"></div>
+            <div class="card shadow">
+                <div class="card__img">
+                    <img src="/img/adaptabilidad.jpg" alt="Cerdo 2">
+                </div>
+                <div class="card__texto">
+                    <h3>Adaptabilidad</h3>
+                    <p>Los cerdos son animales adaptables que pueden vivir en una variedad de entornos y climas.</p>
+                </div>
+            </div>
+            <div class="card shadow">
+                <div class="card__img">
+                    <img src="/img/inteligencia.jpg" alt="Cerdo 2">
+                </div>
+                <div class="card__texto">
+                    <h3>Inteligencia</h3>
+                    <p>Los cerdos son animales inteligentes, con habilidades para aprender y adaptarse a su entorno.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="precios">
-        <h2>Precios</h2>
-        <p>Información sobre los planes y precios disponibles.</p>
+        <h2>Descripción</h2>
+        <p>Los cerdos han desempeñado un papel importante en la agricultura y la cultura humana durante siglos, y su versatilidad, inteligencia y características únicas los hacen una especie fascinante para estudiar y comprender mejor.</p>
     </section>
-
-    <section class="contacto">
-        <h2>Contacto</h2>
-        <p>Formulario de contacto o información de contacto.</p>
-    </section>
-
     <footer>
-        <p>Derechos de autor © 2023 Software para Cerdos</p>
+        <div class="social-media">
+            <a href="https://www.facebook.com/profile.php?id=61553875659336">
+                <img src="/img/facebook.png" alt="Facebook">
+            </a>
+            <a href="mailto:tucorreo@gmail.com" target="_blank" rel="noopener noreferrer">
+                <img src="/img/gmail-1.png" alt="Gmail">
+            </a>
+        </div>
+        <p>© 2023 Cerdos pink | Todos los derechos reservados</p>
     </footer>
-   <!-- <script src="../static/js/responsivo.js"></script>-->
+    <!-- <script src="../static/js/responsivo.js"></script>-->
     <script th:src="@{../js/responsivo.js}">
         
     </script>

@@ -7,19 +7,18 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="container">
         <div class="container">
+        <div class="form-container">
             <div class="message" th:if="${message != null}">
                 [[${message}]]
             </div>
-        <div class="form-container">
-            <h2>Registrarse</h2>
-            <form th:action="@{/registration}" method="post" role="form" th:object="${user}">
+            <h1>Registrarse</h1>
+            <form class="form" th:action="@{/registration}" method="post" role="form" th:object="${user}">
                 <label for="fullname">Fullname:</label>
                 <input th:field="*{fullname}" type="text" id="fullname" name="fullname" placeholder="Enter your fullname" required>
                 <label for="username">Correo:</label>
                 <input th:field="*{email}" type="email" id="username" name="username"  placeholder="Enter your Email" required>
-              <!-- esto no va por ahora <label for="username">Nombre del Usuario:</label>
+            <!-- esto no va por ahora <label for="username">Nombre del Usuario:</label>
                 <input type="text" id="username" name="username" required>
                 -->
                 <label for="password">Contraseña:</label>
@@ -27,10 +26,14 @@
 
                 <input type="submit" value="Register">
             </form>
-            <a th:href="@{/login}">Ya tienes Cuenta</a>
+            <button class="secundario-boton sing-button">
+                <div class="form-a">
+                    <a th:href="@{/login}">Ya tienes Cuenta</a>
+                </div>
+            </button>
         </div>
         <div class="image-container">
-            <img src="" alt="">
+            <img src="" alt="" >
         </div>
     </div>
 </body>

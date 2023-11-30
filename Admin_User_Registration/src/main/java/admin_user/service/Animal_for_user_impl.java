@@ -1,23 +1,20 @@
 package admin_user.service;
-
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import admin_user.model.Animal_for_user;
 import admin_user.repositories.Animal_for_user_repository;
 
 @Service    //clase que implementa de la interfas Animal_for_user_service y aqui dentro se inyecta el repositorio  Animal_for_user_repository
 public class Animal_for_user_impl implements Animal_for_user_service {
 
-      @Autowired
+    @Autowired
     Animal_for_user_repository animal_for_user_repository;
 
 
     //metodo para buscar por id
-   /*  @Override
+    /*  @Override
     public Animal_for_user buscarPorId(Long id) {
         return animal_for_user_repository.findById(id).orElse(null);
 }
