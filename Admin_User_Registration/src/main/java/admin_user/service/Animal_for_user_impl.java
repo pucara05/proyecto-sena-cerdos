@@ -17,13 +17,21 @@ public class Animal_for_user_impl implements Animal_for_user_service {
 
 
    
-
+//select mostrar hembras sirve 
   @Override
   public List<Animal_for_user> getHembraAnimals() {
     return animal_for_user_repository.findHembraAnimals();
 }
 
-  
+
+
+ // Método para obtener los DNIs de los cerdos macho
+ public List<Animal_for_user> getMachoAnimals() {
+    return animal_for_user_repository.findMachoAnimals();
+}
+
+
+
 
 
 

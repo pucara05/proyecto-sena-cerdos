@@ -25,8 +25,13 @@ public interface Animal_for_user_repository  extends JpaRepository <Animal_for_u
 
 
    
-  
+    
+ 
     
 
+
+    // Método en el repositorio para obtener los DNIs de los cerdos macho
+    @Query("SELECT a FROM Animal_for_user a WHERE a.sexo = 'macho'")
+    List<Animal_for_user> findMachoAnimals();
   
 }

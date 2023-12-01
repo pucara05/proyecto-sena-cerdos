@@ -1,79 +1,151 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
+:root{
+    --white: #FFFFFF;
+    --black: #000000;
+    --dark: #232830;
+    --very-light-pink: #C7C7C7;
+    --text-input-field: #F7F7F7;
+    --hospital-green: #26D026;
+    --sm:14px;
+    --md:16px;
+    --lg:20px;
+    }
+    
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Quicksand', sans-serif;
+        }
+        .container .message{
+            display: block;
+            text-align: center;
+            color: red;
+            font-weight: bold;
+        }
+        .container {
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row; /* Cambio a columna en pantallas pequeñas */
+            width: 100%; /* Cambio a un ancho mayor en pantallas pequeñas */
+            max-width: 800px; /* Ancho máximo para evitar estirar demasiado en pantallas grandes */
+            height: 90%; /* Cambio a un alto mayor en pantallas pequeñas */
+            max-height: 570px; /* Altura máxima para evitar estirar demasiado en pantallas grandes */
+        }
+        
+        .form-container,
+        .image-container {
+            flex: 1;
+        }
+        .form{
+            display: grid;
+        grid-template-rows: auto 1fr auto;
+        width: 100%;
+        background-color: #fffefe;
+        z-index: 15;
+        
+        }
+        .form-container {
+            padding: 20px;
+            margin-top: 20px;
+        }
+        h1{
+            font-size: 30px;
+                font-weight: bold;
+                margin-bottom: 65px;
+                margin-top: 50px;
+        }
+        .form-container h1 {
+            text-align: center;
+        }
+        label{
+            font-weight: bold;
+            font-size: var(--md);
+        }
+        .form-container form {
+            width: 100%; /* Aprovechar todo el ancho disponible */
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        .form-container label,
+        .form-container input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .form-container input[type="email"],
+        .form-container input[type="text"],
+        .form-container input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: var(--text-input-field);
+        }
+        
+        .form-container input[type="submit"] {
+            background-color: var(--hospital-green);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%; /* Aprovechar todo el ancho disponible */
+            height: 40px;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: var(--md);
+        }
+        
+        .image-container {
+            background-image: url('../img/login-1.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 200px; /* Altura mínima para la imagen */
+        }
+        .secundario-boton{
+            background-color: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--hospital-green);
+            color: var(--hospital-green);
+            width: 100%;
+            height: 50px;
+            
+        }
+        .sing-button{
+            margin-top: 90px;
+            margin-bottom: 30px;
+        }
+        .sing-button a{
+            color: var(--hospital-green);
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: var(--md);
+    
+        }
+        /* Media query para pantallas más pequeñas, como teléfonos móviles */
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
+            height: 90%;
+        }
+        
+        .form-container {
+            padding: 10px;
+        }
+        
+        .form-container input[type="submit"] {
+            height: 35px;
+        }
+        .image-container{
+            display: none;
+        }
+    }    
 
-.container {
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    overflow: hidden;
-    display: flex;
-    width: 50%;
-    height: 50%;
-    border: 1px solid #007bff;
-}
-
-.form-container,
-.image-container {
-    flex: 1;
-}
-
-.form-container {
-    padding: 20px;
-}
-
-.form-container h2 {
-    text-align: center;
-}
-
-.form-container form {
-    max-width: 300px;
-    margin: 0 auto;
-}
-
-.form-container label,
-.form-container input {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.form-container input[type="email"],
-.form-container input[type="text"],
-.form-container input[type="password"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.form-container input[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 108%;
-    height: 40px;
-    margin: auto;
-    margin-top: 20px;
-}
-.form-a > a{
-    color: #007bff;
-    text-decoration: none;
-}
-.form-a{
-    margin-top: 8px;
-}
-
-.image-container {
-    background-image: url('/img/pexels-hayana-fernanda-14534682.jpg'); /* Reemplaza 'tu-imagen.jpg' con la URL de tu imagen */
-    background-size: cover;
-    background-position: center;
-}

@@ -1,5 +1,6 @@
 package admin_user.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import admin_user.dto.AnimalCeloDTO;
 import admin_user.model.Animal_celo;
 import admin_user.model.Animal_for_user;
+import admin_user.model.User;
 import admin_user.repositories.Animal_for_user_repository;
 import admin_user.service.Animal_celo_service;
 import admin_user.service.Animal_for_user_service;
@@ -273,6 +275,19 @@ public String modificarAnimalCelo(@ModelAttribute Animal_celo animalCelo) {
   
 
 
+//registar ya sirve 
+ @PostMapping("/registrar-celo")
+        public String guardarDato(@ModelAttribute("animal_celo") Animal_celo animal_celo, Principal principal) {
+            try {
+                // Guarda el Animal_for_user en la base de datos
+                animal_celo_service.saveAnimalCelo(animal_celo);
+
+                return "redirect:/tabla-celo";
+            } catch (Exception e) {
+                return "Error en :" + e.getMessage();
+            }
+        }
+    
 
 
 

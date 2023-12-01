@@ -12,9 +12,14 @@ import admin_user.model.Animal_for_user;
 @Service
 public interface Animal_for_user_service {
 
+  //select para mostar por dni y sexo = hembra sirve
   public List<Animal_for_user> getHembraAnimals();
 
 
+  
+    
+ // Método para obtener los DNIs de los cerdos macho
+  public List<Animal_for_user> getMachoAnimals();
 
 
  
