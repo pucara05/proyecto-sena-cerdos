@@ -18,12 +18,29 @@ body{
     padding: 0;
     margin: 0;
 }
+.header__contenedor{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+}
+.header__contenedor h2{
+    color: var(--white);
+    font-weight: bold;
+    font-size: var(--lg);
+}
+
 header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-align: center;
     background-color: #333;
+    padding: 10px;
+}
+.header__contenedor img{
+    width: 60px;
+    height: 60px;
 }
 .header__contenedor > h1{
     color: #fff;
@@ -66,15 +83,13 @@ header{
     min-height: 100px;
     max-width: 100%;
     display: block;
+    opacity: 0.8;
+
 }
 .mg-con{
     position: relative;
     max-width: 100%;
     margin: 0 auto;
-}
-.mg-con div h1{
-    font-size: 50px;
-    font-weight: bold;
 }
 .text-overlay {
     position: absolute;
@@ -83,6 +98,10 @@ header{
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    max-width: 100%; /* Limita el ancho máximo del superpuesto */
+    width: 100%; /* Ajusta el ancho del superpuesto en pantallas más pequeñas */
 }
 
 .text-overlay h1 {
@@ -92,6 +111,23 @@ header{
 
 .text-overlay p {
     font-size: 1.2em;
+}
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .text-overlay {
+        width: 90%; /* Ajusta el ancho en pantallas más pequeñas */
+        padding: 10px; /* Reducción del espaciado para pantallas más pequeñas */
+    }
+    .text-overlay h1{
+        font-size: 15px;
+    }
+    .text-overlay p{
+        font-size: 10px;
+    }
+    .text-overlay{
+        top: 50px;
+        left: 50%;
+    }
 }
 .header__contenedor--Cerrar:hover{
     scale: 1;
@@ -188,12 +224,7 @@ li > a{
     padding: 20px;
 }
 
-.section__contenedor {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
+
 
 .card {
     background-color: #fff;
@@ -269,9 +300,7 @@ footer {
     height: auto;
 }
 
-p {
-    font-size: 14px;
-}
+
 .section__contenedor{
     display: flex;
     justify-content: space-around;
@@ -279,6 +308,7 @@ p {
     flex: 4;
     margin: 20px;
     margin-bottom: 10px;
+    gap: 30px;
 }
 .contenedor__flotante li > a{
     color: #000;
@@ -350,4 +380,19 @@ h1{
     margin-right: 15px;
     margin-top: 10px;
     cursor: pointer;
+}
+@media (max-width:400px) {
+    .header__contenedor h2{
+        font-size: var(--md);
+    }
+    .header__contenedor img{
+        width: 40px;
+        height: 40px;
+    }
+    .nav__bars{
+    font-size: 25px;
+}
+    .social-media img{
+        width: 30px;
+    }
 }

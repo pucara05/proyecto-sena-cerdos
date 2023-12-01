@@ -10,7 +10,12 @@
 <body>
     <header>
         <div class="header__contenedor">
-            <h1>Cerdos Pink</h1>
+            <div class="header__contenedor">
+                <img src="/img/cerdo (2).png" alt=>
+                <div class="nombre-logo">
+                    <h2>Cerdos Pink</h2>
+                </div>
+            </div>
         </div>
         <div class="header__contenedor--items">
             <div class="header__contenedor--ayuda">
@@ -55,17 +60,13 @@
             <li class="menu-item"><a class="a-m" href="/menu-tablas">Tablas</a></li>
         </ul>
     </div>
-    <section class="contenido">
-        <h2>Bienvenido al mejor software para la gestión de cerdos</h2>
-        <p>Descripción breve del software y sus beneficios.</p>
-    </section>
     <section class="registro">
         <h3>Tablas</h3>
     </section>
     <section class="cont__registro">
         <div class="container">
 <!--puede servir tanto asi: href="/tabla-cerdo" como asi: th:href="@{/tabla-cerdo}" -->
-            <button class="bot"><b><a class="col" th:href="@{/tabla-cerdo}">Tabla de Cerdos</a></b></button>
+            <button class="bot"><a class="col" th:href="@{/tabla-cerdo}">Tabla de Cerdos</a></button>
             <button class="bot"><b><a class="col" th:href="@{/tabla-animal-for-user}">Tabla de animales</a></b></button>
             <button class="bot"><b><a class="col" href="/tabla-monta.html">Tabla de Monta</a></b></button>
             <button class="bot"><b><a class="col" href="/tabla-celo.html">Tabala de Celo</a></b></button>
@@ -75,8 +76,7 @@
             <button class="bot"><b><a class="col" href="/tabla-manejo.html">Tabal de manejo</a></b></button>
             <button class="bot"><b><a class="col" href="/tabla-peso.html">Tabla de Peso</a></b></button>
             <button class="bot"><b><a class="col" href="/tabla-deseste.html">Tabal de deseste</a> </b></button>
-                    </div>
-    </section>
+        </section>
     <footer>
         <p>Derechos de autor © 2023 Software para Cerdos</p>
     </footer>
