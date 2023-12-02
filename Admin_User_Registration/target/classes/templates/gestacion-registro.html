@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" th:href="@{/css/cerdo-registro.css}">
+    <link rel="stylesheet" th:href="@{/css/gestacion-registro.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -61,40 +61,41 @@
     </section>
     <section class="cont_registro">
         <div class="container">
-            <h2>Registro de Monta</h2> 
-            <form  id="myForm"  th:action="@{/registrar-monta}" method="post" th:object="${animal_monta}">
+            <h2>Registro de Gestacion</h2> 
+            <form  id="myForm"  th:action="@{/registrar-gestacion}" method="post" th:object="${animal_gestacion}">
                 <div class="form-group">
-                    <label for="dni">Dni:</label>
+
+                    <label for="dni">Dni Gestacion:</label>
                     <input type="number" id="dni" name="dni" placeholder="dni" th:field="*{dni}"  required>
                 </div>
             
             
 <div class="form-group">
     <label for="selectHembra">Seleccionar cerdo hembra:</label>
-            <select id="selectHembra" name="dniCeloHembra" title="Lista">
+            <select id="selectHembra" name="gestacionHembra" title="Lista">
                 <option value="">Seleccionar cerdo hembra</option>
                 <!-- Aquí puedes agregar opciones si se obtienen del backend -->
             </select>
 </div>
 
-<div class="form-group">
-    <label for="selectMacho">Seleccionar cerdo macho:</label>
-    <select id="selectMacho" name="dniCeloMacho"  title="Lista">
-        <option value="">Seleccionar cerdo macho</option>
-        <!-- Opciones de cerdos macho se cargarán dinámicamente -->
-    </select>
+
             
                 <div class="form-group">
-                    <label for="fechaMonta">Fecha de Nacimiento:</label>
-                    <input type="date" id="fechaMonta" name="fechaMonta" th:field="*{fechaMonta}" required>
+                    <label for="fechaInicio">Fecha de Inicio:</label>
+                    <input type="date" id="fechaInicio" name="fechaInicio" th:field="*{fechaInicio}" required>
                 </div>
                     
+
+                <div class="form-group">
+                    <label for="fechaFin">Fecha de Fin:</label>
+                    <input type="date" id="fechaFin" name="fechaFin" th:field="*{fechaFin}" required>
+                </div>
                         
                             
                 <div class="form-group-1">
             <button class="btn" type="submit">Registrar</button>
             <button class="btn"  type="submit"  >Listas</button>
-           <a th:href="@{/mostrar-gestacion-tabla}">Listas </a>
+           <a th:href="@{/mostrar-datos-tabla}">Listas </a>
             
                 </div>
             </form>

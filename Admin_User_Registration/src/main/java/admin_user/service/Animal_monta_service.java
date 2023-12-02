@@ -29,8 +29,16 @@ public class Animal_monta_service {
     }
 
 
+    // Método para obtener los datos desde el repositorio y mostrarlos en la tabla
+    public List<Animal_monta> obtenerDatos() {
+        return animal_monta_repository.findAll();
+    }
+
   
-    
+    //metodo para buscar por dni
+    public Animal_monta buscarPorDni(Long dni) {
+        return animal_monta_repository.findByDni(dni);
+    }
 
 
 

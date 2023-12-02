@@ -71,7 +71,7 @@
             
 <div class="form-group">
     <label for="selectHembra">Seleccionar cerdo hembra:</label>
-            <select id="selectHembra" name="dniCeloHembra" th:field="*{celo}" title="Lista">
+            <select id="selectHembra" name="dniCeloHembra" title="Lista">
                 <option value="">Seleccionar cerdo hembra</option>
                 <!-- Aquí puedes agregar opciones si se obtienen del backend -->
             </select>
@@ -79,7 +79,7 @@
 
 <div class="form-group">
     <label for="selectMacho">Seleccionar cerdo macho:</label>
-    <select id="selectMacho" name="dniCeloMacho" th:field="*{celo}" title="Lista">
+    <select id="selectMacho" name="dniCeloMacho"  title="Lista">
         <option value="">Seleccionar cerdo macho</option>
         <!-- Opciones de cerdos macho se cargarán dinámicamente -->
     </select>
@@ -94,7 +94,7 @@
                 <div class="form-group-1">
             <button class="btn" type="submit">Registrar</button>
             <button class="btn"  type="submit"  >Listas</button>
-           <a th:href="@{/tabla-animal-for-user}">Listas </a>
+           <a th:href="@{/mostrar-gestacion-tabla}">Listas </a>
             
                 </div>
             </form>

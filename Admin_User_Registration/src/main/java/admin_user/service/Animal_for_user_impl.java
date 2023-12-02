@@ -16,16 +16,16 @@ public class Animal_for_user_impl implements Animal_for_user_service {
     Animal_for_user_repository animal_for_user_repository;
 
 
-   
+   //metodos para la logica del repositorio de buscar por sexo hembra y macho
+   //para los selects en la vista registro-monta
 //select mostrar hembras sirve 
   @Override
   public List<Animal_for_user> getHembraAnimals() {
     return animal_for_user_repository.findHembraAnimals();
 }
 
-
-
  // Método para obtener los DNIs de los cerdos macho
+ @Override
  public List<Animal_for_user> getMachoAnimals() {
     return animal_for_user_repository.findMachoAnimals();
 }

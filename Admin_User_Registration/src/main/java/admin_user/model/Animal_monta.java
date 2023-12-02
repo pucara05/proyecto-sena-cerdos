@@ -6,6 +6,7 @@ import org.hibernate.annotations.ManyToAny;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -32,9 +33,13 @@ private Long id;
 
 private Long dni;
 
-private Long dniCeloHembra;
+//se crea 1 variable  String dniCeloHembra; para registar los datos del select sirve tanto string como long
+//@Column(name = "dni_cerdo_hembra1") // Asignación de nombre específico para el campo dniCeloHembra
+private String dniCeloHembra;
 
-private Long dniCeloMacho;
+//se crea 1 variable  String dniCeloMacho; para registar los datos del select sirve tanto string como long
+//@Column(name = "dni_cerdo_macho2") // Asignación de nombre específico para el campo dniCeloMacho
+private String dniCeloMacho;
 
 
 @Temporal(TemporalType.DATE)

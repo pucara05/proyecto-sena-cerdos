@@ -12,13 +12,14 @@ import admin_user.model.Animal_for_user;
 @Service
 public interface Animal_for_user_service {
 
+
+  //ambos selects para mostrar los datos que quiero en el repositorio en la vista registro-monta
   //select para mostar por dni y sexo = hembra sirve
   public List<Animal_for_user> getHembraAnimals();
 
 
-  
     
- // Método para obtener los DNIs de los cerdos macho
+ // Método para obtener los DNIs de los cerdos macho sirve
   public List<Animal_for_user> getMachoAnimals();
 
 

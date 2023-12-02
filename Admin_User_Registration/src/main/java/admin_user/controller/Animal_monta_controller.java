@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import admin_user.model.Animal_celo;
@@ -19,7 +20,6 @@ import admin_user.service.Animal_for_user_service;
 import admin_user.service.Animal_monta_service;
 
 @Controller
-
 public class Animal_monta_controller {
     
 private final Animal_monta_service animal_monta_service;
@@ -32,6 +32,8 @@ public Animal_monta_controller(Animal_monta_service animal_monta_service, Animal
     this.animal_for_user_service = animal_for_user_service;
 }
 
+
+//vista formulario sirve
  @GetMapping("/monta-registro")
     public String mostrarVistaMontaRegistro(Model model) {
         model.addAttribute("animal_monta", new Animal_monta()); // Agregar un objeto Animal_monta al modelo
@@ -40,19 +42,28 @@ public Animal_monta_controller(Animal_monta_service animal_monta_service, Animal
 
 
 
-
-/* 
-//mostrar formulario vista 
-@GetMapping("/monta-registro")
-    public String mostrarFormularioCelo(Model model) {
-        // Crear un nuevo objeto Animal_celo y agregarlo al modelo
-        Animal_monta animalMonta = new Animal_monta();
-        model.addAttribute("animalMonta", animalMonta);
-
-        // Devolver la vista que contiene el formulario
-        return "monta-registro";
+    //metodo para mostrar los datos en la tabla 
+    @GetMapping("/mostrar-datos-tabla")
+    public String mostrarDatosTabla(Model model) {
+        // Obtener los datos que deseas mostrar en la tabla
+        List<Animal_monta> animalMontaList = animal_monta_service.obtenerDatos(); // Reemplaza obtenerDatos() con el método que obtiene los datos
+    
+        // Realizar alguna operación con los datos si es necesario
+        // Por ejemplo, ordenarlos o filtrarlos
+    
+        // Agregar los datos al modelo para pasarlos a la vista
+        model.addAttribute("animalMontaList", animalMontaList);
+    
+        // Devolver la vista que mostrará los datos en la tabla
+        return "monta-tabla"; // Reemplaza "tabla-datos" con el nombre de tu vista
     }
-*/
+    
+
+
+
+
+
+
 
     //registar ya sirve 
  @PostMapping("/registrar-monta")
@@ -61,25 +72,18 @@ public Animal_monta_controller(Animal_monta_service animal_monta_service, Animal
                 // Guarda el Animal_for_user en la base de datos
                 animal_monta_service.saveAnimalMonta(animal_monta);
 
-                return "redirect:/animal-monta";
+                return "redirect:/mostrar-datos-tabla";
             } catch (Exception e) {
                 return "Error en :" + e.getMessage();
             }
         }
 
 
-/* 
-//metodo para registrar 
-    @PostMapping("/registrar-monta")
-    public String registrarAnimal(@ModelAttribute("animal_monta") Animal_monta animalMonta) {
-        Animal_monta animalRegistrado = animal_monta_service.saveAnimalMonta(animalMonta);
-        // Aquí podrías agregar lógica adicional, como enviar datos a la vista o redireccionar a otra página.
-        return "redirect:/animal-monta";  // + animalRegistrado.getId();
-    }
-*/
 
 
-   
+
+   //metodos del controlador para mostrar los datos en el select van conectados con 
+   //el metodo para mostrar el formulario mostrarVistaMontaRegistro
 //select hembra dni sirve
     @GetMapping("/hembra-dni")
     @ResponseBody
@@ -97,6 +101,17 @@ public List<Animal_for_user> getMachoAnimalsDni() {
 
 
 
+
+//metodo para poder buscar por dni 
+//para poder cargar los datos en la misma tabla pero los buscados por dni debo colocar la variable animalMonta en la logica
+//de thymeleaf en la tabla y al buscar por dni carga los datos que estoy buscando
+@GetMapping("/buscar-por-id-animal-monta")
+    public String buscarPorDni(@RequestParam("dni") Long dni, Model model) {
+        Animal_monta animalMonta = animal_monta_service.buscarPorDni(dni);
+
+        model.addAttribute("animalMonta", animalMonta);
+        return "monta-tabla"; // Reemplaza con el nombre de tu vista
+    }
 
 
 }

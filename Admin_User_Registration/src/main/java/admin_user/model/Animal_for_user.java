@@ -40,7 +40,7 @@ public class Animal_for_user {
   private Long dni;
   private String raza;
 
-  private Long peso;
+  private Long peso;  
 
   @Temporal(TemporalType.DATE)
   @DateTimeFormat(iso = ISO.DATE)
@@ -65,10 +65,11 @@ public class Animal_for_user {
   @JoinColumn(name = "user_id")
   private User user;  
 
-  @ManyToOne
+  
+  /*@ManyToOne
   @JoinColumn(name = "animal_id")
   private Animal animal;
-
+*/
 
   // Relación One-to-Many con Animal_celo
   /*   @OneToMany(targetEntity = Animal_celo.class,fetch = FetchType.LAZY,mappedBy ="animalForUser" )
