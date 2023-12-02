@@ -2,10 +2,12 @@ package admin_user.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import admin_user.model.Animal_gestacion;
 import admin_user.model.Animal_monta;
 
+@Repository
 public interface Animal_gestacion_repository extends JpaRepository<Animal_gestacion,Long> {
     
       //metodo para buscar por dni
