@@ -59,11 +59,29 @@ public String mostrarVistaPrepartoRegistro(Model model) {
 
 
 
+@PostMapping("/registrar-parto")
+public String guardarDato(@ModelAttribute("animal_parto") Animal_parto animal_parto, @RequestParam("estadoSalud") String estadoSaludSeleccionado, Principal principal) {
+    try {
+        // Asignar el valor seleccionado del select a dniPreparto
+        animal_parto.setDniPreparto(estadoSaludSeleccionado);
+
+        // Guardar el Animal_parto en la base de datos
+        animal_parto_service.saveAnimalParto(animal_parto);
+
+        return "redirect:/mostrar-parto-tabla";
+    } catch (Exception e) {
+        return "Error en :" + e.getMessage();
+    }
+}
 
 
 
 
-         //registar ya sirve 
+
+
+
+
+/* *        //registar ya sirve 
  @PostMapping("/registrar-parto")
         public String guardarDato(@ModelAttribute("animal_parto") Animal_parto animal_parto, Principal principal) {
             try {
@@ -78,7 +96,7 @@ public String mostrarVistaPrepartoRegistro(Model model) {
             }
         }
 
-
+*/
 
          //metodo para mostrar los datos en la tabla 
     @GetMapping("/mostrar-parto-tabla")

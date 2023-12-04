@@ -77,7 +77,8 @@
                 <th>Dni Preparto</th>
                 <th>dniPrepartoHembra</th>
                 <th>fechaPreparto</th>
-                <th>estadoSalud</th>
+                <th>Lechones Vivos</th>
+                <th>Lechones Muertos</th>
         <!--       <th>Acciones</th> --> <!-- Añadimos una columna para las acciones -->
             </tr>
         </thead>
@@ -86,9 +87,10 @@
                 <td th:text="${registro.id}"></td>
                 <td th:text="${registro.dni}"></td>
                 <td th:text="${registro.dniPreparto}"></td>
+                <td th:text="${#dates.format(registro.fechaParto, 'dd-MM-yyyy')}"></td>
                 <td th:text="${registro.lechonesVivos}"></td>
                 <td th:text="${registro.lechonesMuertos}"></td>
-                <td th:text="${#dates.format(registro.fechaParto, 'dd-MM-yyyy')}"></td>
+               
                 <!-- Celdas para acciones (Editar, Eliminar, etc.) -->
                 <!-- <td>...</td> -->
             </tr>
@@ -103,7 +105,7 @@
                 <td  th:if="${animalParto != null}"    th:text="${animalParto.fechaParto}"></td>
 
                 <td> 
-                    <div class="form-group--btn">
+                   d <div class="form-group--btn">
                <!-- <a class="btn-1" th:href="@{'' + ${animalMonta.id}}">Editar</a>-->
                 </div>
             </td>
