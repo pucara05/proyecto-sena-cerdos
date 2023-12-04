@@ -9,9 +9,12 @@
 </head>
 <body>
     <header>
-        <div class="header__contenedor">
-            <h1>Cerdos Pink</h1>
-        </div>
+        <div  class =" header__contenedor " >
+            <img  src =" /img/cerdo (2).png " alt = >
+            <div  class =" nombre-logo " >
+                <h2> Cerdos Rosa </h2>
+            </div> 
+        </div> 
         <div class="header__contenedor--items">
             <div class="header__contenedor--ayuda">
                 <a href="">Ayuda</a>
@@ -63,13 +66,18 @@
         <h3>Tabla De Cerdo</h3>
         <div class="contenedor__btn">
             <form th:action="@{/buscar-por-id-animal}" method="get">
-                <input class="bus" type="text" id="searchInput" name="id" placeholder="Buscar por ID">
-                <button class="btn" type="submit">Buscar</button>
+                <div class="btn_hijo">
+                    <input class="bus" type="text" id="searchInput" name="id" placeholder="Buscar por ID">
+                </div>
+                <div class="btn_hijo">
+                    <button class="btn" type="submit">Buscar</button>
+                </div>
+                
             </form>
             
 
 
-         
+        <!--
             
             <div class="form-group">
                 <div class="form-group--btn">
@@ -81,7 +89,7 @@
                 <div class="form-group--btn">
                     <button class="btn-1" type="submit">Eliminar</button>
                 </div>
-                </div>
+                </div>-->
         </div>
         <table>
             <thead>
@@ -103,17 +111,22 @@
                 <td th:text="${data.fechaNacimientoCerdo}"> </td>
                 <td>
                     <div class="form-group--btn">
-                        <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${data.id}}">Editar</a>
+                        <button class="bt">
+                            <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${data.id}}">Editar</a>
+                        </button>
                     </div>
-                    <div class="form-group--btn">
-                        <a class="btn-1" th:href="@{'/eliminar/' + ${data.id}}">Eliminar</a>
+                    <div class="form-group--btn-1">
+                        <button class="bt-1">
+                            <a class="btn-2" th:href="@{'/eliminar/' + ${data.id}}">Eliminar</a>
+                        </button>
+                        
                     </div>
                 </td>
 
             </tr>
             
 
-               <!-- animal-encontrado-por-id.html -->
+<!-- animal-encontrado-por-id.html -->
 
     <tbody>
         <tr th:if="${animal != null}">
@@ -125,12 +138,10 @@
             <td>
 
                 <div class="form-group--btn">
-                    <button class="btn-1" type="submit"  <a th:href="@{'/editar/' + ${animal.id}}">Editar</a>></button>
+                    <button class="btn-1" type="submit"  <a th:href="@{'/editar/' + ${animal.id}}">Editar</a></button>
                 </div>
-               
                 <div class="form-group--btn">
-                    <button class="btn-1" type="submit"  <a th:href="@{'/animal_for_user/eliminar/'+ ${animal.id}}">Eliminar</a>></button>
-
+                    <button class="btn-1" type="submit"  <a th:href="@{'/animal_for_user/eliminar/'+ ${animal.id}}">Eliminar</a></button>
                 </div>
                 
             </td>
@@ -138,16 +149,18 @@
     </tbody>
             </tbody>
         </table>
-
-
-     
-
-
-     
-
-
-
     </section>
+    <footer>
+        <div class="social-media">
+            <a href="https://www.facebook.com/profile.php?id=61553875659336">
+                <img src="/img/facebook.png" alt="Facebook">
+            </a>
+            <a href="mailto:tucorreo@gmail.com" target="_blank" rel="noopener noreferrer">
+                <img src="/img/gmail-1.png" alt="Gmail">
+            </a>
+        </div>
+        <p>© 2023 Cerdos pink | Todos los derechos reservados</p>
+    </footer>
     <script th:src="@{/js/responsivo.js}"></script>
 </body>
 </html>

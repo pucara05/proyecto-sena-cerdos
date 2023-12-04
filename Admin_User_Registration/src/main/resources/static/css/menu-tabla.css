@@ -23,6 +23,7 @@ header{
     align-items: center;
     text-align: center;
     background-color: #333;
+    padding: 10px;
 }
 .header__contenedor{
     display: flex;

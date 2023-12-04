@@ -10,7 +10,10 @@
 <body>
     <header>
         <div class="header__contenedor">
-            <h1>Cerdos Pink</h1>
+            <img  src =" /img/cerdo (2).png " alt = >
+            <div  class =" nombre-logo " >
+                <h2 > Cerdos Rosa </h2>
+            </div>
         </div>
         <div class="header__contenedor--items">
             <div class="header__contenedor--ayuda">
@@ -109,11 +112,12 @@
                     <input type="date" id="fechadenacimiento" name="fechaNacimientoCerdo"  th:field="*{fechaNacimientoCerdo}"  placeholder="YYYY-MM-DD"  required>
                 </div>
                 <div class="form-group-1">
-            <button class="btn" type="submit">Modificar</button>
-            <button class="btn"  type="submit"  >Listas</button>
-           <a th:href="@{/tabla-animal-for-user}">Listas </a>
-                    
-                </div>
+                    <button class="btn" type="submit">Registrar</button>
+                    <button class="btn-1"  type="submit"  >
+                        <a class="b-a" th:href="@{/tabla-animal-for-user}">Listas</a>
+</button>
+                            
+                        </div>
             </form>
         </div>
     </section>
