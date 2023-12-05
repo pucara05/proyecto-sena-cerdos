@@ -120,7 +120,7 @@ public String guardarDato(@ModelAttribute("animal_parto") Animal_parto animal_pa
     //metodo para poder buscar por dni 
 //para poder cargar los datos en la misma tabla pero los buscados por dni debo colocar la variable animalMonta en la logica
 //de thymeleaf en la tabla y al buscar por dni carga los datos que estoy buscando
-@GetMapping("/buscar-por-id-animal-parto")
+@GetMapping("/buscar-por-dni-animal-parto")
     public String buscarPorDni(@RequestParam("dni") Long dni, Model model) {
         Animal_parto animalparto = animal_parto_service.buscarPorDni(dni);
 

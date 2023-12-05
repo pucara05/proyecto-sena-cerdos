@@ -48,6 +48,9 @@ public List< Animal_parto> getParto(){
 
 
 
-
-    
+/*  //metodo para selecionar los dniPartos arreglar
+  public List<String> obtenerdniParto() {
+        return animal_parto_repository.obtenerdniParto(); // Método en tu repositorio para obtener los estados de salud
+    }
+    */
 }

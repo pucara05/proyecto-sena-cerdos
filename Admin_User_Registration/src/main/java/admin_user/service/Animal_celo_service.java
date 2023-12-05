@@ -14,7 +14,7 @@ public interface Animal_celo_service {
 
 
     //metodo dto
-    public List<AnimalCeloDTO> getAllAnimalCeloDTO();
+ public List<AnimalCeloDTO> getAllAnimalCeloDTO();
 
 
 //metodo para buscar todos los animales    

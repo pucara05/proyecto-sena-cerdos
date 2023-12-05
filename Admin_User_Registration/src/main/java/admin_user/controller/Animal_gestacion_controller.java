@@ -47,7 +47,7 @@ public Animal_gestacion_controller(Animal_gestacion_service animal_gestacion_ser
                 // Guarda el Animal_for_user en la base de datos
                 animal_gestacion_service.saveAnimalGestacion(animal_gestacion);
 
-                return "redirect:/monta-tabla";
+                return "redirect:/mostrar-gestacion-tabla";
             } catch (Exception e) {
                 return "Error en :" + e.getMessage();
             }

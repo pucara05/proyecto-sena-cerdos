@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" th:href="@{/css/tabla-gestacion.css}">
+    <link rel="stylesheet" th:href="@{/css/tabla-parto.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -60,10 +60,10 @@
         <p>Descripción breve del software y sus beneficios.</p>
     </section>
     <section class="cont__tabla">
-        <h3>Tabla De Gestacion</h3>
+        <h3>Tabla De Manejo</h3>
         <div class="contenedor__btn">
         <!-- Formulario para buscar por dni -->
-        <form th:action="@{/buscar-por-id-animal-gestacion}" method="get">
+        <form th:action="@{/buscar-por-dni-animal-manejo}" method="get">
             <input class="bus" type="text" id="searchInput" name="dni" placeholder="Buscar por DNI" pattern="[0-9]+" title="Ingrese solo números">
             <button class="btn" type="submit">Buscar</button>
         </form>
@@ -74,32 +74,37 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Dni Monta</th>
-                <th>gestacionHembra</th>
+                <th>Dni Manejo</th>
+                <th>dniParto</th>
                 <th>fechaInicio</th>
-                <th>fechaFin</th>
+                <th>FechaFin</th>
+                <th>Estado</th>
         <!--       <th>Acciones</th> --> <!-- Añadimos una columna para las acciones -->
             </tr>
         </thead>
         <tbody>
-            <tr th:each="registro : ${animalMontaList}">
+            <tr th:each="registro : ${animalManejoList}">
                 <td th:text="${registro.id}"></td>
                 <td th:text="${registro.dni}"></td>
-                <!-- Supongamos que los nombres de las variables en Animal_monta son dniCeloHembra y dniCeloMacho -->
-                <td th:text="${registro.gestacionHembra}"></td>
+                <td th:text="${registro.dniParto}"></td>
                 <td th:text="${#dates.format(registro.fechaInicio, 'dd-MM-yyyy')}"></td>
                 <td th:text="${#dates.format(registro.fechaFin, 'dd-MM-yyyy')}"></td>
+                <td th:text="${registro.estado}"></td>
+              
+               
                 <!-- Celdas para acciones (Editar, Eliminar, etc.) -->
                 <!-- <td>...</td> -->
+
             </tr>
-            <tr th:if="${animalGestacion != null}">
-                <td th:if="${animalGestacion != null}"    th:text="${animalGestacion.id}"></td>
-                <td  th:if="${animalGestacion != null}"   th:text="${animalGestacion.dni}"></td>
+            <tr th:if="${animalManejo != null}">
+                <td th:if="${animalManejo != null}"    th:text="${animalManejo.id}"></td>
+                <td  th:if="${animalManejo != null}"   th:text="${animalManejo.dni}"></td>
                   <!-- Aquí se coloca la columna para el ID del Cerdo Hembra si corresponde -->
             <!-- Asumiendo que el ID del Cerdo Hembra se encuentra en la entidad Animal_for_user -->
-            <td  th:if="${animalGestacion != null}"    th:text="${animalGestacion.gestacionHembra}"></td>
-            <td  th:if="${animalGestacion != null}"    th:text="${animalGestacion.fechaInicio}"></td>
-                <td  th:if="${animalGestacion != null}"    th:text="${animalGestacion.fechaFin}"></td>
+            <td  th:if="${animalManejo != null}"    th:text="${animalManejo.dniParto}"></td>
+                <td  th:if="${animalManejo != null}"    th:text="${animalManejo.fechaInicio}"></td>
+                <td  th:if="${animalManejo != null}"    th:text="${animalManejo.fechaFin}"></td>
+                <td  th:if="${animalManejo != null}"    th:text="${animalManejo.estado}"></td>
 
                 <td> 
                     <div class="form-group--btn">
