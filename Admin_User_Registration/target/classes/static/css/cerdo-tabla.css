@@ -12,7 +12,8 @@
     --editar: #4CAF50;
     --buscador:#3498DB;
     --eliminar:#FF0000;
-    }body{
+    }
+    body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -257,7 +258,7 @@ li > a{
     text-align: center;
 }
 table {
-    width: 60%; /* Hacer que la tabla ocupe el ancho completo del contenedor */
+    width: 80%; /* Hacer que la tabla ocupe el ancho completo del contenedor */
     max-width: 100%; /* Para asegurar que no se desborde en pantallas pequeñas */
     border-collapse: collapse;
     margin: 20px auto;
