@@ -111,10 +111,10 @@ public class Animal_for_user_controller {
 
 //buscar por id
 //metodo para buscar por id 
-         @GetMapping("/buscar-por-id-animal")
+         @GetMapping("/buscar-por-dni-animal")
     public String buscarAnimalPorId(@RequestParam(required = false) Long id, Model model) {
         if (id != null) {
-            Animal_for_user animal = animal_for_user_service.obtenerAnimalPorId(id);
+            Animal_for_user animal = animal_for_user_service.obtenerAnimalPorDni(id);
         
             if (animal != null) {
                 model.addAttribute("animal", animal);

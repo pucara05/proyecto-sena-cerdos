@@ -4,56 +4,275 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0e2433;
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
+        :root{
+  --white: #FFFFFF;
+  --black: #000000;
+  --dark: #232830;
+  --very-light-pink: #C7C7C7;
+  --text-input-field: #F7F7F7;
+  --hospital-green: #26D026;
+  --sm:14px;
+  --md:16px;
+  --lg:20px;
+  --editar: #4CAF50;
+  --buscador:#3498DB;
+  --eliminar:#FF0000;
+  }
+*{
+margin: 0;
+padding: 0;
+border: none;
+outline: none;
+box-sizing: border-box;
 
-        .header {
-            background-color: #45b6fe;
-            padding: 20px;
-            text-align: center;
-        }
+}
+body{
+  display: flex;
+}
+.sidebar{
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 110px;
+  height: 100vh;
+  padding: 0 1.7rem;
+  color: #fff;
+  overflow: hidden;
+  transition: all 0.5s linear;
+  background-color: #333;
+}
+.sidebar:hover{
+  width: 240px;
+  transition: .5s;
+}
+.logo{
+  height: 80px;
+  padding: 10px;
+}
+.logo h1{
+  font-size: 20px;
+  padding: 0;
+}
+.menu{
+  height: 88%;
+  position: relative;
+  list-style: none;
+  padding: 0;
+}
+.menu li{
+  padding: 1rem;
+  margin: 8px 0;
+  border-radius: 8px;
+  transition: all .5s ease-in-out;
+}
+.menu li:hover, 
+.active{
+  background-color: #e0c0c058;
+}
+.menu a{
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+.menu a span{
+  overflow: hidden;
+}
+.menua a i {
+  font-size: 1.2rem;
+}
+.logout{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+/*section*/
+.main--content{
+  position: relative;
+  background-color: #ebe9e9;
+  width: 100%;
+  padding: 1rem;
+}
+.header--wrapper img{
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.header--wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px 2rem;
+  margin-bottom: 1rem;
+}
+.header--title{
+  color: black;
+  font-weight: bold;
+}
+.user--infor{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.search--box{
+  background-color: rgb(237, 237, 337);
+  border-radius: 15px;
+  color: rgb(133, 99,186,255);
+  align-items: center;
+  gap: 1;
+  padding: 4px 12px;
+}
+.search--box input{
+  background-color: transparent;
+  padding: 10px;
+}
+.search--box i{
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all .5s ease-out;
+}
+.search--box i:hover{
+  transform: scale(1.2);
+}
+.cont-tabla{
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+}
+table {
+  width: 90%; /* Hacer que la tabla ocupe el ancho completo del contenedor */
+  max-width: 100%; /* Para asegurar que no se desborde en pantallas pequeñas */
+  border-collapse: collapse;
+  margin: 20px auto;
+  border: 1px solid #cacaca;
+}
 
-        .header h1 {
-            margin: 0;
-        }
+td{
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #151515;
+  
+  
+}
+th{
+  padding: 8px;
+  text-align: center;
+  background-color: var(--dark)
 
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #0e2433;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
+}
 
-        h2 {
-            color: #45b6fe;
-        }
+thead {
+  background-color: var(--hospital-green);
+  color: var(--white);
+  border-bottom: 1px solid #cacaca;
 
-        /* Add more styles and components for your dashboard here */
+}
+form{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+form .btn_hijo{
+  width: 100px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+.btn_hijo input{
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #cacaca;
+}
+.btn{
+  width: 100%;
+  background-color: var(--buscador);
+  color: #fff;
+  cursor: pointer;
+  height: 30px;
+  font-weight: bold;
+  border: 0;
+}
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>USER Dashboard</h1>
-    </div>
-    <div class="container">
-        <h2>Welcome, [[${user.getFullname()}]]</h2>
+    <div class="sidebar">
+        <div class="logo">
+          <h1>Cerdos Pink</h1>
+        </div>
+        <ul class="menu">
+          <li>
+            <a href="">
+              <i class="fas fa-user"></i>
+            <span>Usuarios</span>
+          </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="fas fa-table"></i>
+            <span>Tablas</span>
+          </a>
+          </li>
+      
+          <li class="logout">
+            <a href="">
+              <i class="fas fa-sign-out-alt"></i>
+            <span>Cerrar Sesion</span>
+          </a>
+          </li>
+        </ul>
+      </div>
+      <div class="main--content">
+        <div class="header--wrapper">
+          <div class="header--title">
+            <span>Primary</span>
+            <h2>Bienvenidos</h2>
+          </div>
+          <div class="user--infor">
+            <img src="" alt="">
+          </div>
+        </div>
         
-        <span sec:authorize="isAuthenticated">
-        <a th:href="@{/logout}">
-         Logout
-        
-        </a>
-        
-        </span>
-
-    </div>
+        <div class="cont-tabla">
+          <div class="contenedor__btn">
+            <form th:action="@{/buscar-por-id-animal}" method="get">
+                <div class="btn_hijo">
+                    <input class="bus" type="text" id="searchInput" name="id" placeholder="Buscar por ID">
+                </div>
+                <div class="btn_hijo">
+                    <button class="btn" type="submit" required>Buscar</button>
+                </div>
+            </form>
+            </div>
+          <table>
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Contraseña</th>
+                <th>Peso</th>
+                <th>Fecha</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="data: ${animalUserList}">
+                <td th:text="${data.id}"> </td>
+                <td th:text="${data.email}"> </td>
+                <td th:text="${data.password}"> </td>
+                <td th:text="${data.role}"> </td>
+                <td th:text="${data.fullname}"> </td>
+            </tr>
+        </div>
+      </div>
+    </body>
 </body>
 </html>

@@ -10,7 +10,10 @@
 <body>
     <header>
         <div class="header__contenedor">
-            <h1>Cerdos Pink</h1>
+            <img src="/img/cerdo (2).png" alt=>
+            <div class="nombre-logo">
+                <h2>Cerdos Pink</h2>
+            </div>
         </div>
         <div class="header__contenedor--items">
             <div class="header__contenedor--ayuda">
@@ -62,14 +65,23 @@
     <section class="cont__tabla">
         <h3>Tabla De Cerdo</h3>
         <div class="contenedor__btn">
-            <form th:action="@{/buscar-por-id-animal}" method="get">
+            <form th:action="@{/buscar-por-dni-animal}" method="get">
+                <div class="btn_hijo">
+                    <input class="bus" type="text" id="searchInput" name="id" placeholder="Buscar por ID">
+                </div>
+                <div class="btn_hijo">
+                    <button class="btn" type="submit" required>Buscar</button>
+                </div>
+                
+            </form>
+                <!--
                 <input class="bus" type="text" id="searchInput" name="id" placeholder="Buscar por ID">
                 <button class="btn" type="submit">Buscar</button>
             </form>
-            
+        -->
 
 
-         
+         <!--
             
             <div class="form-group">
                 <div class="form-group--btn">
@@ -82,6 +94,7 @@
                     <button class="btn-1" type="submit">Eliminar</button>
                 </div>
                 </div>
+                -->
         </div>
         <table>
             <thead>
@@ -103,14 +116,14 @@
                 <td th:text="${data.peso}"> </td>
                 <td th:text="${data.fechaNacimientoCerdo}"> </td>
                 <td th:text="${data.sexo}"> </td>
-                <td>
+                <!--<td>
                     <div class="form-group--btn">
                         <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${data.id}}">Editar</a>
                     </div>
                     <div class="form-group--btn">
                         <a class="btn-1" th:href="@{'/animal_for_user/eliminar/' + ${data.id}}">Eliminar</a>
                     </div>
-                </td>
+                </td>-->
 
             </tr>
             
@@ -126,11 +139,10 @@
             <td th:if="${animal != null}"  th:text="${animal.fechaNacimientoCerdo}"> </td>
             <td th:if="${animal != null}"   th:text="${animal.sexo}"> </td>
             <td>
-                    <div class="form-group--btn">
-                        <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${animal.id}}">Editar</a>
-                    </div>
-                    <div class="form-group--btn">
-                        <a class="btn-1" th:href="@{'/animal_for_user/eliminar/' + ${animal.id}}">Eliminar</a>
+                     <div class="form-group--btn">
+                        <button class="bt">
+                            <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${animal.id}}">Editar</a>
+                        </button>
                     </div>
             </td>
         </tr>
@@ -147,6 +159,17 @@
 
 
     </section>
+    <footer>
+        <div class="social-media">
+            <a href="https://www.facebook.com/profile.php?id=61553875659336">
+                <img src="/img/facebook.png" alt="Facebook">
+            </a>
+            <a href="mailto:tucorreo@gmail.com" target="_blank" rel="noopener noreferrer">
+                <img src="/img/gmail-1.png" alt="Gmail">
+            </a>
+        </div>
+        <p>© 2023 Cerdos pink | Todos los derechos reservados</p>
+    </footer>
     <script th:src="@{/js/responsivo.js}"></script>
 </body>
 </html>

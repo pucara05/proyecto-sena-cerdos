@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import admin_user.dto.AnimalCeloDTO;
+import admin_user.model.Animal_atencion_lechon;
 import admin_user.model.Animal_celo;
 import admin_user.model.Animal_for_user;
 import admin_user.model.User;
@@ -99,9 +100,11 @@ private Animal_for_user_service animal_for_user_service;
 
     }
 
-    //buscar por id
+
+    
+    //buscar por dni
 //metodo para buscar por id 
-@GetMapping("/buscar-por-id-animal-celo")
+@GetMapping("/buscar-por-dni-animal-celo")
     public String buscarPorId(@RequestParam(required = false) Long id, Model model) {
         if (id != null) {
             AnimalCeloDTO animalDTO = animal_celo_service.obtenerAnimalId(id);
@@ -118,10 +121,24 @@ private Animal_for_user_service animal_for_user_service;
     }
 
 
+/* 
+ @GetMapping("/buscar-por-dni-animal-celo")
+    public String buscarPorDni(@RequestParam("dni") Long dni, Model model) {
+         if (dni != null) {
+        Animal_celo animalDTO = animal_celo_service.obtenerAnimalCeloPorDni(dni);
+  if (animalDTO != null) {
+        model.addAttribute("animal", animalDTO);
+        return "celo-tabla"; // Reemplaza con el nombre de tu vista
+          } else {
+                return "animal_no_encontrado"; // Vista para mostrar cuando no se encuentra el animal
+            }
+        } else {
+            return "animal_no_encontrado"; // Tratar el caso en el que id sea nulo
+    }
 
+    }
 
-
-
+*/
 
 
 
@@ -235,6 +252,7 @@ public String modificarAnimalCelo(@PathVariable Long id, @ModelAttribute Animal_
 public String mostrarFormularioEditarAnimalCelo(@PathVariable Long id, Model model) {
     AnimalCeloDTO animal = animal_celo_service.obtenerAnimalId(id);
 
+
     if (animal != null) {
         model.addAttribute("animalCelo", animal); // Asegúrate de agregar el objeto animalCelo al modelo
         return "modificar-celo";
@@ -252,7 +270,7 @@ public String modificarAnimalCelo(@ModelAttribute Animal_celo animalCelo) {
 
         if (animalExistente != null) {
             // Actualiza los campos del animal existente con los nuevos valores
-            animalExistente.setDniCelo(animalCelo.getDniCelo());
+            animalExistente.setDni(animalCelo.getDni());
             animalExistente.setFechaCelo(animalCelo.getFechaCelo());
             // Actualiza otros campos según sea necesario
 

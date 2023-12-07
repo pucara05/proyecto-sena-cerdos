@@ -22,7 +22,10 @@
 
   <header>
     <div class="header__contenedor">
-      <h1>Cerdos Pink</h1>
+      <img src="/img/cerdo (2).png" alt=>
+            <div class="nombre-logo">
+                <h2>Cerdos Pink</h2>
+            </div>
     </div>
     <div class="header__contenedor--items">
       <div class="header__contenedor--ayuda">
@@ -82,8 +85,8 @@
       <form  id="myForm" th:action="@{/registrar-celo}" method="post"  th:object="${animalCelo}">
 
         <div class="form-group">
-          <label for="dniCelo">Dni de Celo</label>
-          <input type="number" id="dniCelo" name="dniCelo"  th:field="*{dniCelo}"  placeholder="Ingrese dni "  required />
+          <label for="dni">Dni de Celo</label>
+          <input type="number" id="dni" name="dni"  th:field="*{dni}"  placeholder="Ingrese dni "  required />
 
 
           <div class="form-group">
@@ -109,8 +112,17 @@
     </div>
   </section>
   <footer>
-    <p>Derechos de autor © 2023 Software para Cerdos</p>
-  </footer>
+    <div class="social-media">
+        <a href="https://www.facebook.com/profile.php?id=61553875659336">
+            <img src="/img/facebook.png" alt="Facebook">
+        </a>
+        <a href="mailto:tucorreo@gmail.com" target="_blank" rel="noopener noreferrer">
+            <img src="/img/gmail-1.png" alt="Gmail">
+        </a>
+    </div>
+    <p>© 2023 Cerdos pink | Todos los derechos reservados</p>
+</footer>
+
   <script th:src="@{/js/responsivo.js}"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script th:src="@{/js/cargarAnimalesHembra.js}"></script>

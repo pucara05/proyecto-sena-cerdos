@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import admin_user.dto.AnimalCeloDTO;
 import admin_user.model.Animal_celo;
 import admin_user.model.Animal_for_user;
 
@@ -25,7 +26,8 @@ public interface Animal_celo_repository  extends JpaRepository<Animal_celo,Long>
      // @Query("SELECT ac.dniCerdoHembra FROM Animal_celo ac WHERE ac.animal_for_user.sexo = :sexo AND ac.animal_for_user = :animalForUser")
      // List<Long> obtenerDnisCerdosHembraPorAnimalForUserAndSexo(@Param("animalForUser") Animal_for_user animalForUser, @Param("sexo") String sexo);
       
-    
+     @Query("SELECT a FROM Animal_celo a WHERE a.dni = :dni")
+    public Animal_celo findByDni(Long dni);
 
       // Método para obtener los DNIs de cerdos de sexo hembra desde la base de datos
    // @Query("SELECT ac.dniCerdoHembra FROM Animal_celo ac WHERE ac.sexo = 'hembra'")

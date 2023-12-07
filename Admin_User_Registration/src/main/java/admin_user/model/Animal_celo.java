@@ -32,7 +32,9 @@ public class Animal_celo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long dniCelo;
+   // private Long dniCelo;
+
+   private Long dni;
    
     
 

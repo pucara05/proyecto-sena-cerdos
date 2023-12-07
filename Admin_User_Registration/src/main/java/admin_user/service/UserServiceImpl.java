@@ -1,10 +1,13 @@
 package admin_user.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import admin_user.dto.UserDto;
+import admin_user.model.Animal_for_user;
 import admin_user.model.User;
 import admin_user.repositories.UserRepository;
 
@@ -28,7 +31,16 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail(email);
     }
 
+@Override
+ public List<User>getAllUser(){
+    return userRepository.findAll();
+}
 
+
+@Override
+public void deleteUser(Long id) {
+    userRepository.deleteById(id);
+}
 
 
 	

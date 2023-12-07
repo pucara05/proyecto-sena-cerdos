@@ -46,7 +46,7 @@ public interface Animal_celo_service {
 //metodo buscar por id si sirve 
 public AnimalCeloDTO obtenerAnimalId(Long id) ;
 
-
+public Animal_celo obtenerAnimalCeloPorDni(Long dni);
 
 
 //public Animal_celo updateAnimalCeloFromDTO(AnimalCeloDTO animalDTO);

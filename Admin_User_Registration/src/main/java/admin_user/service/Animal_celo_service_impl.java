@@ -80,24 +80,21 @@ public class Animal_celo_service_impl implements Animal_celo_service {
     
 
 
-   
 
 
 
 
-
-
-
-
-
-/*    @Override
+   @Override
     public Animal_celo obtenerAnimalCeloPorDni(Long dni) {
         // Implementa la lógica para buscar por DNI
-        // Por ejemplo: return animal_celo_repository.findByDni(dni);
-        return null;
-    }
+      
+        if (dni!= null) {
+            return  animal_celo_repository.findByDni(dni);
+       
+    }return null;
+}
 
-*/
+
 //sirve metodo para buscar por id 
 /*@Override
 public Animal_celo obtenerAnimalPorId(Long id) {
