@@ -98,6 +98,8 @@ header{
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
     max-width: 100%; /* Limita el ancho máximo del superpuesto */
     width: 100%; /* Ajusta el ancho del superpuesto en pantallas más pequeñas */
 }

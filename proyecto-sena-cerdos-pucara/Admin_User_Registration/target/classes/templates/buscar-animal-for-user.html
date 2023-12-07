@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar Animal</title>
-    <link rel="stylesheet" th:href="@{/css/buscar.css}">
+    <link rel="stylesheet" th:href="@{/css/cerdo-tabla.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header>
         <div class="header__contenedor">
-            <img src="/img/cerdo (2).png" alt=>
-            <div class="nombre-logo">
-                <h2>Cerdos Pink</h2>
-            </div>
+            <h1>Cerdos Pink</h1>
         </div>
         <div class="header__contenedor--items">
             <div class="header__contenedor--ayuda">
@@ -99,21 +96,25 @@
 </form>-->
 <form th:action="@{/buscar}" method="get">
     <div class="form-group--btn">
-        <div class="btn_hijo">
-            <input type="text" id="buscarPor" class="form-control" name="id" placeholder="Buscar por ID">
-        </div>
-        <div class="btn_hijo">
-            <input type="text" id="buscarPor" class="form-control" name="dni" placeholder="Buscar por DNI">
-        </div>
-        <div class="btn_hijo">
-            <button class="btn-1" type="submit">Buscar</button>
-        </div>
-        <div class="form-group">
-            <button class="btn-1" type="submit">Editar</button>
-        </div>
+        <input type="text" id="buscarPor" class="form-control" name="id" placeholder="Buscar por ID">
+        <input type="text" id="buscarPor" class="form-control" name="dni" placeholder="Buscar por DNI">
+        <button class="btn-1" type="submit">Buscar</button>
     </div>
 </form>
-</div>
+
+
+                
+                
+                
+
+           
+            <div class="form-group--btn">
+                <button class="btn-1" type="submit">Editar</button>
+            </div>
+            <div class="form-group--btn">
+                <button class="btn-1" type="submit">Eliminar</button>
+            </div>
+            </div>
     </div>
     
     <table  id="tablaCerdos">

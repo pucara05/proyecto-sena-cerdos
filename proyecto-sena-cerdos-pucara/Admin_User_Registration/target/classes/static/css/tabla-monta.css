@@ -6,35 +6,6 @@ body{
     margin: 0;
     box-sizing: border-box;
 }
-:root{
-    --white: #FFFFFF;
-    --black: #000000;
-    --dark: #232830;
-    --very-light-pink: #C7C7C7;
-    --text-input-field: #F7F7F7;
-    --hospital-green: #26D026;
-    --sm:14px;
-    --md:16px;
-    --lg:25px;
-    }
-    .header__contenedor{
-        display: flex;
-        justify-content: space-around;
-        text-align: center;
-        align-items: center;
-    }
-    .header__contenedor img{
-        width: 60px;
-        height: 60px;
-    }
-    .header__contenedor h2{
-        color: var(--white);
-        font-weight: bold;
-        font-size: var(--lg);
-    }
-    .nombre-logo{
-        text-align: center;
-    }
 header{
     display: flex;
     justify-content: space-between;
@@ -336,24 +307,4 @@ h3{
     display: flex;
     justify-content: center;
     font-size: 30px;
-}
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-}
-
-.social-media {
-    margin-bottom: 15px;
-}
-
-.social-media a {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.social-media img {
-    width: 40%; /* Ajusta el tamaño de tus íconos */
-    height: auto;
 }

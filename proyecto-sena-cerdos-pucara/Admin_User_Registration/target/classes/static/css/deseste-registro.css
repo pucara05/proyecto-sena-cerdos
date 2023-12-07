@@ -6,24 +6,6 @@ body{
     margin: 0;
     box-sizing: border-box;
 }
-.header__contenedor{
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    align-items: center;
-}
-.header__contenedor img{
-    width: 60px;
-    height: 60px;
-}
-.header__contenedor h2{
-    color: var(--white);
-    font-weight: bold;
-    font-size: var(--lg);
-}
-.nombre-logo{
-    text-align: center;
-}
 header{
     display: flex;
     justify-content: space-between;

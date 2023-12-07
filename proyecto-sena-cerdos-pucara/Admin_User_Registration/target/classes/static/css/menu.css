@@ -288,23 +288,10 @@ footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 20px;
-}
-
-.social-media {
-    margin-bottom: 15px;
-}
-
-.social-media a {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.social-media img {
-    width: 40%; /* Ajusta el tamaño de tus íconos */
+    padding: 10px 0;
     height: auto;
+    width: 100%;
 }
-
 .registro > h1{
     padding-top: 20px;
     display: flex;

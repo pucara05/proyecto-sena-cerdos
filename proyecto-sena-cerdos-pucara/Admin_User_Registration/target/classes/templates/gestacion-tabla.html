@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" th:href="@{/css/cerdo-tabla.css}">
+    <link rel="stylesheet" th:href="@{/css/tabla-gestacion.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -67,13 +67,8 @@
         <div class="contenedor__btn">
         <!-- Formulario para buscar por dni -->
         <form th:action="@{/buscar-por-id-animal-gestacion}" method="get">
-            <div class="btn:hijo">
-                <input class="bus" type="text" id="searchInput" name="dni" placeholder="Buscar por Id" pattern="[0-9]+" title="Ingrese solo números">
-            </div>
-            <div class="btn_hijo">
-                <button class="btn" type="submit">Buscar</button>
-            </div>
-           
+            <input class="bus" type="text" id="searchInput" name="dni" placeholder="Buscar por DNI" pattern="[0-9]+" title="Ingrese solo números">
+            <button class="btn" type="submit">Buscar</button>
         </form>
         </div>
     
@@ -83,11 +78,10 @@
             <tr>
                 <th>Id</th>
                 <th>Dni Monta</th>
-                <th>Gestacion Hembra</th>
-                <th>Fecha Inicio</th>
-                <th>Fecha Fin</th>
-                <th>Acciones</th>
-               <th>Acciones</th> <!-- Añadimos una columna para las acciones -->
+                <th>gestacionHembra</th>
+                <th>fechaInicio</th>
+                <th>fechaFin</th>
+        <!--       <th>Acciones</th> --> <!-- Añadimos una columna para las acciones -->
             </tr>
         </thead>
         <tbody>
@@ -112,10 +106,7 @@
 
                 <td> 
                     <div class="form-group--btn">
-                        <button class="btn">
-                            <a class="btn-1" th:href="@{'' + ${animalMonta.id}}">Editar</a>
-                        </button>
-                
+               <!-- <a class="btn-1" th:href="@{'' + ${animalMonta.id}}">Editar</a>-->
                 </div>
             </td>
             </tr>

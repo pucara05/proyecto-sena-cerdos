@@ -56,7 +56,7 @@ header{
     align-items: center;
     text-align: center;
     background-color: #333;
-    padding: 10px;
+    
 }
 .header__contenedor > h1{
     color: #fff;
@@ -258,20 +258,17 @@ li > a{
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.cont_registro{
-    height: 600px;
-}
 
-h3 {
+h2 {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     font-size: 30px;
 }
 
 /* Estilos del formulario */
 form {
     max-width: 400px;
-    padding-left: 25px;
+    padding: 20px;
 }
 
 .form-group {
@@ -293,7 +290,6 @@ select {
     font-size: 16px;
     margin-top: 5px; /* Espacio entre campos */
     background-color: #F7F7F7;
-    margin-bottom: 30px;
 }
 
 .btn {
@@ -363,34 +359,6 @@ footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 20px;
-}
-
-.social-media {
-    margin-bottom: 15px;
-}
-
-.social-media a {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.social-media img {
-    width: 40%; /* Ajusta el tamaño de tus íconos */
-    height: auto;
-}
-@media (max-width:400px) {
-    .header__contenedor h2{
-        font-size: var(--md);
-    }
-    .header__contenedor img{
-        width: 40px;
-        height: 40px;
-    }
-    .nav__bars{
-    font-size: 25px;
-}
-    .social-media img{
-        width: 30px;
-    }
+    padding: 10px 0;
+    margin-top: 40px;
 }
