@@ -362,3 +362,16 @@ footer {
     padding: 10px 0;
     margin-top: 40px;
 }
+
+
+.check {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    
+ 
+   
+   
+   
+}
