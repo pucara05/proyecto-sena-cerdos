@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/preparto-regisro.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="header__contenedor">
+            <img src="/img/cerdo (2).png" alt=>
+            <div class="nombre-logo">
+                <h2>Cerdos Pink</h2>
+            </div>
+        </div>
+        <div class="header__contenedor--items">
+            <div class="header__contenedor--ayuda">
+                <a href="">Ayuda</a>
+            </div>
+            <span>|</span>
+            <div class="header__contenedor--Contactos">
+                <a href="">Usuario</a>
+            </div>
+            <span>|</span>
+            <div class="header__contenedor--Cerrar">
+                <a th:href="@{/logout}">Cerrar Sesion</a>
+            </div>
+        </div>
+        <div class="nav__bars">
+            <div class="nav__toggle" id="bars">
+                <i class="fa-solid fa-bars"onclick="toggleMenu()"></i>
+            </div>
+            
+        </div>
+    </header>
+    <nav>
+            <ul class="ul__menu">
+                <div class="nav__menu--item">
+                    <li><i class="fa-sharp fa-solid fa-house"></i><a th:href="@{/}">Inicio</a></li>
+                </div>
+                <div class="nav__menu--item">
+                    <li><i class="fa-solid fa-registered menu"></i><a th:href="@{/menu}">Registros Menu</a></li>
+                </div>
+                <div class="nav__menu--item">
+                    <li><i class="fa-solid fa-database"></i><a th:href="@{menu-tablas}">Tablas</a></li>
+                </div>
+            </ul>
+    </nav>
+    <div class="contenedor__flotante" id="menu">
+        <ul class="Contenedor__ul">
+            <div class="contenedor__salir">
+                <i class="fa-solid fa-xmark"onclick="toggleMenu()"></i>
+            </div>
+            <li class="menu-item"><a class="a-m" th:href="@{/}">Inicio</a></li>
+            <li class="menu-item"><a class="a-m" th:href="@{/menu}">Menu</a></li>
+            <li class="menu-item"><a class="a-m" href="/menu-tablas">Tablas</a></li>
+        </ul>
+    </div>
+    <section class="contenido">
+        <h2>Bienvenido al mejor software para la gestión de cerdos</h2>
+        <p>Descripción breve del software y sus beneficios.</p>
+    </section>
+    <section class="cont_registro">
+        <div class="container">
+            <h3>Registro de Preparto</h3> 
+            <form  id="myForm"  th:action="@{/registrar-preparto}" method="post" th:object="${animal_preparto}">
+                <div class="form-group">
+
+                    <label for="dni">Dni Preparto:</label>
+                    <input type="number" id="dni" name="dni" placeholder="dni" th:field="*{dni}"  required>
+                </div>
+            
+            
+<div class="form-group">
+    <label for="selectHembra">Seleccionar cerdo hembra:</label>
+            <select id="selectHembra" name="dniPrepartoHembra" title="Lista">
+                <option value="">Seleccionar cerdo hembra</option>
+                <!-- Aquí puedes agregar opciones si se obtienen del backend -->
+            </select>
+</div>
+
+
+            
+                <div class="form-group">
+                    <label for="fechaPreparto">Fecha de Preparto:</label>
+                    <input type="date" id="fechaPreparto" name="fechaPreparto" th:field="*{fechaPreparto}" required>
+                </div>
+                    
+
+                <div class="form-group">
+                    <label for="estadoSalud">Estado Salud:</label>
+                  <select id="estadoSalud" name="estadoSalud">
+                      <option value="Selecione una opcion">Selecione una opcion</option>
+                      <option value="Normal">Normal</option>
+                      <option value="Estresada">Estresada</option>
+                      <option value="Enferma">Enferma</option>
+                      <option value="Alerta">Alerta</option>
+                      <option value="Complicaciones">Complicaciones</option>
+                      <option value="Inquietud">Inquietud</option>    
+                      <option value="Observación requerida">Observación requerida</option>  
+                      <option value="Síntomas de parto inminente">Síntomas de parto inminente</option>            
+                  </select><br><br>
+                 
+                </div>
+                        
+                            
+                <div class="form-group-1">
+            <button class="btn" type="submit">Registrar</button>
+            <button class="btn"  type="submit"  >Listas</button>
+           <a th:href="@{/mostrar-preparto-tabla}">Listas </a>
+            
+                </div>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="social-media">
+            <a href="https://www.facebook.com/profile.php?id=61553875659336">
+                <img src="/img/facebook.png" alt="Facebook">
+            </a>
+            <a href="mailto:tucorreo@gmail.com" target="_blank" rel="noopener noreferrer">
+                <img src="/img/gmail-1.png" alt="Gmail">
+            </a>
+        </div>
+        <p>© 2023 Cerdos pink | Todos los derechos reservados</p>
+    </footer>
+   
+    <script th:src="@{/js/responsivo.js}"></script>
+    <!-- Incluir jQuery usando Thymeleaf -->
+<script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
+
+        <!-- Agrega la referencia al archivo JavaScript -->
+<script th:src="@{/js/select-monta-hembra.js}"></script>
+<script th:src="@{/js/select-monta-macho.js}"></script>
+        
+    
+</body>
+</html>

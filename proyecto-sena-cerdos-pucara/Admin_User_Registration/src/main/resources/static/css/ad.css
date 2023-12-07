@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.menu-lateral{
+    position:fixed;
+    width: 250px;
+    height: 100%;
+    margin: 10px;
+    background-color: bisque;
+}
