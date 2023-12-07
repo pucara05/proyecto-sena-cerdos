@@ -65,7 +65,7 @@
             <form  id="myForm"  th:action="@{/registrar-parto}" method="post" th:object="${animal_parto}">
                 <div class="form-group">
 
-                    <label for="dni">Dni Preparto:</label>
+                    <label for="dni">Dni Parto:</label>
                     <input type="number" id="dni" name="dni" placeholder="dni" th:field="*{dni}"  required>
                 </div>
             
@@ -83,7 +83,7 @@
 
             
                 <div class="form-group">
-                    <label for="fechaParto">Fecha de Preparto:</label>
+                    <label for="fechaParto">Fecha de Parto:</label>
                     <input type="date" id="fechaParto" name="fechaParto" th:field="*{fechaParto}" required>
                 </div>
                     
@@ -95,7 +95,7 @@
                 </div>
                         
                 <div class="form-group">
-                    <label for="lechonesMuertos">Lechones vivos:</label>
+                    <label for="lechonesMuertos">Lechones Muertos:</label>
                     <input type="number" id="lechonesMuertos" name="lechonesMuertos" placeholder="lechonesMuertos" th:field="*{lechonesMuertos}"  required  max="14">
                  
                 </div>

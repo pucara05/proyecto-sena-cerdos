@@ -61,17 +61,15 @@
     </section>
     <section class="cont_registro">
         <div class="container">
-            <h2>Registro de Parto</h2> 
-            <form  id="myForm"  th:action="@{/registrar-parto}" method="post" th:object="${animal_parto}">
+            <h2>Registro de Atencion Lechon</h2> 
+            <form  id="myForm"  th:action="@{/registrar-atencion}" method="post" th:object="${animal_atencion}">
                 <div class="form-group">
 
-                    <label for="dni">Dni Parto:</label>
+                    <label for="dni">Dni Atencion:</label>
                     <input type="number" id="dni" name="dni" placeholder="dni" th:field="*{dni}"  required>
                 </div>
-            
-            
                 <div class="form-group">
-                    <label for="estadoSalud">Estado de Salud:</label>
+                    <label for="estadoSalud">dni Manejo:</label>
                     <select id="estadoSalud" name="estadoSalud">
                         <option value="">Seleccione una opción</option>
                         <!-- Iterar sobre la lista de estados de salud -->
@@ -79,31 +77,65 @@
                     </select>
                     <br><br>
                 </div>
+               
+            
+               
 
 
             
                 <div class="form-group">
-                    <label for="fechaParto">Fecha de Parto:</label>
-                    <input type="date" id="fechaParto" name="fechaParto" th:field="*{fechaParto}" required>
+                    <label for="fechaAtencion">Fecha de Atencion Lechon:</label>
+                    <input type="date" id="fechaAtencion" name="fechaAtencion" th:field="*{fechaAtencion}" required>
                 </div>
                     
 
                 <div class="form-group">
-                    <label for="lechonesVivos">Lechones vivos:</label>
-                    <input type="number" id="lechonesVivos" name="lechonesVivos" placeholder="lechonesVivos" th:field="*{lechonesVivos}"  required  max="14">
+                    <label for="tipoAtencion">Tipo de Atencion:</label>
+                  <select id="tipoAtencion" name="tipoAtencion">
+                      <option value="Selecione una opcion">Selecione una opcion</option>
+                      <option value="Normal">Normal</option>
+                      <option value="Estresada">Estresada</option>
+                      <option value="Enferma">Enferma</option>
+                      <option value="Alerta">Alerta</option>
+                      <option value="Complicaciones">Complicaciones</option>
+                      <option value="Inquietud">Inquietud</option>    
+                      <option value="Observación requerida">Observación requerida</option>  
+                      <option value="Síntomas de muerte inminente">Síntomas de parto inminente</option>            
+                  </select><br><br>
                  
                 </div>
-                        
+               
+
+
+              
                 <div class="form-group">
-                    <label for="lechonesMuertos">Lechones Muertos:</label>
-                    <input type="number" id="lechonesMuertos" name="lechonesMuertos" placeholder="lechonesMuertos" th:field="*{lechonesMuertos}"  required  max="14">
+                    <label for="estado">Estado lechon:</label>
+                  <select id="estado" name="estado">
+                      <option value="Selecione una opcion">Selecione una opcion</option>
+                      <option value="Normal">Normal</option>
+                      <option value="Estresada">Estresada</option>
+                      <option value="Enferma">Enferma</option>
+                      <option value="Alerta">Alerta</option>
+                      <option value="Complicaciones">Complicaciones</option>
+                      <option value="Inquietud">Inquietud</option>    
+                      <option value="Observación requerida">Observación requerida</option>  
+                      <option value="Síntomas de parto inminente">Síntomas de parto inminente</option>            
+                  </select><br><br>
                  
                 </div>
+                <div class="form-group">
+
+                    <label for="pesoLechon">Dni Atencion:</label>
+                    <input type="number" id="pesoLechon" name="pesoLechon" placeholder="pesoLechon" th:field="*{pesoLechon}"  required>
+                </div>
+
+
+               
                             
                 <div class="form-group-1">
             <button class="btn" type="submit">Registrar</button>
             <button class="btn"  type="submit"  >Listas</button>
-           <a th:href="@{/mostrar-parto-tabla}">Listas </a>
+           <a th:href="@{/mostrar-manejo-tabla}">Listas </a>
             
                 </div>
             </form>

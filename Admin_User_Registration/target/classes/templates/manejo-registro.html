@@ -65,27 +65,11 @@
             <form  id="myForm"  th:action="@{/registrar-manejo}" method="post" th:object="${animal_manejo}">
                 <div class="form-group">
 
-                    <label for="dni">Dni Preparto:</label>
+                    <label for="dni">Dni Manejo:</label>
                     <input type="number" id="dni" name="dni" placeholder="dni" th:field="*{dni}"  required>
                 </div>
-            
-            
-               
-
-
-            
                 <div class="form-group">
-                    <label for="fechaInicio">Fecha de Preparto:</label>
-                    <input type="date" id="fechaInicio" name="fechaInicio" th:field="*{fechaInicio}" required>
-                </div>
-                    
-
-                <div class="form-group">
-                    <label for="fechaFin">Fecha de Preparto:</label>
-                    <input type="date" id="fechaFin" name="fechaFin" th:field="*{fechaFin}" required>
-                </div>
-                <div class="form-group">
-                    <label for="estadoSalud">Estado de Salud:</label>
+                    <label for="estadoSalud">dni Parto:</label>
                     <select id="estadoSalud" name="estadoSalud">
                         <option value="">Seleccione una opción</option>
                         <!-- Iterar sobre la lista de estados de salud -->
@@ -93,6 +77,38 @@
                     </select>
                     <br><br>
                 </div>
+               
+            
+               
+
+
+            
+                <div class="form-group">
+                    <label for="fechaInicio">Fecha de Inicio:</label>
+                    <input type="date" id="fechaInicio" name="fechaInicio" th:field="*{fechaInicio}" required>
+                </div>
+                    
+
+                <div class="form-group">
+                    <label for="fechaFin">Fecha de Fin:</label>
+                    <input type="date" id="fechaFin" name="fechaFin" th:field="*{fechaFin}" required>
+                </div>
+                <div class="form-group">
+                    <label for="estadoSalud">Estado Manejo:</label>
+                  <select id="estadoSalud" name="estadoSalud">
+                      <option value="Selecione una opcion">Selecione una opcion</option>
+                      <option value="Normal">Normal</option>
+                      <option value="Estresada">Estresada</option>
+                      <option value="Enferma">Enferma</option>
+                      <option value="Alerta">Alerta</option>
+                      <option value="Complicaciones">Complicaciones</option>
+                      <option value="Inquietud">Inquietud</option>    
+                      <option value="Observación requerida">Observación requerida</option>  
+                      <option value="Síntomas de parto inminente">Síntomas de parto inminente</option>            
+                  </select><br><br>
+                 
+                </div>
+               
                             
                 <div class="form-group-1">
             <button class="btn" type="submit">Registrar</button>

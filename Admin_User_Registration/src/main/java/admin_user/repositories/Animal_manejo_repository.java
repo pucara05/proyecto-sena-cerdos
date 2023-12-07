@@ -1,5 +1,7 @@
 package admin_user.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -17,7 +19,8 @@ public interface Animal_manejo_repository extends JpaRepository<Animal_manejo,Lo
     public Animal_manejo findByDni(Long dni);
 
 
-    
+    @Query("SELECT DISTINCT a.estado FROM Animal_manejo a") // Query para obtener estados de salud sin duplicados
+    List<String> obtenerEstadoManejo();
 
 
 

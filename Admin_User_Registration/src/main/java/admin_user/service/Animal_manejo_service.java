@@ -46,7 +46,9 @@ public List< Animal_manejo> getManejo(){
         return animal_manejo_repository.findByDni(dni);
     }
 
-
+    public List<String> obtenerEstadoManejo() {
+        return animal_manejo_repository.obtenerEstadoManejo(); // Método en tu repositorio para obtener los estados de salud
+    }
 
 
 
