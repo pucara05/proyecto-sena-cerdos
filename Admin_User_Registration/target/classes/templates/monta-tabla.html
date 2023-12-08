@@ -115,9 +115,9 @@
             <td th:text="${animalMonta.fechaMonta}"></td>        
             <td> <!-- Acciones para el animal encontrado -->
                 <div class="form-group--btn">
-                   <!-- <button class="bt">
-                        <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${animal.id}}">Editar</a>
-                    </button>-->
+                <button class="bt">
+                        <a class="btn-1" th:href="@{'/animal_monta/editar/' + ${animalMonta.dni}}">Editar</a>
+                    </button>
                 </div>
             </td>
         </tr>

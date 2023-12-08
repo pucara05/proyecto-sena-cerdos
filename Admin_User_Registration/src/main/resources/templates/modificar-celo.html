@@ -64,30 +64,32 @@
     </section>
     <section class="cont_registro">
         <div class="container">
+          
+
             <h2>Modificar Celo</h2>
 
-            <form id="animalForm" th:action="@{/animal_celo/modificar}" method="post">
-                <input type="hidden" id="animalId" name="animalId" th:value="${animalCelo.id}">
+            <form id="animalForm" th:action="@{/animal_celo/modificar/{id}(id=${animal.id})}" method="post" th:object="${animal}">
+                <input type="hidden" id="animalId" name="id" th:value="${animal.id}">
                 
                 <div class="form-group">
                     <label for="dni">DNI:</label>
-                    <input type="number" id="dni" name="dniCelo" th:value="${animalCelo.dniCelo}" required>
+                    <input type="number" id="dni" name="dni" th:value="${animal.dni}" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="fechaCelo">Fecha de Celo:</label>
-                    <input type="date" id="fechaCelo" name="fechaCelo" th:value="${animalCelo.fechaCelo}" required>
+                    <input type="date" id="fechaCelo" name="fechaCelo" th:value="${animal.fechaCelo}" required>
                 </div>
                 
                 <!-- Otros campos que desees mostrar o modificar -->
                
                 <div class="form-group-1">
-                    <button class="btn" type="button" onclick="guardarCambios()">Guardar cambios</button>
-                   <!-- <button class="btn" type="submit">Listas</button>
-                    <a th:href="@{/tabla-celo}">Listas</a>-->
+                    <button class="btn" type="submit">Guardar cambios</button>
+                    <!-- <button class="btn" type="submit">Listas</button>
+                    <a th:href="@{/tabla-celo}">Listas</a> -->
                 </div>
             </form>
-            
+                 
             <footer>
                 <div class="social-media">
                     <a href="https://www.facebook.com/profile.php?id=61553875659336">

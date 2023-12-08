@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -145,6 +146,46 @@ public List<Animal_for_user> getMachoAnimalsDni() {
         model.addAttribute("animalMonta", animalMonta);
         return "monta-tabla"; // Reemplaza con el nombre de tu vista
     }
+
+
+    @GetMapping("/animal_monta/editar/{dni}")
+    public String mostrarFormularioEditarAnimalMonta(@PathVariable Long dni, Model model) {
+        Animal_monta animal = animal_monta_service.buscarPorDni(dni);
+    
+        if (animal != null) {
+            model.addAttribute("animal", animal);
+            return "modificar-monta"; // Vista para modificar Animal_monta
+        } else {
+            return "animal_no_encontrado"; // Manejo cuando no se encuentra el animal
+        }
+    }
+    
+    @PostMapping("/animal_monta/modificar/{dni}")
+    public String modificarAnimalMonta(@PathVariable Long dni, @ModelAttribute Animal_monta animalMonta) {
+        Animal_monta animalExistente = animal_monta_service.buscarPorDni(dni);
+    
+        if (animalExistente != null) {
+            // Verifica si el animalExistente es el mismo que se está modificando
+            if (animalExistente.getId().equals(animalMonta.getId())) {
+                // Actualiza los atributos del animalExistente con los datos del animalMonta
+                animalExistente.setDni(animalMonta.getDni());
+                animalExistente.setFechaMonta(animalMonta.getFechaMonta());
+                // Actualiza otros atributos según sea necesario
+    
+                animal_monta_service.saveAnimalMonta(animalExistente);
+                return "redirect:/mostrar-datos-tabla"; // Redireccionar a la tabla de Animal_monta
+            } else {
+                // Ya hay otro Animal_monta con el mismo DNI, manejar el error
+                return "animal_no_encontrado";
+            }
+        } else {
+            // El Animal_monta no existe, mostrar un mensaje de error o redireccionar a una página de error
+            return "animal_no_encontrado";
+        }
+    }
+    
+
+
 
 
 }

@@ -254,7 +254,7 @@ public String modificarAnimalCelo(@PathVariable Long id, @ModelAttribute Animal_
 //agarra el modelo y carga los datos al registro con el id para modificarlos cuando se le de al boton
 
 
-
+/* 
 @GetMapping("/animal_celo/editar/{id}")
 public String mostrarFormularioEditarAnimalCelo(@PathVariable Long id, Model model) {
     AnimalCeloDTO animal = animal_celo_service.obtenerAnimalId(id);
@@ -267,37 +267,61 @@ public String mostrarFormularioEditarAnimalCelo(@PathVariable Long id, Model mod
         return "animal_no_encontrado";
     }
 }
+*/
 
+/* 
+//metodo para la vista  modificar cerdo
+//agarra el modelo y carga los datos al registro con el id para modificarlos cuando se le de al boton
+@GetMapping("/animal_for_user/editar/{id}")
+public String mostrarFormularioEditar(@PathVariable Long id, Model model) {
+    AnimalCeloDTO animal = animal_celo_service.obtenerAnimalId(id);
 
+    if (animal != null) {
+        model.addAttribute("animal", animal);
+        return "modificar-celo";
+    } else {
+        return "animal_no_encontrado";
+    }
+}
+*/
 
-@PostMapping("/animal_celo/modificar")
-public String modificarAnimalCelo(@ModelAttribute Animal_celo animalCelo) {
+/* 
+// Método para mostrar la vista de edición del animal en celo por su ID
+@GetMapping("/editar/{id}")
+public String mostrarVistaEditar(@PathVariable Long id, Model model) {
     try {
-        Animal_celo animalExistente = animal_celo_service.obtenerAnimalCeloPorId(animalCelo.getId());
+        // Obtener el AnimalCeloDTO por su ID
+        AnimalCeloDTO animal = animal_celo_service.obtenerAnimalId(id);
 
-        if (animalExistente != null) {
-            // Actualiza los campos del animal existente con los nuevos valores
-            animalExistente.setDni(animalCelo.getDni());
-            animalExistente.setFechaCelo(animalCelo.getFechaCelo());
-            // Actualiza otros campos según sea necesario
+        // Agregar el AnimalCeloDTO al modelo para ser utilizado en la vista
+        model.addAttribute("animal", animal);
 
-            // Guarda los cambios en la base de datos
-            animal_celo_service.saveAnimalCelo(animalExistente);
-
-            return "redirect:/tabla-celo"; // Redirige a donde sea necesario
-        } else {
-            // El animal no existe, manejar el error o redirigir a una página de error
-            return "animal_no_encontrado";
-        }
+        // Devolver el nombre de la vista para editar el animal en celo
+        return "modificar-celo"; // Nombre de la vista Thymeleaf
     } catch (Exception e) {
-        // Manejar cualquier excepción que pueda ocurrir durante la modificación
-        // Por ejemplo, registrar el error en un log y redirigir a una vista de error
-        // log.error("Error al modificar el animal: " + e.getMessage());
-        return "redirect:/error"; // Redirigir a una vista de error
+        // Manejo de errores: redirigir a una página de error o mostrar un mensaje de error
+        return "error"; // Página de error personalizada
     }
 }
 
-  
+
+
+
+    // Método para manejar las peticiones de modificación
+    @PostMapping("/modificar-celo")
+    public String modificarAnimalCelo(@ModelAttribute AnimalCeloDTO animalCeloDTO) {
+        try {
+            // Llamar al método de actualización del servicio
+            AnimalCeloDTO animalActualizado = animal_celo_service.updateAnimalCelo(animalCeloDTO);
+
+            // Realizar alguna acción con el animal actualizado, como redirigir a una vista o mostrar un mensaje de éxito
+            return "redirect:/tabla-cerdo/" + animalActualizado.getId(); // Redirigir a los detalles del animal modificado
+        } catch (Exception e) {
+            // Manejo de errores: puedes redirigir a una página de error o mostrar un mensaje de error
+            return "error"; // Redirigir a una página de error personalizada
+        }
+    }
+  */
 
 /* 
 //registar ya sirve 
@@ -360,6 +384,46 @@ public String buscarAnimalPorId(@RequestParam(required = false) Long id, Model m
     }
 }
 
+
+
+@GetMapping("/animal_celo/editar/{id}")
+public String mostrarFormularioEditarAnimalCelo(@PathVariable Long id, Model model) {
+    Animal_celo animal = animal_celo_service.obtenerAnimalCeloPorId(id);
+
+    if (animal != null) {
+        model.addAttribute("animal", animal);
+        return "modificar-celo"; // Vista para modificar Animal_celo
+    } else {
+        return "animal_no_encontrado"; // Manejo cuando no se encuentra el animal
+    }
+}
+
+
+@PostMapping("/animal_celo/modificar/{id}")
+public String modificarAnimalCelo(@PathVariable Long id, @ModelAttribute Animal_celo animalCelo) {
+    Animal_celo animalExistente = animal_celo_service.obtenerAnimalCeloPorId(id);
+
+    if (animalExistente != null) {
+        // Verifica si hay otro Animal_celo con el mismo DNI
+        Animal_celo otroAnimalConMismoDni = animal_celo_service.obtenerAnimalCeloPorDni(animalCelo.getDni());
+
+        if (otroAnimalConMismoDni == null || otroAnimalConMismoDni.getId().equals(id)) {
+            // No hay otro Animal_celo con el mismo DNI o es el mismo animal que estamos editando
+            animalExistente.setDni(animalCelo.getDni());
+            animalExistente.setFechaCelo(animalCelo.getFechaCelo());
+         
+
+            animal_celo_service.saveAnimalCelo(animalExistente);
+            return "redirect:/tabla-celo"; // Redireccionar a la tabla de Animal_celo
+        } else {
+            // Ya hay otro Animal_celo con el mismo DNI, manejar el error
+            return "animal_no_encontrado";
+        }
+    } else {
+        // El Animal_celo no existe, mostrar un mensaje de error o redireccionar a una página de error
+        return "animal_no_encontrado";
+    }
+}
 
 
     

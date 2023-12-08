@@ -244,19 +244,6 @@ public String guardarDato(@ModelAttribute("animal_for_user") Animal_for_user ani
  
 
 
-//metodo para la vista  modificar cerdo
-//agarra el modelo y carga los datos al registro con el id para modificarlos cuando se le de al boton
-     @GetMapping("/animal_for_user/editar/{id}")
-    public String mostrarFormularioEditar(@PathVariable Long id, Model model) {
-        Animal_for_user animal = animal_for_user_service.obtenerAnimalPorId(id);
-
-        if (animal != null) {
-            model.addAttribute("animal", animal);
-            return "modificar-cerdo";
-        } else {
-            return "animal_no_encontrado";
-        }
-    }
 
 /*  //metodo para modificar sirve pero modifica dnis iguales falta arreglar
     @PostMapping("/animal_for_user/modificar/{id}")
@@ -281,6 +268,24 @@ public String guardarDato(@ModelAttribute("animal_for_user") Animal_for_user ani
     
 
    */
+
+
+
+
+//metodo para la vista  modificar cerdo
+//agarra el modelo y carga los datos al registro con el id para modificarlos cuando se le de al boton
+     @GetMapping("/animal_for_user/editar/{id}")
+    public String mostrarFormularioEditar(@PathVariable Long id, Model model) {
+        Animal_for_user animal = animal_for_user_service.obtenerAnimalPorId(id);
+
+        if (animal != null) {
+            model.addAttribute("animal", animal);
+            return "modificar-cerdo";
+        } else {
+            return "animal_no_encontrado";
+        }
+    }
+    
 
 //metodo para modificar nuevo si sirve por ahora faltan mas pruebas
    @PostMapping("/animal_for_user/modificar/{id}")

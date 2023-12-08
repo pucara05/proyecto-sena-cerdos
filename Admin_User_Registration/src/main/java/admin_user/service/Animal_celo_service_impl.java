@@ -59,6 +59,43 @@ public class Animal_celo_service_impl implements Animal_celo_service {
     }
     */
 
+    /*********************************************************************** */
+    public Animal_celo convertirDtoAEntidad(AnimalCeloDTO animalCeloDTO) {
+        Animal_celo animalCelo = new Animal_celo();
+        
+        // Asignar los valores del DTO a la entidad
+        animalCelo.setDni(animalCeloDTO.getDni());
+        animalCelo.setFechaCelo(animalCeloDTO.getFechaCelo());
+        // Asignar otros valores
+        
+        return animalCelo;
+    }
+
+    public AnimalCeloDTO updateAnimalCelo(AnimalCeloDTO animalCeloDTO) {
+        // Convertir AnimalCeloDTO a Animal_celo
+        Animal_celo animalCelo = convertirDtoAEntidad(animalCeloDTO);
+    
+        // Guardar la entidad actualizada
+        Animal_celo animalGuardado = animal_celo_repository.save(animalCelo);
+    
+        // Convertir la entidad actualizada a DTO y retornarla
+        return convertirEntidadADto(animalGuardado);
+    }
+
+    private AnimalCeloDTO convertirEntidadADto(Animal_celo animalCelo) {
+        AnimalCeloDTO animalCeloDTO = new AnimalCeloDTO();
+        
+        // Asignar los valores de la entidad al DTO
+        animalCeloDTO.setDni(animalCelo.getDni());
+        animalCeloDTO.setFechaCelo(animalCelo.getFechaCelo());
+        // Asignar otros valores
+        
+        return animalCeloDTO;
+    }
+
+    /******************************************************************** */
+
+
 
     @Override
     public Animal_celo saveAnimalCelo(Animal_celo animal) {

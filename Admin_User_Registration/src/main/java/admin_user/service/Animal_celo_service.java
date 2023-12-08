@@ -25,6 +25,9 @@ public interface Animal_celo_service {
   
  //metodo para guardar animales
  Animal_celo saveAnimalCelo(Animal_celo animal);
+ public Animal_celo convertirDtoAEntidad(AnimalCeloDTO animalCeloDTO) ;
+
+ public AnimalCeloDTO updateAnimalCelo(AnimalCeloDTO animalCeloDTO) ;
 
 //metodo para borrar animales
  public void deleteAnimalCelo(Long id) ;

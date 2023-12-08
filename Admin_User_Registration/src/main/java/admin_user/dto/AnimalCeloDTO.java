@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AnimalCeloDTO {
      private Long id;
-     private String dni;
+     private Long dni;
     //private String dniCelo;
     private Long cerdoHembraId;
     private String sexoHembra;
