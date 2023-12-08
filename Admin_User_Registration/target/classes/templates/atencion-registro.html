@@ -72,11 +72,11 @@
                     <input type="number" id="dni" name="dni" placeholder="dni" th:field="*{dni}"  required>
                 </div>
                 <div class="form-group">
-                    <label for="estadoSalud">dni Manejo:</label>
-                    <select id="estadoSalud" name="estadoSalud">
+                    <label for="selectDniManejo">dni Manejo:</label>
+                    <select id="selectDniManejo" name="dniManejo" required>
                         <option value="">Seleccione una opción</option>
                         <!-- Iterar sobre la lista de estados de salud -->
-                        <option th:each="estado : ${estadosSalud}" th:value="${estado}" th:text="${estado}"></option>
+                        <option th:each="dniManejo : ${dniManejos}" th:value="${dniManejo}"  th:text="'DNI-Manejo: ' + ${dniManejo}"></option>
                     </select>
                     <br><br>
                 </div>
@@ -94,16 +94,12 @@
 
                 <div class="form-group">
                     <label for="tipoAtencion">Tipo de Atencion:</label>
-                  <select id="tipoAtencion" name="tipoAtencion">
-                      <option value="Selecione una opcion">Selecione una opcion</option>
-                      <option value="Normal">Normal</option>
-                      <option value="Estresada">Estresada</option>
-                      <option value="Enferma">Enferma</option>
-                      <option value="Alerta">Alerta</option>
-                      <option value="Complicaciones">Complicaciones</option>
-                      <option value="Inquietud">Inquietud</option>    
-                      <option value="Observación requerida">Observación requerida</option>  
-                      <option value="Síntomas de muerte inminente">Síntomas de parto inminente</option>            
+                  <select id="tipoAtencion" name="tipoAtencion" required>
+                    <option value="">Seleccionar Tipo de Atención</option>
+                    <option value="Vacunación">Vacunación</option>
+                    <option value="Alimentación">Alimentación</option>
+                    <option value="Control de Peso">Control de Peso</option>
+                    <option value="Tratamiento Médico">Tratamiento Médico</option>           
                   </select><br><br>
                  
                 </div>
@@ -113,22 +109,18 @@
               
                 <div class="form-group">
                     <label for="estado">Estado lechon:</label>
-                  <select id="estado" name="estado">
-                      <option value="Selecione una opcion">Selecione una opcion</option>
-                      <option value="Normal">Normal</option>
-                      <option value="Estresada">Estresada</option>
-                      <option value="Enferma">Enferma</option>
-                      <option value="Alerta">Alerta</option>
-                      <option value="Complicaciones">Complicaciones</option>
-                      <option value="Inquietud">Inquietud</option>    
-                      <option value="Observación requerida">Observación requerida</option>  
-                      <option value="Síntomas de parto inminente">Síntomas de parto inminente</option>            
+                  <select id="estado" name="estado" required>
+                    <option value="">Seleccionar Estado del Lechón</option>
+                    <option value="Saludable">Saludable</option>
+                    <option value="Enfermo">Enfermo</option>
+                    <option value="Herido">Herido</option>
+                    <option value="Recuperándose">Recuperándose</option>           
                   </select><br><br>
                  
                 </div>
                 <div class="form-group">
 
-                    <label for="pesoLechon">Dni Atencion:</label>
+                    <label for="pesoLechon">Peso lechon</label>
                     <input type="number" id="pesoLechon" name="pesoLechon" placeholder="pesoLechon" th:field="*{pesoLechon}"  required>
                 </div>
 

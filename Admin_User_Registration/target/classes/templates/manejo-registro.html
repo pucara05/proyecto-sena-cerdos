@@ -74,11 +74,11 @@
               
                 <div class="form-group">
                     <label for="selectDniParto">DNI Parto:</label>
-                    <select id="selectDniParto" name="dniParto">
+                    <select id="selectDniParto" name="dniParto" required>
                         <option value="">Seleccione una opción</option>
                         <!-- Iterar sobre la lista de DNIs de Parto -->
                         <th:block th:each="dniParto : ${dniPartos}">
-                            <option th:value="${dniParto}" th:text="${dniParto}"></option>
+                            <option th:value="${dniParto}" th:text="'DNI-Partos: ' + ${dniParto}"></option>
                         </th:block>
                     </select>
                     <br><br>
@@ -103,7 +103,8 @@
 
                 <div class="form-group">
                     <label for="estadoSalud">Estado Manejo:</label>
-                  <select id="estadoSalud" name="estado">
+                  <select id="estadoSalud" name="estado" required>
+                    <option value="">Seleccione una opción</option>
                     <option value="En Proceso">En Proceso</option>
                     <option value="Completado">Completado</option>
                     <option value="Pendiente">Pendiente</option>

@@ -23,10 +23,36 @@ public class Animal_atencion_lechon_service {
         this.animal_manejo_repository = animal_manejo_repository;
     }
 
-    // Método para guardar un Animal_manejo
+  /*   // Método para guardar un Animal_manejo
     public Animal_atencion_lechon saveAnimalAtencion(Animal_atencion_lechon animalAtencion) {
         return animal_atencion_lechon_repository.save(animalAtencion);
     }
+*/
+
+
+public Animal_atencion_lechon saveAnimalAtencion(Animal_atencion_lechon animal) {
+    Long dni = animal.getDni();
+
+    // Verificar si el DNI ya existe en la base de datos
+    Animal_atencion_lechon existingAnimal = animal_atencion_lechon_repository.findByDni(dni);
+    if (existingAnimal != null) {
+        // Si ya existe un animal con el mismo DNI, muestra un mensaje o realiza alguna acción
+        // Aquí puedes imprimir un mensaje en la consola, loggear un mensaje, o realizar otra acción que desees
+        System.out.println("El DNI ya está registrado.");
+
+        // En este ejemplo, se devuelve null para indicar que no se ha guardado el animal
+        return null;
+    }
+
+    // Si el DNI no existe, se guarda el animal y se devuelve
+    return animal_atencion_lechon_repository.save(animal);
+}
+
+
+
+
+
+
 
     // metodo para listar en la tabla traer todos los datos de la entidad
     public List<Animal_atencion_lechon> getAtencion() {

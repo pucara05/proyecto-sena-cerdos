@@ -67,6 +67,14 @@ public List< Animal_manejo> getManejo(){
         return animal_manejo_repository.findByDni(dni);
     }
 
+
+    public List<String> obtenerdniManejo() {
+        // Implementa la lógica para obtener los DNIs de partos
+        // Supongamos que tienes un método en tu repositorio para obtener los DNIs de partos
+        // Reemplaza 'getDniPartos()' con el método apropiado de tu repositorio
+        List<String> dniManejos = animal_manejo_repository.getDniManejos();
+        return dniManejos;
+    }
    
 
 

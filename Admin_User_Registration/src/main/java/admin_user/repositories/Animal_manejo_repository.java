@@ -19,6 +19,9 @@ public interface Animal_manejo_repository extends JpaRepository<Animal_manejo,Lo
     public Animal_manejo findByDni(Long dni);
 
 
+   // Método para obtener los DNIs de partos
+   @Query("SELECT ap.dni FROM Animal_manejo ap")
+   List<String> getDniManejos();
   
 
 

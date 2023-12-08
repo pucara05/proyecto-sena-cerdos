@@ -34,10 +34,10 @@ public class Animal_atencion_lechon_controller {
 
     @GetMapping("/atencion-vista")
     public String mostrarVistaAtencionRegistro(Model model) {
-        // List<String> dniPartos = animal_parto_service.obtenerdniParto(); // Método
+         List<String> dniManejos = animal_manejo_service.obtenerdniManejo();// Método
         // para obtener los dniParto desde tu servicio
 
-        // model.addAttribute("dniPartos", dniPartos);
+         model.addAttribute("dniManejos", dniManejos);
         model.addAttribute("animal_atencion", new Animal_atencion_lechon()); // Agregar un objeto Animal_manejo al modelo
         return "atencion-registro"; // Devolver el nombre de la vista
     }
@@ -111,7 +111,7 @@ public String guardarDato(@ModelAttribute("animal_atencion") Animal_atencion_lec
 
 
 
-      //registar ya sirve 
+     /*  //registar ya sirve 
  @PostMapping("/registrar-atencion")
         public String guardarDato(@ModelAttribute("animal_atencion") Animal_atencion_lechon animal_atencion, Principal principal) {
             try {
@@ -123,6 +123,32 @@ public String guardarDato(@ModelAttribute("animal_atencion") Animal_atencion_lec
                 return "Error en :" + e.getMessage();
             }
         }
+*/
+
+
+@PostMapping("/registrar-atencion")
+public String guardarDato(@ModelAttribute("animal_atencion") Animal_atencion_lechon animal_atencion_lechon, Principal principal, Model model) {
+    try {
+        // Intenta guardar el Animal_celo en la base de datos
+        Animal_atencion_lechon savedAnimal = animal_atencion_lechon_service.saveAnimalAtencion(animal_atencion_lechon);
+
+        if (savedAnimal == null) {
+            // Si savedAnimal es null, significa que el DNI ya está registrado
+            // Agrega un mensaje de error al modelo para mostrarlo en la vista
+            model.addAttribute("error", "El DNI ya está registrado.");
+            // Devuelve la vista con un mensaje de error
+            return "animal_no_encontrado";
+        }
+
+        // Si el animal se guarda correctamente, redirecciona a la tabla correspondiente
+        return "redirect:/mostrar-atencion-tabla";
+    } catch (Exception e) {
+        // Si ocurre una excepción, muestra un mensaje de error genérico
+        model.addAttribute("error", "Error en: " + e.getMessage());
+        // Devuelve la vista con un mensaje de error
+        return "animal_no_encontrado";
+    }
+}
 
 
 
