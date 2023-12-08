@@ -101,31 +101,38 @@ private Animal_for_user_service animal_for_user_service;
     }
 
 
-    
+    /* 
     //buscar por dni
-//metodo para buscar por id 
-@GetMapping("/buscar-por-dni-animal-celo")
-    public String buscarPorId(@RequestParam(required = false) Long id, Model model) {
-        if (id != null) {
-            AnimalCeloDTO animalDTO = animal_celo_service.obtenerAnimalId(id);
-
-            if (animalDTO != null) {
-                model.addAttribute("animal", animalDTO);
-                return "tabla-celo"; // Nombre de la vista para mostrar los datos del animal
+    @GetMapping("/buscar-por-dni-celo")
+    public String buscarAnimalPorDni(@RequestParam(required = false) Long dni, Model model) {
+        try {
+            if (dni != null) {
+                // Lógica para buscar un animal por su número de DNI utilizando el servicio
+                Animal_celo animal = animal_celo_service.obtenerCeloPorDni(dni);
+    
+                if (animal != null) {
+                    model.addAttribute("Animal", animal);
+                    return "tabla-celo"; // Reemplaza con el nombre de tu vista
+                } else {
+                    return "animal_no_encontrado"; // Vista para mostrar si no se encuentra el animal
+                }
             } else {
-                return "animal_no_encontrado"; // Vista para mostrar cuando no se encuentra el animal
+                return "animal_no_encontrado"; // Tratar el caso en el que dni sea nulo
             }
-        } else {
-            return "animal_no_encontrado"; // Tratar el caso en el que id sea nulo
+        } catch (Exception e) {
+            return "Error: " + e.getMessage(); // Manejo de errores si ocurre alguna excepción
         }
     }
+    
+*/
+
 
 
 /* 
  @GetMapping("/buscar-por-dni-animal-celo")
-    public String buscarPorDni(@RequestParam("dni") Long dni, Model model) {
-         if (dni != null) {
-        Animal_celo animalDTO = animal_celo_service.obtenerAnimalCeloPorDni(dni);
+    public String buscarPorDni(@RequestParam("id") Long id, Model model) {
+         if (id != null) {
+        Animal_celo animalDTO = animal_celo_service.obtenerAnimalCeloPorId(id);
   if (animalDTO != null) {
         model.addAttribute("animal", animalDTO);
         return "celo-tabla"; // Reemplaza con el nombre de tu vista
@@ -137,8 +144,8 @@ private Animal_for_user_service animal_for_user_service;
     }
 
     }
-
 */
+
 
 
 
@@ -292,7 +299,7 @@ public String modificarAnimalCelo(@ModelAttribute Animal_celo animalCelo) {
 
   
 
-
+/* 
 //registar ya sirve 
  @PostMapping("/registrar-celo")
         public String guardarDato(@ModelAttribute("animal_celo") Animal_celo animal_celo, Principal principal) {
@@ -305,10 +312,53 @@ public String modificarAnimalCelo(@ModelAttribute Animal_celo animalCelo) {
                 return "Error en :" + e.getMessage();
             }
         }
+    */
+
+    @PostMapping("/registrar-celo")
+public String guardarDato(@ModelAttribute("animal_celo") Animal_celo animal_celo, Principal principal, Model model) {
+    try {
+        // Intenta guardar el Animal_celo en la base de datos
+        Animal_celo savedAnimal = animal_celo_service.saveAnimalCelo(animal_celo);
+
+        if (savedAnimal == null) {
+            // Si savedAnimal es null, significa que el DNI ya está registrado
+            // Agrega un mensaje de error al modelo para mostrarlo en la vista
+            model.addAttribute("error", "El DNI ya está registrado.");
+            // Devuelve la vista con un mensaje de error
+            return "animal_no_encontrado";
+        }
+
+        // Si el animal se guarda correctamente, redirecciona a la tabla correspondiente
+        return "redirect:/tabla-celo";
+    } catch (Exception e) {
+        // Si ocurre una excepción, muestra un mensaje de error genérico
+        model.addAttribute("error", "Error en: " + e.getMessage());
+        // Devuelve la vista con un mensaje de error
+        return "animal_no_encontrado";
+    }
+}
+
+
+
+
+
+        //buscar por id
+//metodo para buscar por id 
+@GetMapping("/buscar-por-dni-celo")
+public String buscarAnimalPorId(@RequestParam(required = false) Long id, Model model) {
+    if (id!= null) {
+        AnimalCeloDTO animal = animal_celo_service.obtenerAnimalId(id);
     
-
-
-
+        if (animal != null) {
+            model.addAttribute("animal", animal);
+            return "tabla-celo";
+        } else {    
+            return "animal_no_encontrado";
+        }
+    } else {
+        return "animal_no_encontrado"; // Tratar el caso en el que id sea nulo
+    }
+}
 
 
 

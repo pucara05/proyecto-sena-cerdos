@@ -67,11 +67,19 @@
         <div class="contenedor__btn">
         <!-- Formulario para buscar por dni -->
         <form th:action="@{/buscar-por-id-animal-monta}" method="get">
-            <input class="bus" type="text" id="searchInput" name="dni" placeholder="Buscar por DNI" pattern="[0-9]+" title="Ingrese solo números">
-            <button class="btn" type="submit">Buscar</button>
+            <div class="btn_hijo">
+                <input class="bus" type="text" id="searchInput" name="dni" placeholder="Buscar por Dni" pattern="[0-9]*" inputmode="numeric" title="Por favor, ingrese solo números"  required>            </div>
+            <div class="btn_hijo">
+                <button class="btn" type="submit" required>Buscar</button>
+            </div>
+           
         </form>
         </div>
+
+      <!--  <input class="bus" type="text" id="searchInput" name="dni" placeholder="Buscar por DNI" pattern="[0-9]+" title="Ingrese solo números">
+            <button class="btn" type="submit">Buscar</button>-->
     
+        
     
     <table>
         <thead>
@@ -81,7 +89,7 @@
                 <th>dniCeloHembra</th>
                 <th>dniCeloMacho</th>
                 <th>fechaMonta</th>
-        <!--       <th>Acciones</th> --> <!-- Añadimos una columna para las acciones -->
+                <th th:if="${animalMonta != null}">Acciones</th> <!-- Columna de acciones -->
             </tr>
         </thead>
         <tbody>
@@ -92,25 +100,29 @@
                 <td th:text="${registro.dniCeloHembra}"></td>
                 <td th:text="${registro.dniCeloMacho}"></td>
                 <td th:text="${#dates.format(registro.fechaMonta, 'dd-MM-yyyy')}"></td>
+                <td th:if="${animalMonta != null}"> <!-- Mostrar acciones solo si se encuentra un animal -->
                 <!-- Celdas para acciones (Editar, Eliminar, etc.) -->
                 <!-- <td>...</td> -->
             </tr>
-            <tr th:if="${animalMonta != null}">
-                <td th:if="${animalMonta != null}"    th:text="${animalMonta.id}"></td>
-                <td  th:if="${animalMonta != null}"   th:text="${animalMonta.dni}"></td>
-                  <!-- Aquí se coloca la columna para el ID del Cerdo Hembra si corresponde -->
-            <!-- Asumiendo que el ID del Cerdo Hembra se encuentra en la entidad Animal_for_user -->
-            <td  th:if="${animalMonta != null}"    th:text="${animalMonta.dniCeloHembra}"></td>
-                <td  th:if="${animalMonta != null}"    th:text="${animalMonta.dniCeloMacho}"></td>
-                <td  th:if="${animalMonta != null}"    th:text="${animalMonta.fechaMonta}"></td>
-
-                <td> 
-                    <div class="form-group--btn">
-               <!-- <a class="btn-1" th:href="@{'' + ${animalMonta.id}}">Editar</a>-->
+            </tbody>
+               <!-- Detalles del animal encontrado por búsqueda -->
+    <tbody th:if="${animalMonta != null}">
+        <tr>
+            <td th:text="${animalMonta.id}"></td>
+            <td th:text="${animalMonta.dni}"></td>
+            <td th:text="${animalMonta.dniCeloHembra}"></td>
+            <td th:text="${animalMonta.dniCeloMacho}"></td>
+            <td th:text="${animalMonta.fechaMonta}"></td>        
+            <td> <!-- Acciones para el animal encontrado -->
+                <div class="form-group--btn">
+                   <!-- <button class="bt">
+                        <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${animal.id}}">Editar</a>
+                    </button>-->
                 </div>
             </td>
-            </tr>
-        </tbody>    
+        </tr>
+    </tbody>
+   
     </table>
     
     </section>

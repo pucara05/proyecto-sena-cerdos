@@ -35,7 +35,7 @@ public class Animal_celo {
    // private Long dniCelo;
 
    private Long dni;
-   
+   //private String sexoHembra;
     
 
     @Temporal(TemporalType.DATE)

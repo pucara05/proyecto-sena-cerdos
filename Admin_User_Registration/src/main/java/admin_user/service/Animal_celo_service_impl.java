@@ -53,10 +53,32 @@ public class Animal_celo_service_impl implements Animal_celo_service {
         return animal_celo_repository.findAll();
     }
 
-    @Override
+  /*  @Override
     public Animal_celo saveAnimalCelo(Animal_celo animal) {
         return animal_celo_repository.save(animal);
     }
+    */
+
+
+    @Override
+    public Animal_celo saveAnimalCelo(Animal_celo animal) {
+        Long dni = animal.getDni();
+    
+        // Verificar si el DNI ya existe en la base de datos
+        Animal_celo existingAnimal = animal_celo_repository.findByDni(dni);
+        if (existingAnimal != null) {
+            // Si ya existe un animal con el mismo DNI, muestra un mensaje o realiza alguna acción
+            // Aquí puedes imprimir un mensaje en la consola, loggear un mensaje, o realizar otra acción que desees
+            System.out.println("El DNI ya está registrado.");
+    
+            // En este ejemplo, se devuelve null para indicar que no se ha guardado el animal
+            return null;
+        }
+    
+        // Si el DNI no existe, se guarda el animal y se devuelve
+        return animal_celo_repository.save(animal);
+    }
+    
     @Override
     public void deleteAnimalCelo(Long id) {
         animal_celo_repository.deleteById(id);
@@ -128,6 +150,12 @@ public Animal_celo obtenerAnimalPorId(Long id) {
         }
     }
 */
+
+
+public Animal_celo obtenerCeloPorDni(Long dni) {
+    // Implementa la lógica para buscar un animal por su DNI en el repositorio
+    return animal_celo_repository.findByDni(dni);
+}
 
 
 }

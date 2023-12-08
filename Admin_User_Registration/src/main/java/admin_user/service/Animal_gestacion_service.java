@@ -23,11 +23,35 @@ public class Animal_gestacion_service {
         this.animalForUserRepository = animal_for_user_repository;
     }
 
-
+/* 
      // Método para guardar un Animal_monta
     public Animal_gestacion saveAnimalGestacion(Animal_gestacion animalGestacion) {
         return animal_gestacion_repository.save(animalGestacion);
     }
+*/
+
+public Animal_gestacion saveAnimalGestacion(Animal_gestacion animal) {
+    Long dni = animal.getDni();
+
+    // Verificar si el DNI ya existe en la base de datos
+    Animal_gestacion existingAnimal = animal_gestacion_repository.findByDni(dni);
+    if (existingAnimal != null) {
+        // Si ya existe un animal con el mismo DNI, muestra un mensaje o realiza alguna acción
+        // Aquí puedes imprimir un mensaje en la consola, loggear un mensaje, o realizar otra acción que desees
+        System.out.println("El DNI ya está registrado.");
+
+        // En este ejemplo, se devuelve null para indicar que no se ha guardado el animal
+        return null;
+    }
+
+    // Si el DNI no existe, se guarda el animal y se devuelve
+    return animal_gestacion_repository.save(animal);
+}
+
+
+
+
+
 
 
 

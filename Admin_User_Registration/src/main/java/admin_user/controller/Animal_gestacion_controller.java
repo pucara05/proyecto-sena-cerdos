@@ -39,7 +39,7 @@ public Animal_gestacion_controller(Animal_gestacion_service animal_gestacion_ser
 
 
 
-
+/* 
      //registar ya sirve 
  @PostMapping("/registrar-gestacion")
         public String guardarDato(@ModelAttribute("animal_gestacion") Animal_gestacion animal_gestacion, Principal principal) {
@@ -52,6 +52,35 @@ public Animal_gestacion_controller(Animal_gestacion_service animal_gestacion_ser
                 return "Error en :" + e.getMessage();
             }
         }
+*/
+
+@PostMapping("/registrar-gestacion")
+public String guardarDato(@ModelAttribute("animal_gestacion") Animal_gestacion animal_gestacion, Principal principal, Model model) {
+    try {
+        // Intenta guardar el Animal_celo en la base de datos
+        Animal_gestacion savedAnimal = animal_gestacion_service.saveAnimalGestacion(animal_gestacion);
+
+        if (savedAnimal == null) {
+            // Si savedAnimal es null, significa que el DNI ya está registrado
+            // Agrega un mensaje de error al modelo para mostrarlo en la vista
+            model.addAttribute("error", "El DNI ya está registrado.");
+            // Devuelve la vista con un mensaje de error
+            return "animal_no_encontrado";
+        }
+
+        // Si el animal se guarda correctamente, redirecciona a la tabla correspondiente
+        return "redirect:/mostrar-gestacion-tabla";
+    } catch (Exception e) {
+        // Si ocurre una excepción, muestra un mensaje de error genérico
+        model.addAttribute("error", "Error en: " + e.getMessage());
+        // Devuelve la vista con un mensaje de error
+        return "animal_no_encontrado";
+    }
+}
+
+
+
+
 
 
 

@@ -21,5 +21,9 @@ public interface Animal_parto_repository  extends JpaRepository <Animal_parto,Lo
       // @Query("SELECT  a.dniParto FROM Animal_parto a") // Query para obtener estados de salud sin duplicados
    // List<String> obtenerdniParto();
     
+
+    // Método para obtener los DNIs de partos
+    @Query("SELECT ap.dni FROM Animal_parto ap")
+    List<String> getDniPartos();
     
 }

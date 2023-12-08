@@ -52,5 +52,6 @@ public Animal_celo obtenerAnimalCeloPorDni(Long dni);
 //public Animal_celo updateAnimalCeloFromDTO(AnimalCeloDTO animalDTO);
 
   
+public Animal_celo obtenerCeloPorDni(Long dni) ;
     
 }

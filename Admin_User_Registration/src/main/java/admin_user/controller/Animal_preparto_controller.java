@@ -43,7 +43,7 @@ public Animal_preparto_controller(Animal_preparto_service animal_preparto_servic
     }
 
 
-         //registar ya sirve 
+     /*    //registar ya sirve 
  @PostMapping("/registrar-preparto")
         public String guardarDato(@ModelAttribute("animal_preparto") Animal_preparto animal_preparto, Principal principal) {
             try {
@@ -55,6 +55,42 @@ public Animal_preparto_controller(Animal_preparto_service animal_preparto_servic
                 return "Error en :" + e.getMessage();
             }
         }
+
+*/
+
+
+@PostMapping("/registrar-preparto")
+public String guardarDato(@ModelAttribute("animal_preparto") Animal_preparto animal_preparto, Principal principal, Model model) {
+    try {
+        // Intenta guardar el Animal_celo en la base de datos
+        Animal_preparto savedAnimal = animal_preparto_service.saveAnimalPreparto(animal_preparto);
+
+        if (savedAnimal == null) {
+            // Si savedAnimal es null, significa que el DNI ya está registrado
+            // Agrega un mensaje de error al modelo para mostrarlo en la vista
+            model.addAttribute("error", "El DNI ya está registrado.");
+            // Devuelve la vista con un mensaje de error
+            return "animal_no_encontrado";
+        }
+
+        // Si el animal se guarda correctamente, redirecciona a la tabla correspondiente
+        return "redirect:/mostrar-preparto-tabla";
+    } catch (Exception e) {
+        // Si ocurre una excepción, muestra un mensaje de error genérico
+        model.addAttribute("error", "Error en: " + e.getMessage());
+        // Devuelve la vista con un mensaje de error
+        return "animal_no_encontrado";
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 

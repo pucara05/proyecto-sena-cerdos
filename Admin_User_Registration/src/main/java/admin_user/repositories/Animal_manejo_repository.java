@@ -19,8 +19,7 @@ public interface Animal_manejo_repository extends JpaRepository<Animal_manejo,Lo
     public Animal_manejo findByDni(Long dni);
 
 
-    @Query("SELECT DISTINCT a.estado FROM Animal_manejo a") // Query para obtener estados de salud sin duplicados
-    List<String> obtenerEstadoManejo();
+  
 
 
 

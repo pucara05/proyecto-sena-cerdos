@@ -62,7 +62,7 @@ public String buscarAnimal(@RequestParam(required = false) Long id,
         Animal_for_user animal = animal_for_user_service.obtenerAnimalPorId(id);
         if (animal != null) {
             model.addAttribute("animal", animal);
-            return "buscar-animal-for-user";
+            return "tabla-celo";
         }
     } else if (dni != null) {
         Animal_for_user animal = animal_for_user_service.obtenerAnimalPorDni(dni);

@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -112,9 +113,9 @@ public class Animal_for_user_controller {
 //buscar por id
 //metodo para buscar por id 
          @GetMapping("/buscar-por-dni-animal")
-    public String buscarAnimalPorId(@RequestParam(required = false) Long id, Model model) {
-        if (id != null) {
-            Animal_for_user animal = animal_for_user_service.obtenerAnimalPorDni(id);
+    public String buscarAnimalPorId(@RequestParam(required = false) Long dni, Model model) {
+        if (dni != null) {
+            Animal_for_user animal = animal_for_user_service.obtenerAnimalPorDni(dni);
         
             if (animal != null) {
                 model.addAttribute("animal", animal);
@@ -156,7 +157,7 @@ public class Animal_for_user_controller {
 
 //************************************************************metodo para guarda y guardar el id_user en la bd
  //  arreglar esto para poder registrar y mostra el id de los usuarios 
-       @PostMapping("/cerdo-registro")
+     /*  @PostMapping("/cerdo-registro")
         public String guardarDato(@ModelAttribute("animal_for_user") Animal_for_user animal_for_user, Principal principal) {
             try {
                 // Obtén el usuario actual por su nombre (email)
@@ -174,17 +175,64 @@ public class Animal_for_user_controller {
                 return "Error en :" + e.getMessage();
             }
         }
-    
+    */
 
     
 //************************************************* 
 
 
 
+/* 
+@PostMapping("/cerdo-registro")
+public String guardarDato(@ModelAttribute("animal_for_user") Animal_for_user animal_for_user, Principal principal) {
+    try {
+        // Obtén el usuario actual por su nombre (email)
+        String userEmail = principal.getName();
+        User user = userService.getUserByEmail(userEmail);
+
+        // Obtén el DNI del Animal_for_user a guardar
+        Long dni = animal_for_user.getDni();
+
+        // Verifica si el DNI ya existe en la base de datos
+        if (animal_for_user_service.dniExiste(dni)) {
+            // Si el DNI ya existe, muestra un mensaje de error o maneja la situación según tus necesidades
+            return "Error: El DNI ya existe en la base de datos.";
+        }
+
+        // Establece la relación entre Animal_for_user y User
+        animal_for_user.setUser(user);
+
+        // Guarda el Animal_for_user en la base de datos
+        animal_for_user_service.saveAnimal(animal_for_user);
+
+        return "redirect:/tabla-animal-for-user";
+    } catch (Exception e) {
+        return "Error en :" + e.getMessage();
+    }
+}
 
 
+*/
+@PostMapping("/cerdo-registro")
+public String guardarDato(@ModelAttribute("animal_for_user") Animal_for_user animal_for_user, Principal principal, Model model) {
+    try {
+        // ... (código para obtener usuario actual y establecer relación Animal_for_user y User)
 
+        // Verificar si el DNI ya existe en la base de datos
+        if (animal_for_user_service.dniExiste(animal_for_user.getDni())) {
+            // Si el DNI ya existe, mostrar un mensaje de error o realizar alguna acción
+            model.addAttribute("error", "El DNI ya existe en la base de datos.");
+            return "animal_no_encontrado"; // Reemplaza con el nombre de tu vista de error o alerta
+        }
 
+        // Guardar el Animal_for_user en la base de datos
+        animal_for_user_service.saveAnimal(animal_for_user);
+
+        return "redirect:/tabla-animal-for-user";
+    } catch (Exception e) {
+        return "Error en :" + e.getMessage();
+    }
+}
 
 
 

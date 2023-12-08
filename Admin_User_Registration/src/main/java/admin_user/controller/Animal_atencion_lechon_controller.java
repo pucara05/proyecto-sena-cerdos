@@ -69,11 +69,26 @@ public class Animal_atencion_lechon_controller {
     // buscando
     @GetMapping("/buscar-por-dni-animal-atencion")
     public String buscarPorDni(@RequestParam("dni") Long dni, Model model) {
-        Animal_atencion_lechon animalatencion = animal_atencion_lechon_service.buscarPorDni(dni);
-
-        model.addAttribute("animalAtencion", animalatencion);
-        return "atencion-tabla"; // Reemplaza con el nombre de tu vista
+        // Realizar la validación para verificar si el dni existe en la base de datos
+        if (dni != null) {
+            Animal_atencion_lechon animalAtencion = animal_atencion_lechon_service.buscarPorDni(dni);
+    
+            if (animalAtencion != null) {
+                // Si se encuentra el registro con el dni proporcionado, lo agregamos al modelo y mostramos los detalles
+                model.addAttribute("animalAtencion", animalAtencion);
+                return "atencion-tabla"; // Reemplaza con el nombre de tu vista
+            } else {
+                // Si no se encuentra el registro con el dni proporcionado, puedes mostrar un mensaje de error o redirigir a una página de error
+                model.addAttribute("mensajeError", "No se encontró ningún registro con el DNI proporcionado.");
+                return "animal_no_encontrado"; // Reemplaza con el nombre de tu vista de error
+            }
+        } else {
+            // Si el parámetro dni es null, puedes manejarlo de acuerdo a tu lógica
+            model.addAttribute("mensajeError", "El DNI proporcionado es inválido.");
+            return "animal_no_encontrado"; // Reemplaza con el nombre de tu vista de error
+        }
     }
+    
 
 
 /* 

@@ -81,7 +81,7 @@
   </section>
   <section class="cont_registro">
     <div class="container">
-      <h2>Registro de Cerdos</h2>
+      <h2>Registro de Celo</h2>
       <form  id="myForm" th:action="@{/registrar-celo}" method="post"  th:object="${animalCelo}">
 
         <div class="form-group">
@@ -100,7 +100,7 @@
      
 
         <div class="form-group">
-          <label for="fechaCelo">Fecha de Nacimiento</label>
+          <label for="fechaCelo">Fecha de Celo</label>
           <input type="date" id="fechaCelo" name="fechaCelo" th:field="*{fechaCelo}" required />
       </div>
         <div class="form-group-1">

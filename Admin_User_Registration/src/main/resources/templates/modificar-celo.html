@@ -44,7 +44,7 @@
                     <li><i class="fa-solid fa-registered menu"></i><a th:href="@{/menu}">Registros Menu</a></li>
                 </div>
                 <div class="nav__menu--item">
-                    <li><i class="fa-solid fa-database"></i><a th:href="@{menu-tablas}">Tablas</a></li>
+                    <li><i class="fa-solid fa-database"></i><a th:href="@{/menu-tablas}">Tablas</a></li>
                 </div>
             </ul>
     </nav>
@@ -55,7 +55,7 @@
             </div>
             <li class="menu-item"><a class="a-m" th:href="@{/}">Inicio</a></li>
             <li class="menu-item"><a class="a-m" th:href="@{/menu}">Menu</a></li>
-            <li class="menu-item"><a class="a-m" href="/menu.tablas">Tablas</a></li>
+            <li class="menu-item"><a class="a-m" href="/menu-tablas">Tablas</a></li>
         </ul>
     </div>
     <section class="contenido">
@@ -83,8 +83,8 @@
                
                 <div class="form-group-1">
                     <button class="btn" type="button" onclick="guardarCambios()">Guardar cambios</button>
-                    <button class="btn" type="submit">Listas</button>
-                    <a th:href="@{/tabla-celo}">Listas</a>
+                   <!-- <button class="btn" type="submit">Listas</button>
+                    <a th:href="@{/tabla-celo}">Listas</a>-->
                 </div>
             </form>
             

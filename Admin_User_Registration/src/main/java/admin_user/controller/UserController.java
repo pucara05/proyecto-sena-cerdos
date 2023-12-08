@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import admin_user.dto.UserDto;
 import admin_user.model.Animal_atencion_lechon;
@@ -80,6 +81,21 @@ public class UserController {
         return "admin"; // Reemplaza "tabla-datos" con el nombre de tu vista
     }
 
+
+
+
+	@GetMapping("/buscar-por-correo-user")
+public String buscarPorEmail(@RequestParam("email") String email, Model model) {
+    User user = userService.getUserByEmail(email);
+
+    if (user != null) {
+        model.addAttribute("User", user);
+    } else {
+        model.addAttribute("mensaje", "Usuario no encontrado para el correo electrónico proporcionado.");
+    }
+
+    return "admin"; // Reemplaza con el nombre de tu vista
+}
 
 
 

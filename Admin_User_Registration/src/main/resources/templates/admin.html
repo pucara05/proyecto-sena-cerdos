@@ -224,9 +224,10 @@ form .btn_hijo{
           </li>
       
           <li class="logout">
-            <a href="">
+            <a href="/logout">
               <i class="fas fa-sign-out-alt"></i>
             <span>Cerrar Sesion</span>
+            
           </a>
           </li>
         </ul>
@@ -244,9 +245,9 @@ form .btn_hijo{
         
         <div class="cont-tabla">
           <div class="contenedor__btn">
-            <form th:action="@{/buscar-por-id-animal}" method="get">
+            <form th:action="@{/buscar-por-correo-user}" method="get">
                 <div class="btn_hijo">
-                    <input class="bus" type="text" id="searchInput" name="id" placeholder="Buscar por ID">
+                    <input class="bus" type="text" id="searchInput" name="email" placeholder="Buscar por Correo">
                 </div>
                 <div class="btn_hijo">
                     <button class="btn" type="submit" required>Buscar</button>
@@ -259,8 +260,11 @@ form .btn_hijo{
                 <th>Nombre</th>
                 <th>Correo</th>
                 <th>Contraseña</th>
-                <th>Peso</th>
-                <th>Fecha</th>
+                <th>Role</th>
+                <th>FullName</th>
+                <th th:if="${User != null}">Acciones</th> <!-- Columna de acciones -->
+
+
             </tr>
             </thead>
             <tbody>
@@ -270,9 +274,34 @@ form .btn_hijo{
                     <td th:text="${data.password}"> </td>
                     <td th:text="${data.role}"> </td>
                     <td th:text="${data.fullname}"> </td>
+                    <td th:if="${User != null}"> <!-- Mostrar acciones solo si se encuentra un animal -->
+
             </tr>
-        </div>
-      </div>
-    </body>
+           <!--<tr th:if="${User != null}">
+              <th>ID</th>
+              <th>Email</th>
+              <th>Password</th>
+              <th>Role</th>
+              <th>Fullname</th>
+          </tr>--> 
+          </tbody>
+          <tbody th:if="${User != null}">
+          <tr>
+            <td th:text="${User.id}"></td>
+            <td th:text="${User.email}"></td>
+            <td th:text="${User.password}"></td>
+            <td th:text="${User.role}"></td>
+            <td th:text="${User.fullname}"></td>
+            
+           <!-- <td>
+                <div class="form-group--btn">
+                    <button class="bt">
+                        <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${animal.id}}">Editar</a>
+                    </button>
+                </div>-->
+            </td>
+        </tr>
+    </tbody>
+          </table>
 </body>
 </html>

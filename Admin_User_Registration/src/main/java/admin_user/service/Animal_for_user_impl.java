@@ -106,5 +106,10 @@ public List<Animal_for_user> obtenerTodosLosAnimales() {
 }
 
 
+@Override
+public boolean dniExiste(Long dni) {
+    // Verificar si el DNI existe en la base de datos
+    return animal_for_user_repository.existsByDni(dni);
+}
 
 }

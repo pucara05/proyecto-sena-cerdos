@@ -33,10 +33,10 @@ public class Animal_manejo_controller {
 
     @GetMapping("/manejo-vista")
     public String mostrarVistaManejoRegistro(Model model) {
-        // List<String> dniPartos = animal_parto_service.obtenerdniParto(); // Método
+         List<String> dniParto = animal_parto_service.obtenerdniParto(); // Método
         // para obtener los dniParto desde tu servicio
 
-        // model.addAttribute("dniPartos", dniPartos);
+         model.addAttribute("dniPartos", dniParto);
         model.addAttribute("animal_manejo", new Animal_manejo()); // Agregar un objeto Animal_manejo al modelo
         return "manejo-registro"; // Devolver el nombre de la vista
     }
@@ -65,10 +65,24 @@ public class Animal_manejo_controller {
     // buscando
     @GetMapping("/buscar-por-dni-animal-manejo")
     public String buscarPorDni(@RequestParam("dni") Long dni, Model model) {
-        Animal_manejo animalmanejo = animal_manejo_service.buscarPorDni(dni);
-
-        model.addAttribute("animalManejo", animalmanejo);
-        return "manejo-tabla"; // Reemplaza con el nombre de tu vista
+        // Realizar la validación para verificar si el dni existe en la base de datos
+        if (dni != null) {
+            Animal_manejo animalManejo = animal_manejo_service.buscarPorDni(dni);
+    
+            if (animalManejo != null) {
+                // Si se encuentra el registro con el dni proporcionado, lo agregamos al modelo y mostramos los detalles
+                model.addAttribute("animalManejo", animalManejo);
+                return "manejo-tabla"; // Reemplaza con el nombre de tu vista
+            } else {
+                // Si no se encuentra el registro con el dni proporcionado, puedes mostrar un mensaje de error o redirigir a una página de error
+                model.addAttribute("mensajeError", "No se encontró ningún registro con el DNI proporcionado.");
+                return "animal_no_encontrado"; // Reemplaza con el nombre de tu vista de error
+            }
+        } else {
+            // Si el parámetro dni es null, puedes manejarlo de acuerdo a tu lógica
+            model.addAttribute("mensajeError", "El DNI proporcionado es inválido.");
+            return "animal_no_encontrado"; // Reemplaza con el nombre de tu vista de error
+        }
     }
 
 
@@ -90,7 +104,7 @@ public String guardarDato(@ModelAttribute("animal_manejo") Animal_manejo animal_
 
 */
 
-
+/* 
    //registar ya sirve 
  @PostMapping("/registrar-manejo")
         public String guardarDatomanejo(@ModelAttribute("animal_manejo") Animal_manejo animal_manejo, Principal principal) {
@@ -104,6 +118,33 @@ public String guardarDato(@ModelAttribute("animal_manejo") Animal_manejo animal_
             }
         }
 
+*/
+
+
+
+@PostMapping("/registrar-manejo")
+public String guardarDato(@ModelAttribute("animal_manejo") Animal_manejo animal_manejo, Principal principal, Model model) {
+    try {
+        // Intenta guardar el Animal_celo en la base de datos
+        Animal_manejo savedAnimal = animal_manejo_service.saveAnimalManejo(animal_manejo);
+
+        if (savedAnimal == null) {
+            // Si savedAnimal es null, significa que el DNI ya está registrado
+            // Agrega un mensaje de error al modelo para mostrarlo en la vista
+            model.addAttribute("error", "El DNI ya está registrado.");
+            // Devuelve la vista con un mensaje de error
+            return "animal_no_encontrado";
+        }
+
+        // Si el animal se guarda correctamente, redirecciona a la tabla correspondiente
+        return "redirect:/mostrar-manejo-tabla";
+    } catch (Exception e) {
+        // Si ocurre una excepción, muestra un mensaje de error genérico
+        model.addAttribute("error", "Error en: " + e.getMessage());
+        // Devuelve la vista con un mensaje de error
+        return "animal_no_encontrado";
+    }
+}
 
 
 

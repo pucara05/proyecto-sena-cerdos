@@ -62,6 +62,8 @@ public interface Animal_for_user_service {
 
 
   
+ public boolean dniExiste(Long dni) ;
+ 
 
 
 

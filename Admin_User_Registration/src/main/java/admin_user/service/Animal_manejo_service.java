@@ -25,10 +25,31 @@ public class Animal_manejo_service {
     }
 
 
-      // Método para guardar un Animal_manejo
+    /*   // Método para guardar un Animal_manejo
     public Animal_manejo saveAnimalManejo(Animal_manejo animalManejo) {
         return animal_manejo_repository.save(animalManejo);
+    }*/
+
+
+
+public Animal_manejo saveAnimalManejo(Animal_manejo animal) {
+    Long dni = animal.getDni();
+
+    // Verificar si el DNI ya existe en la base de datos
+    Animal_manejo existingAnimal = animal_manejo_repository.findByDni(dni);
+    if (existingAnimal != null) {
+        // Si ya existe un animal con el mismo DNI, muestra un mensaje o realiza alguna acción
+        // Aquí puedes imprimir un mensaje en la consola, loggear un mensaje, o realizar otra acción que desees
+        System.out.println("El DNI ya está registrado.");
+
+        // En este ejemplo, se devuelve null para indicar que no se ha guardado el animal
+        return null;
     }
+
+    // Si el DNI no existe, se guarda el animal y se devuelve
+    return animal_manejo_repository.save(animal);
+}
+
 
 
 
@@ -46,9 +67,7 @@ public List< Animal_manejo> getManejo(){
         return animal_manejo_repository.findByDni(dni);
     }
 
-    public List<String> obtenerEstadoManejo() {
-        return animal_manejo_repository.obtenerEstadoManejo(); // Método en tu repositorio para obtener los estados de salud
-    }
+   
 
 
 

@@ -67,8 +67,7 @@
         <div class="contenedor__btn">
             <form th:action="@{/buscar-por-dni-animal}" method="get">
                 <div class="btn_hijo">
-                    <input class="bus" type="text" id="searchInput" name="id" placeholder="Buscar por ID">
-                </div>
+                    <input class="bus" type="text" id="searchInput" name="dni" placeholder="Buscar por Dni" pattern="[0-9]*" inputmode="numeric" title="Por favor, ingrese solo números"  required>                </div>
                 <div class="btn_hijo">
                     <button class="btn" type="submit" required>Buscar</button>
                 </div>
@@ -98,59 +97,56 @@
         </div>
         <table>
             <thead>
-            <tr>
-                <th>Id </th>
-                <th>Dni </th>
-                <th>Raza</th>
-                <th>Peso</th>
-                <th>Fecha</th>
-                <th>Sexo</th>
-                <th>Acciones</th> <!-- Añadimos una columna para las acciones -->
-            </tr>
+                <tr>
+                    <!-- Encabezados de las columnas -->
+                    <th>Id </th>
+                    <th>Dni </th>
+                    <th>Raza</th>
+                    <th>Peso</th>
+                    <th>Fecha</th>
+                    <th>Sexo</th>
+                    <th th:if="${animal != null}">Acciones</th> <!-- Columna de acciones -->
+                </tr>
             </thead>
             <tbody>
-            <tr th:each="data: ${datas}">
-                <td th:text="${data.id}"> </td>
-                <td th:text="${data.dni}"> </td>
-                <td th:text="${data.raza}"> </td>
-                <td th:text="${data.peso}"> </td>
-                <td th:text="${data.fechaNacimientoCerdo}"> </td>
-                <td th:text="${data.sexo}"> </td>
-                <!--<td>
-                    <div class="form-group--btn">
-                        <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${data.id}}">Editar</a>
-                    </div>
-                    <div class="form-group--btn">
-                        <a class="btn-1" th:href="@{'/animal_for_user/eliminar/' + ${data.id}}">Eliminar</a>
-                    </div>
-                </td>-->
+                <!-- Contenido de la tabla -->
+                <tr th:each="data: ${datas}">
+                    <!-- Celdas de datos -->
+                    <td th:text="${data.id}"></td>
+                    <td th:text="${data.dni}"></td>
+                    <td th:text="${data.raza}"></td>
+                    <td th:text="${data.peso}"></td>
+                    <td th:text="${data.fechaNacimientoCerdo}"></td>
+                    <td th:text="${data.sexo}"></td>
+                    <td th:if="${animal != null}"> <!-- Mostrar acciones solo si se encuentra un animal -->
+                        <div class="form-group--btn">
+                            <button class="bt">
+                                <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${data.id}}">Editar</a>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
 
-            </tr>
-            
-
-               <!-- animal-encontrado-por-id.html -->
-
-    <tbody>
-        <tr th:if="${animal != null}">
-            <td th:if="${animal != null}"   th:text="${animal.id}"> </td>
-            <td th:if="${animal != null}"   th:text="${animal.dni}"> </td>
-            <td th:if="${animal != null}"   th:text="${animal.raza}"> </td>
-            <td th:if="${animal != null}"   th:text="${animal.peso}"> </td>
-            <td th:if="${animal != null}"  th:text="${animal.fechaNacimientoCerdo}"> </td>
-            <td th:if="${animal != null}"   th:text="${animal.sexo}"> </td>
-            <td>
-                     <div class="form-group--btn">
-                        <button class="bt">
-                            <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${animal.id}}">Editar</a>
-                        </button>
-                    </div>
+             <!-- Detalles del animal encontrado por búsqueda -->
+    <tbody th:if="${animal != null}">
+        <tr>
+            <td th:text="${animal.id}"></td>
+            <td th:text="${animal.dni}"></td>
+            <td th:text="${animal.raza}"></td>
+            <td th:text="${animal.peso}"></td>
+            <td th:text="${animal.fechaNacimientoCerdo}"></td>
+            <td th:text="${animal.sexo}"></td>
+            <td> <!-- Acciones para el animal encontrado -->
+                <div class="form-group--btn">
+                    <button class="bt">
+                        <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${animal.id}}">Editar</a>
+                    </button>
+                </div>
             </td>
         </tr>
     </tbody>
-            </tbody>
         </table>
-
-
      
 
 

@@ -64,7 +64,7 @@ public Animal_monta_controller(Animal_monta_service animal_monta_service, Animal
 
 
 
-
+/* 
     //registar ya sirve 
  @PostMapping("/registrar-monta")
         public String guardarDato(@ModelAttribute("animal_monta") Animal_monta animal_monta, Principal principal) {
@@ -77,6 +77,39 @@ public Animal_monta_controller(Animal_monta_service animal_monta_service, Animal
                 return "Error en :" + e.getMessage();
             }
         }
+
+*/
+
+
+@PostMapping("/registrar-monta")
+public String guardarDato(@ModelAttribute("animal_monta") Animal_monta animal_monta, Principal principal, Model model) {
+    try {
+        // Intenta guardar el Animal_celo en la base de datos
+        Animal_monta savedAnimal = animal_monta_service.saveAnimalMonta(animal_monta);
+
+        if (savedAnimal == null) {
+            // Si savedAnimal es null, significa que el DNI ya está registrado
+            // Agrega un mensaje de error al modelo para mostrarlo en la vista
+            model.addAttribute("error", "El DNI ya está registrado.");
+            // Devuelve la vista con un mensaje de error
+            return "animal_no_encontrado";
+        }
+
+        // Si el animal se guarda correctamente, redirecciona a la tabla correspondiente
+        return "redirect:/mostrar-datos-tabla";
+    } catch (Exception e) {
+        // Si ocurre una excepción, muestra un mensaje de error genérico
+        model.addAttribute("error", "Error en: " + e.getMessage());
+        // Devuelve la vista con un mensaje de error
+        return "animal_no_encontrado";
+    }
+}
+
+
+
+
+
+
 
 
 

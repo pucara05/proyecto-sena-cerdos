@@ -71,15 +71,19 @@
                     <label for="dni">Dni Manejo:</label>
                     <input type="number" id="dni" name="dni" placeholder="dni" th:field="*{dni}"  required>
                 </div>
+              
                 <div class="form-group">
-                    <label for="estadoSalud">dni Parto:</label>
-                    <select id="estadoSalud" name="estadoSalud">
+                    <label for="selectDniParto">DNI Parto:</label>
+                    <select id="selectDniParto" name="dniParto">
                         <option value="">Seleccione una opción</option>
-                        <!-- Iterar sobre la lista de estados de salud -->
-                        <option th:each="estado : ${estadosSalud}" th:value="${estado}" th:text="${estado}"></option>
+                        <!-- Iterar sobre la lista de DNIs de Parto -->
+                        <th:block th:each="dniParto : ${dniPartos}">
+                            <option th:value="${dniParto}" th:text="${dniParto}"></option>
+                        </th:block>
                     </select>
                     <br><br>
                 </div>
+                
                
             
                
@@ -96,18 +100,14 @@
                     <label for="fechaFin">Fecha de Fin:</label>
                     <input type="date" id="fechaFin" name="fechaFin" th:field="*{fechaFin}" required>
                 </div>
+
                 <div class="form-group">
                     <label for="estadoSalud">Estado Manejo:</label>
-                  <select id="estadoSalud" name="estadoSalud">
-                      <option value="Selecione una opcion">Selecione una opcion</option>
-                      <option value="Normal">Normal</option>
-                      <option value="Estresada">Estresada</option>
-                      <option value="Enferma">Enferma</option>
-                      <option value="Alerta">Alerta</option>
-                      <option value="Complicaciones">Complicaciones</option>
-                      <option value="Inquietud">Inquietud</option>    
-                      <option value="Observación requerida">Observación requerida</option>  
-                      <option value="Síntomas de parto inminente">Síntomas de parto inminente</option>            
+                  <select id="estadoSalud" name="estado">
+                    <option value="En Proceso">En Proceso</option>
+                    <option value="Completado">Completado</option>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="Cancelado">Cancelado</option>           
                   </select><br><br>
                  
                 </div>
@@ -115,8 +115,8 @@
                             
                 <div class="form-group-1">
             <button class="btn" type="submit">Registrar</button>
-            <button class="btn"  type="submit"  >Listas</button>
-           <a th:href="@{/mostrar-manejo-tabla}">Listas </a>
+           <!-- <button class="btn"  type="submit"  >Listas</button>
+           <a th:href="@{/mostrar-manejo-tabla}">Listas </a>-->
             
                 </div>
             </form>
