@@ -117,9 +117,9 @@
             <td th:text="${animalAtencion.pesoLechon}"></td>         
             <td> <!-- Acciones para el animal encontrado -->
                 <div class="form-group--btn">
-                   <!-- <button class="bt">
-                        <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${animal.id}}">Editar</a>
-                    </button>-->
+                   <button class="bt">
+                        <a class="btn-1" th:href="@{'/animal_atencion/editar/' + ${animalAtencion.dni}}">Editar</a>
+                    </button>
                 </div>
             </td>
         </tr>

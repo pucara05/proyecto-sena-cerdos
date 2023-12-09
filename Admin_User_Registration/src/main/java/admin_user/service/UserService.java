@@ -20,10 +20,13 @@ public interface UserService {
 public List<User>getAllUser();
    
 
-public void deleteUser(Long id) ;
+
   
 
 public User getUserByUser(String email);
 
+public User modifidUser(User user);
+
+public void eliminarUsuarioPorId(Long id);
 
 }

@@ -115,11 +115,11 @@
             <td th:text="${animalParto.lechonesVivos}"></td>
             <td th:text="${animalParto.lechonesMuertos}"></td>
         
-            <td> <!-- Acciones para el animal encontrado -->
+            <td> 
                 <div class="form-group--btn">
-                   <!-- <button class="bt">
-                        <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${animal.id}}">Editar</a>
-                    </button>-->
+                    <button class="bt">
+                        <a class="btn-1" th:href="@{'/animal_parto/editar/' + ${animalParto.dni}}">Editar</a>
+                    </button>
                 </div>
             </td>
         </tr>

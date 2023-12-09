@@ -83,8 +83,8 @@
                 <th>Id</th>
                 <th>Dni Preparto</th>
                 <th>dniPrepartoHembra</th>
-                <th>fechaPreparto</th>
                 <th>estadoSalud</th>
+                <th>fechaPreparto</th>
                 <th th:if="${animalPreparto != null}">Acciones</th> <!-- Columna de acciones -->
             </tr>
         </thead>
@@ -111,9 +111,9 @@
         
             <td> <!-- Acciones para el animal encontrado -->
                 <div class="form-group--btn">
-                   <!-- <button class="bt">
-                        <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${animal.id}}">Editar</a>
-                    </button>-->
+                    <button class="bt">
+                        <a class="btn-1" th:href="@{'/animal_preparto/editar/' + ${animalPreparto.dni}}">Editar</a>
+                    </button>
                 </div>
             </td>
         </tr>

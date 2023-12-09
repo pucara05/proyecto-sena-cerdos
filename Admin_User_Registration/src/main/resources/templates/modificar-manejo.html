@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/cerdo-registro.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="header__contenedor">
+            <img src="/img/cerdo (2).png" alt=>
+            <div class="nombre-logo">
+                <h2>Cerdos Pink</h2>
+            </div>
+        </div>
+        <div class="header__contenedor--items">
+            <div class="header__contenedor--ayuda">
+                <a href="">Ayuda</a>
+            </div>
+            <span>|</span>
+            <div class="header__contenedor--Contactos">
+                <a href="">Usuario</a>
+            </div>
+            <span>|</span>
+            <div class="header__contenedor--Cerrar">
+                <a th:href="@{/logout}">Cerrar Sesion</a>
+            </div>
+        </div>
+        <div class="nav__bars">
+            <div class="nav__toggle" id="bars">
+                <i class="fa-solid fa-bars"onclick="toggleMenu()"></i>
+            </div>
+            
+        </div>
+    </header>
+    <nav>
+            <ul class="ul__menu">
+                <div class="nav__menu--item">
+                    <li><i class="fa-sharp fa-solid fa-house"></i><a th:href="@{/}">Inicio</a></li>
+                </div>
+                <div class="nav__menu--item">
+                    <li><i class="fa-solid fa-registered menu"></i><a th:href="@{/menu}">Registros Menu</a></li>
+                </div>
+                <div class="nav__menu--item">
+                    <li><i class="fa-solid fa-database"></i><a th:href="@{/menu-tablas}">Tablas</a></li>
+                </div>
+            </ul>
+    </nav>
+    <div class="contenedor__flotante" id="menu">
+        <ul class="Contenedor__ul">
+            <div class="contenedor__salir">
+                <i class="fa-solid fa-xmark"onclick="toggleMenu()"></i>
+            </div>
+            <li class="menu-item"><a class="a-m" th:href="@{/}">Inicio</a></li>
+            <li class="menu-item"><a class="a-m" th:href="@{/menu}">Menu</a></li>
+            <li class="menu-item"><a class="a-m" href="/menu-tablas">Tablas</a></li>
+        </ul>
+    </div>
+    <section class="contenido">
+        <h2>Bienvenido al mejor software para la gestión de cerdos</h2>
+        <p>Descripción breve del software y sus beneficios.</p>
+    </section>
+    <section class="cont_registro">
+        <div class="container">
+          
+
+            <h2>Modificar Manejo</h2>
+
+            <form id="animalForm" th:action="@{/animal_manejo/modificar/{dni}(dni=${animal.dni})}" method="post" th:object="${animal}">
+                <input type="hidden" id="animalId" name="id" th:value="${animal.id}">
+                            
+                <div class="form-group">
+                    <label for="dni">DNI:</label>
+                    <input type="number" id="dni" name="dni" th:value="${animal.dni}" required>
+                </div>
+                            
+                <div class="form-group">
+                    <label for="fechaInicio">Fecha de Inicio:</label>
+                    <input type="date" id="fechaInicio" name="fechaInicio" th:value="${animal.fechaInicio}" required>
+                </div>
+               
+               
+                <div class="form-group">
+                    <label for="fechaFin">Fecha de FIn:</label>
+                    <input type="date" id="fechaFin" name="fechaFin" th:value="${animal.fechaFin}" required>
+                </div>
+               
+               
+                <div class="form-group-1">
+                    <button class="btn" type="submit">Guardar cambios</button>
+                </div>
+            </form>
+                 
+            <footer>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/profile.php?id=61553875659336">
+                        <img src="/img/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="mailto:tucorreo@gmail.com" target="_blank" rel="noopener noreferrer">
+                        <img src="/img/gmail-1.png" alt="Gmail">
+                    </a>
+                </div>
+                <p>© 2023 Cerdos pink | Todos los derechos reservados</p>
+            </footer>
+           
+            
+            <script th:src="@{/js/responsivo.js}"></script>
+            <script th:src="@{/js/actualizarAnimal.js}"></script>
+            
+        </body>
+</html>

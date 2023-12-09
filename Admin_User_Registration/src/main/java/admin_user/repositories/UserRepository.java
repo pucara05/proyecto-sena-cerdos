@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import admin_user.model.Animal_atencion_lechon;
+import admin_user.model.Animal_monta;
 import admin_user.model.User;
 
 @Repository
@@ -13,7 +14,16 @@ public interface UserRepository extends JpaRepository<User, Long> {
     
 	User findByEmail (String email);
 
+	
+
 
 	 @Query("SELECT a FROM User a WHERE a.email = :email")
     public User findByEmailUser(String email);
+
+	  //metodo para buscar por dni
+      @Query("SELECT a FROM User a WHERE a.id = :id")
+    public User findByIdUser(Long id);
+
+
+	void deleteById(Long id);
 }

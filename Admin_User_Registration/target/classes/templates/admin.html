@@ -247,7 +247,7 @@ form .btn_hijo{
           <div class="contenedor__btn">
             <form th:action="@{/buscar-por-correo-user}" method="get">
                 <div class="btn_hijo">
-                    <input class="bus" type="text" id="searchInput" name="email" placeholder="Buscar por Correo">
+                    <input class="bus" type="text" id="searchInput" name="email" placeholder="Buscar por Correo" required>
                 </div>
                 <div class="btn_hijo">
                     <button class="btn" type="submit" required>Buscar</button>
@@ -257,7 +257,7 @@ form .btn_hijo{
           <table>
             <thead>
             <tr>
-                <th>Nombre</th>
+                <th>Id</th>
                 <th>Correo</th>
                 <th>Contraseña</th>
                 <th>Role</th>
@@ -268,7 +268,7 @@ form .btn_hijo{
             </tr>
             </thead>
             <tbody>
-                <tr th:each="data: ${animalUserList}">
+              <tr th:each="data: ${animalUserList}" th:id="'user-' + ${data.id}">
                     <td th:text="${data.id}"> </td>
                     <td th:text="${data.email}"> </td>
                     <td th:text="${data.password}"> </td>
@@ -285,7 +285,8 @@ form .btn_hijo{
               <th>Fullname</th>
           </tr>--> 
           </tbody>
-          <tbody th:if="${User != null}">
+          <!---->
+         <!--<tbody th:if="${User != null}">
           <tr>
             <td th:text="${User.id}"></td>
             <td th:text="${User.email}"></td>
@@ -293,15 +294,59 @@ form .btn_hijo{
             <td th:text="${User.role}"></td>
             <td th:text="${User.fullname}"></td>
             
-           <!-- <td>
+            <td>
                 <div class="form-group--btn">
                     <button class="bt">
-                        <a class="btn-1" th:href="@{'/animal_for_user/editar/' + ${animal.id}}">Editar</a>
+                        <a class="btn-1" th:href="@{'/user/editar/' + ${User.email}}">Editar</a>
                     </button>
-                </div>-->
+                </div>
+
+
+                <div class="form-group--btn">
+                  <form action="@{'/eliminar/' + ${User.id}}" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button class="bt" type="submit">Eliminar</button>
+                </form>
+              </div>
             </td>
         </tr>
-    </tbody>
+    </tbody>-->
+    <tbody th:if="${User != null}">
+      <tr id="userRow-[[${User.id}]]"></tr>
+          <!-- Datos de usuario -->
+          <td th:text="${User.id}"></td>
+          <td th:text="${User.email}"></td>
+          <td th:text="${User.password}"></td>
+          <td th:text="${User.role}"></td>
+          <td th:text="${User.fullname}"></td>
+          <!-- Botón Editar -->
+          <td>
+              <div class="form-group--btn">
+                  <button class="bt">
+                      <a class="btn-1" th:href="@{'/user/editar/' + ${User.email}}">Editar</a>
+                  </button>
+              </div>
+          </td>
+          
+          <td>
+            <div class="form-group--btn">
+                <form action="/eliminar" method="post">
+                    <input type="hidden" name="id" th:value="${User.id}" />
+                    <button type="submit" class="bt">Eliminar</button>
+                </form>
+            </div>
+        </td>
+        
+        
+        
+      </tr>
+  </tbody>
+
           </table>
+        
+         
+         
+
 </body>
+
 </html>

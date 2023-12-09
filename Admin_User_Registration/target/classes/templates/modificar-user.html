@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/cerdo-registro.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <h2>Modificar User</h2>
+
+    <form id="animalForm" th:action="@{/user/modificar/{email}(email=${animal.email})}" method="post" th:object="${animal}">
+        <input type="hidden" id="animalId" name="id" th:value="${animal.id}">
+        <div class="form-group">
+            <label for="email"> Email</label>
+            <input type="hidden" id="email" name="email" th:value="${animal.email}" required>
+        </div>
+                    
+        <div class="form-group">
+            <label for="password">Nueva Contraseña</label>
+            <input type="number" id="password" name="password" th:value="${animal.password}" required>
+        </div>
+        <div class="form-group">
+            <label for="role"> Role</label>
+            <input type="hidden" id="role" name="role" th:value="${animal.role}" required>
+        </div>
+                    
+        <div class="form-group">
+            <label for="fullname"> Nuevo Full Name</label>
+            <input type="text" id="fullname" name="fullname" th:value="${animal.fullname}" required>
+        </div>
+                    
+        <!-- Otros campos que desees mostrar o modificar -->
+       
+        <div class="form-group-1">
+            <button class="btn" type="submit">Guardar cambios</button>
+        </div>
+    </form>
+    <footer>
+        <div class="social-media">
+            <a href="https://www.facebook.com/profile.php?id=61553875659336">
+                <img src="/img/facebook.png" alt="Facebook">
+            </a>
+            <a href="mailto:tucorreo@gmail.com" target="_blank" rel="noopener noreferrer">
+                <img src="/img/gmail-1.png" alt="Gmail">
+            </a>
+        </div>
+        <p>© 2023 Cerdos pink | Todos los derechos reservados</p>
+    </footer>
+    <script th:src="@{/js/responsivo.js}"></script>
+</body>
+</html>

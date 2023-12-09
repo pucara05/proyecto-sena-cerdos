@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -123,6 +124,46 @@ public String guardarDato(@ModelAttribute("animal_preparto") Animal_preparto ani
         model.addAttribute("animalPreparto", animalpreparto);
         return "preparto-tabla"; // Reemplaza con el nombre de tu vista
     }
+
+
+
+    @GetMapping("/animal_preparto/editar/{dni}")
+    public String mostrarFormularioEditarAnimalPreparto(@PathVariable Long dni, Model model) {
+        Animal_preparto animal = animal_preparto_service.buscarPorDni(dni);
+    
+        if (animal != null) {
+            model.addAttribute("animal", animal);
+            return "modificar-preparto"; // Vista para modificar Animal_monta
+        } else {
+            return "animal_no_encontrado"; // Manejo cuando no se encuentra el animal
+        }
+    }
+    
+    @PostMapping("/animal_preparto/modificar/{dni}")
+    public String modificarAnimalPreparto(@PathVariable Long dni, @ModelAttribute Animal_preparto animalPreparto) {
+        Animal_preparto animalExistente = animal_preparto_service.buscarPorDni(dni);
+    
+        if (animalExistente != null) {
+            // Verifica si el animalExistente es el mismo que se está modificando
+            if (animalExistente.getId().equals(animalPreparto.getId())) {
+                // Actualiza los atributos del animalExistente con los datos del animalMonta
+                 animalExistente.setDni(animalPreparto.getDni());
+                animalExistente.setFechaPreparto(animalPreparto.getFechaPreparto());
+              
+                // Actualiza otros atributos según sea necesario
+    
+                animal_preparto_service.saveAnimalPreparto(animalExistente);
+                return "redirect:/mostrar-preparto-tabla"; // Redireccionar a la tabla de Animal_monta
+            } else {
+                // Ya hay otro Animal_monta con el mismo DNI, manejar el error
+                return "animal_no_encontrado";
+            }
+        } else {
+            // El Animal_monta no existe, mostrar un mensaje de error o redireccionar a una página de error
+            return "animal_no_encontrado";
+        }
+    }
+    
 
 
 
